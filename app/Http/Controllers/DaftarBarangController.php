@@ -37,9 +37,9 @@ class DaftarBarangController extends Controller
             'dit' => 'required|string',
             'petugas_penyerah' => 'required|string',
             'petugas_penerima' => 'required|string',
-            'nomor_laporan_polisi' => 'required|integer',
-            'nomor_register_bb' => 'required|integer',
-            'nomor_label_barang_bukti' => 'required|integer',
+            'nomor_laporan_polisi' => 'required|numeric',
+            'nomor_register_bb' => 'required|numeric',
+            'nomor_label_barang_bukti' => 'required|numeric',
             'jenis_barang_bukti' => 'required|string',
             'foto_barang_bukti' => 'required|file|mimes:png,jpeg,jpg',
             'kondisi_barang_bukti' => 'required|string',
@@ -66,7 +66,7 @@ class DaftarBarangController extends Controller
      */
     public function edit(DaftarBarang $daftar_barang)
     {
-        return view('daftar-barang', compact('daftar_barang'));
+        return view('daftar-barang.edit', compact('daftar_barang'));
     }
 
     /**
@@ -79,16 +79,17 @@ class DaftarBarangController extends Controller
             'dit' => 'required|string',
             'petugas_penyerah' => 'required|string',
             'petugas_penerima' => 'required|string',
-            'nomor_laporan_polisi' => 'required|integer',
-            'nomor_registrasi_bb' => 'required|integer',
-            'nomor_label_barang_bukti' => 'required|integer',
+            'nomor_laporan_polisi' => 'required|numeric',
+            'nomor_register_bb' => 'required|numeric',
+            'nomor_label_barang_bukti' => 'required|numeric',
+            'jenis_barang_bukti' => 'required|string',
             'foto_barang_bukti' => 'nullable|file|mimes:png,jpeg,jpg',
             'kondisi_barang_bukti' => 'required|string',
             'keterangan' => 'required|string',
         ]);
 
         if ($request->hasFile('foto_barang_bukti')) {
-            Storage::delete('storage/' . $daftar_barang->foto_barang_bukti);
+            Storage::delete('storage/app/public' . $daftar_barang->foto_barang_bukti);
             $data['foto_barang_bukti'] = $request->file('foto_barang_bukti')->store('barang-bukti');
         }
 
@@ -103,7 +104,7 @@ class DaftarBarangController extends Controller
     public function destroy(DaftarBarang $daftar_barang)
     {
         $daftar_barang->delete();
-        Storage::delete('storage/' . $daftar_barang->foto_barang_bukti);
+        Storage::delete('storage/app/public' . $daftar_barang->foto_barang_bukti);
 
         return back()->with('message', 'Daftar barang berhasil dihapus!');
     }
