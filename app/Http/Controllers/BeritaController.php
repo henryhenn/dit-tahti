@@ -88,6 +88,6 @@ class BeritaController extends Controller
         $beritum->delete();
         Storage::delete('storage/' . $beritum->image);
 
-        return to_route('berita.index')->with('message', 'Berita berhasil dihapus!');
+        return back()->with('message', 'Berita berhasil dihapus!');
     }
 }

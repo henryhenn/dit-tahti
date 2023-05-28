@@ -19,6 +19,9 @@
                     <x-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.*')">
                         {{ __('Berita') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('daftar-barang.index')" :active="request()->routeIs('daftar-barang.*')">
+                        {{ __('Daftar Barang') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +80,9 @@
 
             <x-responsive-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.*')">
                 {{ __('Berita') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('daftar-barang.index')" :active="request()->routeIs('daftar-barang.*')">
+                {{ __('Daftar Barang') }}
             </x-responsive-nav-link>
         </div>
 

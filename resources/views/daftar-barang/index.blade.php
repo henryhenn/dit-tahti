@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Berita') }}
+            {{ __('Daftar Barang') }}
         </h2>
     </x-slot>
 
@@ -11,11 +11,11 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-row justify-between">
-                        <h2 class="text-2xl font-extrabold">List Berita</h2>
+                        <h2 class="text-2xl font-extrabold">Daftar Barang</h2>
 
-                        <a href="{{route('berita.create')}}"
+                        <a href="{{route('daftar-barang.create')}}"
                            class="text-white bg-blue-700 font-medium hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                            Tambah Berita Baru
+                            Tambah Daftar Barang Baru
                         </a>
                     </div>
 
@@ -30,13 +30,19 @@
                                     #
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Judul Berita
+                                    Daftar Barang Temuan
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Isi
+                                    DIT
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Dibuat pada
+                                    Petugas yang Menyerahkan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nomor Label Barang Bukti
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Jenis Barang Bukti
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Aksi
@@ -44,55 +50,57 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($berita as $key => $beritum)
+                            @forelse($barang as $key => $barang)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{$key+1}}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{$beritum->title}}
+                                        {{$barang->daftar_barang_temuan}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {!! Str::limit($beritum->content, 100, $end = '...') !!}
+                                        {{$barang->dit}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$beritum->created_at->format('d M Y')}}
+                                        {{$barang->petugas_penyerah}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$barang->nomor_label_barang_bukti}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$barang->jenis_barang_bukti}}
                                     </td>
                                     <td class="px-6 py-4 flex justify-between">
-                                        <a href="{{route('berita.edit', $beritum->id)}}"
+                                        <a href="{{route('daftar-barang.edit', $barang->id)}}"
                                            class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Edit
                                         </a>
-                                        <a href="{{route('berita.show', $beritum->id)}}"
+                                        <a href="{{route('daftar-barang.show', $barang->id)}}"
                                            class="px-3 py-2 mx-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Detail
                                         </a>
-                                        <a href="{{route('berita.destroy', $beritum->id)}}"
+                                        <a href="{{route('daftar-barang.destroy', $barang->id)}}"
                                            onclick="event.preventDefault(); document.getElementById('delete-form').submit()"
                                            class="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Delete
                                         </a>
-                                        <form action="{{route('berita.destroy', $beritum->id)}}" id="delete-form"
+                                        <form action="{{route('daftar-barang.destroy', $barang->id)}}" id="delete-form"
                                               method="post" class="hidden">@csrf @method('delete')</form>
                                     </td>
                                 </tr>
 
                             @empty
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td colspan="5"
+                                    <td colspan="7"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <h3 class="text-xl font-bold text-center">Tidak ada berita. Silakan tambahkan
-                                            berita baru!</h3>
+                                        <h3 class="text-xl font-bold text-center">Tidak ada daftar barang. Silakan tambahkan
+                                            daftar barang baru!</h3>
                                     </td>
                                 </tr>
                             @endforelse
                             </tbody>
                         </table>
-
-                        <div class="mt-4">
-                            {{$berita->links()}}
-                        </div>
                     </div>
                 </div>
             </div>
