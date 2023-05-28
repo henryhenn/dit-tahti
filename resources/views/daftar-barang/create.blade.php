@@ -17,7 +17,7 @@
                             <select id="underline_select"
                                     name="daftar_barang_temuan"
                                     class="block py-2.5 px-0 w-full text-md text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 @error('daftar_barang_temuan') border-red-500 @enderror appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                                <option selected disabled>Daftar Barang Temuan</option>
+                                <option selected value="DAFTAR BARANG TEMUAN">DAFTAR BARANG TEMUAN</option>
                                 <option value="BARANG TEMUAN SEBAGAI BARANG BUKTI">BARANG TEMUAN SEBAGAI BARANG BUKTI</option>
                             </select>
 
