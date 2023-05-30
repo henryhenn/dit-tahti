@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('dit');
             $table->string('petugas_penyerah');
             $table->string('petugas_penerima');
-            $table->integer('nomor_laporan_polisi');
-            $table->integer('nomor_register_bb');
-            $table->integer('nomor_label_barang_bukti');
-            $table->string('jenis_barang_bukti');
+            $table->string('nomor_laporan_polisi');
+            $table->string('nomor_register_bb');
+            $table->string('nomor_label_barang_bukti');
+            $table->text('jenis_barang_bukti');
             $table->string('foto_barang_bukti');
             $table->string('kondisi_barang_bukti');
             $table->text('keterangan');

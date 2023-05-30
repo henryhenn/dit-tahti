@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="relative z-0 w-full mb-8 group">
-                            <input type="number" name="nomor_laporan_polisi" id="nomor_laporan_polisi"
+                            <input type="text" name="nomor_laporan_polisi" id="nomor_laporan_polisi"
                                    value="{{old('nomor_laporan_polisi',$daftar_barang->nomor_laporan_polisi)}}"
                                    class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('nomor_laporan_polisi') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                    placeholder=" "/>
@@ -98,7 +98,7 @@
                         </div>
 
                         <div class="relative z-0 w-full mb-8 group">
-                            <input type="number" name="nomor_register_bb" id="nomor_register_bb"
+                            <input type="text" name="nomor_register_bb" id="nomor_register_bb"
                                    value="{{old('nomor_register_bb', $daftar_barang->nomor_register_bb)}}"
                                    class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('nomor_register_bb') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                    placeholder=" "/>
@@ -112,7 +112,7 @@
                         </div>
 
                         <div class="relative z-0 w-full mb-8 group">
-                            <input type="number" name="nomor_label_barang_bukti" id="nomor_label_barang_bukti"
+                            <input type="text" name="nomor_label_barang_bukti" id="nomor_label_barang_bukti"
                                    value="{{old('nomor_label_barang_bukti', $daftar_barang->nomor_label_barang_bukti)}}"
                                    class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('nomor_label_barang_bukti') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                    placeholder=" "/>
@@ -126,14 +126,10 @@
                         </div>
 
                         <div class="relative z-0 w-full mb-8 group">
-                            <input type="text" name="jenis_barang_bukti" id="jenis_barang_bukti"
-                                   value="{{old('jenis_barang_bukti', $daftar_barang->jenis_barang_bukti)}}"
-                                   class="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('jenis_barang_bukti') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                   placeholder=" "/>
-                            <label for="jenis_barang_bukti"
-                                   class="peer-focus:font-medium absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                Jenis barang bukti
-                            </label>
+                            <label for="jenis_barang_bukti" class="block mb-2">Jenis barang bukti: </label>
+                            <input id="jenis_barang_bukti" type="hidden" value="{{old('jenis_barang_bukti', $daftar_barang->jenis_barang_bukti)}}" name="jenis_barang_bukti">
+                            <trix-editor input="jenis_barang_bukti"
+                                         class="@error('jenis_barang_bukti') border-red-500 @enderror"></trix-editor>
                             @error('jenis_barang_bukti')
                             <small class="text-red-500">{{$message}}</small>
                             @enderror

@@ -37,9 +37,9 @@ class DaftarBarangController extends Controller
             'dit' => 'required|string',
             'petugas_penyerah' => 'required|string',
             'petugas_penerima' => 'required|string',
-            'nomor_laporan_polisi' => 'required|numeric',
-            'nomor_register_bb' => 'required|numeric',
-            'nomor_label_barang_bukti' => 'required|numeric',
+            'nomor_laporan_polisi' => 'required|string',
+            'nomor_register_bb' => 'required|string',
+            'nomor_label_barang_bukti' => 'required|string',
             'jenis_barang_bukti' => 'required|string',
             'foto_barang_bukti' => 'required|file|mimes:png,jpeg,jpg',
             'kondisi_barang_bukti' => 'required|string',
@@ -51,14 +51,6 @@ class DaftarBarangController extends Controller
         DaftarBarang::create($data);
 
         return to_route('daftar-barang.index')->with('message', 'Daftar barang berhasil ditambahkan!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(DaftarBarang $daftar_barang)
-    {
-        return view('daftar-barang.show', compact('daftar_barang'));
     }
 
     /**
@@ -79,9 +71,9 @@ class DaftarBarangController extends Controller
             'dit' => 'required|string',
             'petugas_penyerah' => 'required|string',
             'petugas_penerima' => 'required|string',
-            'nomor_laporan_polisi' => 'required|numeric',
-            'nomor_register_bb' => 'required|numeric',
-            'nomor_label_barang_bukti' => 'required|numeric',
+            'nomor_laporan_polisi' => 'required|string',
+            'nomor_register_bb' => 'required|string',
+            'nomor_label_barang_bukti' => 'required|string',
             'jenis_barang_bukti' => 'required|string',
             'foto_barang_bukti' => 'nullable|file|mimes:png,jpeg,jpg',
             'kondisi_barang_bukti' => 'required|string',

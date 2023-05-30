@@ -30,19 +30,34 @@
                                     #
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Daftar Barang Temuan
+                                    Hari / Tanggal / Jam
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    DIT
+                                    Petugas / Penyidik yang Menyerahkan
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Petugas yang Menyerahkan
+                                    Paraf Petugas yang Menerima
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nomor Laporan Polisi
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nomor Register BB (B-13)
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Nomor Label Barang Bukti
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Jenis Barang Bukti
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Kondisi Barang Bukti
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Paraf Petugas yang Menyerahkan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Keterangan
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Aksi
@@ -57,28 +72,39 @@
                                         {{$key+1}}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{$barang->daftar_barang_temuan}}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{$barang->dit}}
+                                        {{$barang->created_at->format('D M Y H:i')}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$barang->petugas_penyerah}}
                                     </td>
                                     <td class="px-6 py-4">
+                                        {{$barang->petugas_penerima}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$barang->nomor_laporan_polisi}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$barang->nomor_register_bb}}
+                                    </td>
+                                    <td class="px-6 py-4">
                                         {{$barang->nomor_label_barang_bukti}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$barang->jenis_barang_bukti}}
+                                        {!! $barang->jenis_barang_bukti !!}
                                     </td>
-                                    <td class="px-6 py-4 flex flex-row ">
+                                    <td class="px-6 py-4">
+                                        {{$barang->kondisi_barang_bukti}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$barang->petugas_penyerah}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {!! $barang->keterangan !!}
+                                    </td>
+                                    <td class="px-6 py-4 flex flex-row gap-3">
                                         <a href="{{route('daftar-barang.edit', $barang->id)}}"
                                            class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Edit
-                                        </a>
-                                        <a href="{{route('daftar-barang.show', $barang->id)}}"
-                                           class="px-3 py-2 mx-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            Detail
                                         </a>
                                         <a href="{{route('daftar-barang.destroy', $barang->id)}}"
                                            onclick="event.preventDefault(); document.getElementById('delete-form').submit()"
@@ -92,7 +118,7 @@
 
                             @empty
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td colspan="7"
+                                    <td colspan="12"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <h3 class="text-xl font-bold text-center">Tidak ada daftar barang. Silakan tambahkan
                                             daftar barang baru!</h3>
