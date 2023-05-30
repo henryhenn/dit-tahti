@@ -72,7 +72,7 @@
                                         {{$key+1}}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{$barang->created_at->format('D M Y H:i')}}
+                                        {{__($barang->created_at->format('D, d M Y H:i'))}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$barang->petugas_penyerah}}
