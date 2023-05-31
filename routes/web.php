@@ -1,8 +1,16 @@
 <?php
 
+use App\Http\Controllers\AturanController;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\DaftarBarangController;
+use App\Http\Controllers\DitreskrimsusController;
+use App\Http\Controllers\DitlantasController;
+use App\Http\Controllers\DitpolairudController;
+use App\Http\Controllers\DitreskrimumController;
+use App\Http\Controllers\DitresnarkobaController;
+use App\Http\Controllers\GambarBerandaController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,8 +35,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('berita', BeritaController::class);
-    Route::resource('daftar-barang', DaftarBarangController::class)->except('show');
+    Route::group(['middleware' => ['role:Administrator']], function () {
+        Route::resource('berita', BeritaController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('ditreskrimum', DitreskrimumController::class)->middleware('role:USER DITRESKRIMUM');
+        Route::resource('ditlantas', DitlantasController::class)->middleware('role:USER DITLANTAS');
+        Route::resource('ditreskrimsus', DitreskrimsusController::class)->middleware('role:USER DISTRESKRIMSUS');
+        Route::resource('ditpolairud', DitpolairudController::class)->middleware('role:USER DITPOLAIRUD');
+        Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware('role:USER DITRESNARKOBA');
+        Route::resource('layanan', LayananController::class);
+        Route::resource('aturan', AturanController::class);
+        Route::resource('gambar-beranda', GambarBerandaController::class);
+    });
 
 });
 

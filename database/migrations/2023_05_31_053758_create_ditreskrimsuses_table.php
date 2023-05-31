@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ditpolairuds', function (Blueprint $table) {
+        Schema::create('ditreskrimsuses', function (Blueprint $table) {
             $table->id();
             $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang']);
             $table->string('nama_barang_bukti');
-            $table->integer('jumlah');
+            $table->string('jumlah');
             $table->string('no_laporan_polisi');
             $table->string('penetapan_pengadilan');
             $table->string('tempat_penyimpanan');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ditpolairuds');
+        Schema::dropIfExists('distreskrimsuses');
     }
 };

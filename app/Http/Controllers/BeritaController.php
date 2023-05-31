@@ -72,7 +72,7 @@ class BeritaController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            Storage::delete('storage/app/public/' . $beritum->image);
+            Storage::delete($beritum->image);
             $data['image'] = $request->file('image')->store('news');
         }
 
@@ -86,7 +86,7 @@ class BeritaController extends Controller
     public function destroy(Berita $beritum)
     {
         $beritum->delete();
-        Storage::delete('storage/app/public/' . $beritum->image);
+        Storage::delete($beritum->image);
 
         return back()->with('message', 'Berita berhasil dihapus!');
     }

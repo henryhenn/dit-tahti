@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('ditlantas', function (Blueprint $table) {
             $table->id();
+            $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang']);
+            $table->string('nama_kendaraan');
+            $table->string('identitas_kendaraan');
+            $table->string('no_surat_tilang');
+            $table->string('penyidik');
+            $table->enum('kondisi', ['B', 'RR', 'RB']);
+            $table->string('nama_pemilik');
+            $table->text('keterangan');
+            $table->string('gambar1');
+            $table->string('gambar2')->nullable();
+            $table->string('gambar3')->nullable();
             $table->timestamps();
         });
     }

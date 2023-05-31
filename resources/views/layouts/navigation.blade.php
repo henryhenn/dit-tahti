@@ -3,24 +3,37 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
-
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-
                     <x-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.*')">
                         {{ __('Berita') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('daftar-barang.index')" :active="request()->routeIs('daftar-barang.*')">
-                        {{ __('Daftar Barang') }}
+                    <x-nav-link :href="route('ditreskrimum.index')" :active="request()->routeIs('ditreskrimum.*')">
+                        {{ __('DITRESKRIMUM') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ditlantas.index')" :active="request()->routeIs('ditlantas.*')">
+                        {{ __('DITLANTAS') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ditreskrimsus.index')" :active="request()->routeIs('ditreskrimsus.*')">
+                        {{ __('DITRESKRIMSUS') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ditpolairud.index')" :active="request()->routeIs('ditpolairud.*')">
+                        {{ __('DITPOLAIRUD') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ditresnarkoba.index')" :active="request()->routeIs('ditresnarkoba.*')">
+                        {{ __('DITRESNARKOBA') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('layanan.index')" :active="request()->routeIs('layanan.*')">
+                        {{ __('Layanan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('aturan.index')" :active="request()->routeIs('aturan.*')">
+                        {{ __('Aturan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('gambar-beranda.index')" :active="request()->routeIs('gambar-beranda.*')">
+                        {{ __('Gambar Beranda') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -77,12 +90,32 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-
             <x-responsive-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.*')">
                 {{ __('Berita') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('daftar-barang.index')" :active="request()->routeIs('daftar-barang.*')">
-                {{ __('Daftar Barang') }}
+            <x-responsive-nav-link :href="route('ditreskrimum.index')" :active="request()->routeIs('ditreskrimum.*')">
+                {{ __('DITRESKRIMUM') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ditlantas.index')" :active="request()->routeIs('ditlantas.*')">
+                {{ __('DITLANTAS') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ditreskrimsus.index')" :active="request()->routeIs('ditreskrimsus.*')">
+                {{ __('DITRESKRIMSUS') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ditpolairud.index')" :active="request()->routeIs('ditpolairud.*')">
+                {{ __('DITPOLAIRUD') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ditresnarkoba.index')" :active="request()->routeIs('ditresnarkoba.*')">
+                {{ __('DITRESNARKOBA') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('layanan.index')" :active="request()->routeIs('layanan.*')">
+                {{ __('Layanan') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('aturan.index')" :active="request()->routeIs('aturan.*')">
+                {{ __('Aturan') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('gambar-beranda.index')" :active="request()->routeIs('gambar-beranda.*')">
+                {{ __('Gambar Beranda') }}
             </x-responsive-nav-link>
         </div>
 
