@@ -26,10 +26,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -37,17 +33,17 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['middleware' => ['role:Administrator']], function () {
         Route::resource('berita', BeritaController::class);
-        Route::resource('users', UserController::class);
-        Route::resource('ditreskrimum', DitreskrimumController::class)->middleware('role:USER DITRESKRIMUM');
-        Route::resource('ditlantas', DitlantasController::class)->middleware('role:USER DITLANTAS');
-        Route::resource('ditreskrimsus', DitreskrimsusController::class)->middleware('role:USER DISTRESKRIMSUS');
-        Route::resource('ditpolairud', DitpolairudController::class)->middleware('role:USER DITPOLAIRUD');
-        Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware('role:USER DITRESNARKOBA');
+        Route::resource('user', UserController::class);
         Route::resource('layanan', LayananController::class);
         Route::resource('aturan', AturanController::class);
         Route::resource('gambar-beranda', GambarBerandaController::class);
     });
 
+    Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role' => 'Administrator|USER DITRESKRIMUM']);
+    Route::resource('ditlantas', DitlantasController::class)->middleware(['role' => 'Administrator|USER DITLANTAS']);
+    Route::resource('ditreskrimsus', DitreskrimsusController::class)->middleware(['role' => 'Administrator|USER DITRESKRIMSUS']);
+    Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role' => 'Administrator|USER DITPOLAIRUD']);
+    Route::resource('ditresnarkoba', DitpolairudController::class)->middleware(['role' => 'Administrator|USER DITRESNARKOBA']);
 });
 
 require __DIR__ . '/auth.php';

@@ -12,7 +12,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::query()
+            ->with('roles')
+            ->orderBy('name')
+            ->select('users.id', 'users.name')
+            ->get();
+
+        return view('user.index', compact('users'));
     }
 
     /**
