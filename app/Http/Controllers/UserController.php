@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -26,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create', [
+            'roles' => Role::all()
+        ]);
     }
 
     /**
@@ -34,7 +39,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', Password::defaults()],
+            'role' => ['required', 'string']
+        ]);
+
+        $user = User::create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+        ]);
+
+        $user->assignRole($request->get('role'));
+
+        return to_route('users.index')->with('message', 'User berhasil ditambahkan!');
     }
 
     /**
@@ -42,7 +62,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -50,7 +70,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $roles = Role::all();
+
+        return view('user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -58,7 +80,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'password' => ['nullable', 'confirmed', Password::defaults()],
+            'role' => ['required', 'string']
+        ]);
+
+        $user->update([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+        ]);
+
+        if ($request->get('role') !== $user->roles->first()->name) {
+            $user->removeRole($user->roles->first()->name);
+            $user->assignRole($request->get('role'));
+        }
+
+        return to_route('users.index')->with('message', 'User berhasil ditambahkan!');
     }
 
     /**
@@ -66,6 +106,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return back()->with('message', 'User berhasil dihapus!');
     }
 }
