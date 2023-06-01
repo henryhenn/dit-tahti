@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('ditreskrimums', function (Blueprint $table) {
             $table->id();
-            $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang']);
+            $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang Bukti']);
             $table->string('nama_barang_bukti');
-            $table->integer('jumlah');
+            $table->string('jumlah');
             $table->string('no_laporan_polisi');
             $table->string('penetapan_pengadilan');
             $table->string('tempat_penyimpanan');

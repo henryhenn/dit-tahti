@@ -4,13 +4,13 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:flex">
+                <div class="hidden space-x-7 sm:-my-px sm:flex">
                     @role('Administrator')
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
-                        {{ __('User') }}
+                        {{ __('USER') }}
                     </x-nav-link>
                     <x-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.*')">
-                        {{ __('Berita') }}
+                        {{ __('BERITA') }}
                     </x-nav-link>
                     @role('Administrator|USER DITRESKRIMUM')
                     <x-nav-link :href="route('ditreskrimum.index')" :active="request()->routeIs('ditreskrimum.*')">
@@ -38,13 +38,13 @@
                     </x-nav-link>
                     @endrole
                     <x-nav-link :href="route('layanan.index')" :active="request()->routeIs('layanan.*')">
-                        {{ __('Layanan') }}
+                        {{ __('LAYANAN') }}
                     </x-nav-link>
                     <x-nav-link :href="route('aturan.index')" :active="request()->routeIs('aturan.*')">
-                        {{ __('Aturan') }}
+                        {{ __('ATURAN') }}
                     </x-nav-link>
                     <x-nav-link :href="route('gambar-beranda.index')" :active="request()->routeIs('gambar-beranda.*')">
-                        {{ __('Gambar Beranda') }}
+                        {{ __('GAMBAR BERANDA') }}
                     </x-nav-link>
                     @endrole
                 </div>
@@ -109,10 +109,10 @@
         <div class="pt-2 pb-3 space-y-1">
             @role('Administrator')
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
-                {{ __('User') }}
+                {{ __('USER') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.*')">
-                {{ __('Berita') }}
+                {{ __('BERITA') }}
             </x-responsive-nav-link>
             @role('Administrator|USER DITRESKRIMUM')
             <x-responsive-nav-link :href="route('ditreskrimum.index')" :active="request()->routeIs('ditreskrimum.*')">
@@ -140,13 +140,13 @@
             </x-responsive-nav-link>
             @endrole
             <x-responsive-nav-link :href="route('layanan.index')" :active="request()->routeIs('layanan.*')">
-                {{ __('Layanan') }}
+                {{ __('LAYANAN') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('aturan.index')" :active="request()->routeIs('aturan.*')">
-                {{ __('Aturan') }}
+                {{ __('ATURAN') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('gambar-beranda.index')" :active="request()->routeIs('gambar-beranda.*')">
-                {{ __('Gambar Beranda') }}
+                {{ __('GAMBAR BERANDA') }}
             </x-responsive-nav-link>
             @endrole
         </div>

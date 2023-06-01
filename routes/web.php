@@ -39,11 +39,11 @@ Route::middleware('auth')->group(function () {
         Route::resource('gambar-beranda', GambarBerandaController::class);
     });
 
-    Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role' => 'Administrator|USER DITRESKRIMUM']);
-    Route::resource('ditlantas', DitlantasController::class)->middleware(['role' => 'Administrator|USER DITLANTAS']);
-    Route::resource('ditreskrimsus', DitreskrimsusController::class)->middleware(['role' => 'Administrator|USER DITRESKRIMSUS']);
-    Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role' => 'Administrator|USER DITPOLAIRUD']);
-    Route::resource('ditresnarkoba', DitpolairudController::class)->middleware(['role' => 'Administrator|USER DITRESNARKOBA']);
+    Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITLANTAS']);
+    Route::resource('ditlantas', DitlantasController::class)->middleware(['role:Administrator|USER DITLANTAS']);
+    Route::resource('ditreskrimsus', DitreskrimsusController::class)->middleware(['role:Administrator|USER DITRESKRIMSUS']);
+    Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role:Administrator|USER DITPOLAIRUD']);
+    Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware(['role:Administrator|USER DITRESNARKOBA']);
 });
 
 require __DIR__ . '/auth.php';
