@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit Data Ditreskrimum: ' . $ditreskrimum->nama_barang_bukti) }}
+            {{ __('Edit Data DITRESKRIMUM: ' . $ditreskrimum->nama_barang_bukti) }}
         </h2>
     </x-slot>
 

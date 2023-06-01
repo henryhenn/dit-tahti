@@ -55,9 +55,9 @@ class DitreskrimumController extends Controller
             'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $data['gambar1'] = $request->file('gambar1')->store('ditreskrimsus');
-        $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditreskrimsus') : null;
-        $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditreskrimsus') : null;
+        $data['gambar1'] = $request->file('gambar1')->store('ditreskrimum');
+        $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditreskrimum') : null;
+        $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditreskrimum') : null;
 
         Ditreskrimum::create($data);
 
@@ -103,13 +103,13 @@ class DitreskrimumController extends Controller
 
         if ($request->hasFile('gambar1')) {
             Storage::delete($ditreskrimum->gambar1);
-            $data['gambar1'] = $request->file('gambar1')->store('ditreskrimsus');
+            $data['gambar1'] = $request->file('gambar1')->store('ditreskrimum');
         } else if ($request->hasFile('gambar2')) {
             Storage::delete($ditreskrimum->gambar2);
-            $data['gambar2'] = $request->file('gambar2')->store('ditreskrimsus');
+            $data['gambar2'] = $request->file('gambar2')->store('ditreskrimum');
         } else if ($request->hasFile('gambar3')) {
             Storage::delete($ditreskrimum->gambar3);
-            $data['gambar3'] = $request->file('gambar3')->store('ditreskrimsus');
+            $data['gambar3'] = $request->file('gambar3')->store('ditreskrimum');
         }
 
         $ditreskrimum->update($data);

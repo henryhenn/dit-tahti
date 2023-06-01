@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Ditreskrimum') }}
+            {{ __('DITRESKRIMUM') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                     <div class="float-right">
                         <a href="{{route('ditreskrimum.create')}}"
                            class="text-white bg-blue-700 font-medium hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                            Tambah Data Ditreskrimum Baru
+                            Tambah Data DITRESKRIMUM Baru
                         </a>
                     </div>
 
@@ -84,7 +84,7 @@
                                     <td colspan="5"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <h3 class="text-xl font-bold text-center">
-                                            Tidak ada data Ditreskrimum. Silakan tambahkan data Ditreskrimum!</h3>
+                                            Tidak ada data DITRESKRIMUM. Silakan tambahkan data DITRESKRIMUM!</h3>
                                     </td>
                                 </tr>
                             @endforelse

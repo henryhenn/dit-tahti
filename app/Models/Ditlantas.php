@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ditlantas extends Model
 {
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
 }
