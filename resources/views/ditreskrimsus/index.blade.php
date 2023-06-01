@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('DITRESKRIMUM') }}
+            {{ __('DITRESKRIMSUS') }}
         </h2>
     </x-slot>
 
@@ -10,9 +10,9 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="float-right">
-                        <a href="{{route('ditreskrimum.create')}}"
+                        <a href="{{route('ditreskrimsus.create')}}"
                            class="text-white bg-blue-700 font-medium hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                            Tambah Data DITRESKRIMUM Baru
+                            Tambah Data DITRESKRIMSUS Baru
                         </a>
                     </div>
 
@@ -41,31 +41,32 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($ditreskrimum as $key => $ditreskrimum)
+                            @forelse($ditreskrimsus as $key => $ditreskrimsus)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{$key+1}}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{$ditreskrimum->nama_barang_bukti}}
+                                        {{$ditreskrimsus->nama_barang_bukti}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$ditreskrimum->jumlah}}
+                                        {{$ditreskrimsus->jumlah}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$ditreskrimum->no_laporan_polisi}}
+                                        {{$ditreskrimsus->no_laporan_polisi}}
                                     </td>
                                     <td class="px-6 py-4 flex flex-row">
-                                        <a href="{{route('ditreskrimum.edit', $ditreskrimum->id)}}"
+                                        <a href="{{route('ditreskrimsus.edit', $ditreskrimsus->id)}}"
                                            class="px-3 py-2 text-xs font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Edit
                                         </a>
-                                        <a href="{{route('ditreskrimum.show', $ditreskrimum->id)}}"
+                                        <a href="{{route('ditreskrimsus.show', $ditreskrimsus->id)}}"
                                            class="px-3 py-2 mx-2 text-xs font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Detail
                                         </a>
-                                        <form action="{{route('ditreskrimum.destroy', $ditreskrimum->id)}}" id="delete-form"
+                                        <form action="{{route('ditreskrimsus.destroy', $ditreskrimsus->id)}}"
+                                              id="delete-form"
                                               method="post">
                                             @csrf
                                             @method('delete')
@@ -83,7 +84,7 @@
                                     <td colspan="5"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <h3 class="text-xl font-bold text-center">
-                                            Tidak ada data DITRESKRIMUM. Silakan tambahkan data DITRESKRIMUM!</h3>
+                                            Tidak ada data DITRESKRIMSUS. Silakan tambahkan data DITRESKRIMSUS!</h3>
                                     </td>
                                 </tr>
                             @endforelse

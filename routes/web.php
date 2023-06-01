@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITLANTAS']);
     Route::resource('ditlantas', DitlantasController::class)->parameters(['ditlantas' => 'ditlantas'])->middleware(['role:Administrator|USER DITLANTAS']);
-    Route::resource('ditreskrimsus', DitreskrimsusController::class)->middleware(['role:Administrator|USER DITRESKRIMSUS']);
+    Route::resource('ditreskrimsus', DitreskrimsusController::class)->parameters(['ditreskrimsus' => 'ditreskrimsus'])->middleware(['role:Administrator|USER DITRESKRIMSUS']);
     Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role:Administrator|USER DITPOLAIRUD']);
     Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware(['role:Administrator|USER DITRESNARKOBA']);
 });
