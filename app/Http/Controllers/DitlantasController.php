@@ -101,10 +101,14 @@ class DitlantasController extends Controller
             Storage::delete($ditlantas->gambar1);
             $data['gambar1'] = $request->file('gambar1')->store('ditlantas');
         } else if ($request->hasFile('gambar2')) {
-            Storage::delete($ditlantas->gambar2);
+            if ($ditlantas->gambar2) {
+                Storage::delete($ditlantas->gambar2);
+            }
             $data['gambar2'] = $request->file('gambar2')->store('ditlantas');
         } else if ($request->hasFile('gambar3')) {
-            Storage::delete($ditlantas->gambar3);
+            if ($ditlantas->gambar3) {
+                Storage::delete($ditlantas->gambar3);
+            }
             $data['gambar3'] = $request->file('gambar3')->store('ditlantas');
         }
 

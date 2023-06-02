@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ditreskrimsus;
+use App\Models\Ditpolairud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,7 +10,7 @@ class DitreskrimsusController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Administrator|USER DITRESKRIMUM']);
+        $this->middleware(['role:Administrator|USER DITRESKRIMSUS']);
     }
 
     /**
@@ -18,7 +18,7 @@ class DitreskrimsusController extends Controller
      */
     public function index()
     {
-        $ditreskrimsus = Ditreskrimsus::query()
+        $ditreskrimsus = Ditpolairud::query()
             ->select('id', 'nama_barang_bukti', 'jumlah', 'no_laporan_polisi')
             ->orderBy('nama_barang_bukti', 'asc')
             ->get();
@@ -59,7 +59,7 @@ class DitreskrimsusController extends Controller
         $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditreskrimsus') : null;
         $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditreskrimsus') : null;
 
-        Ditreskrimsus::create($data);
+        Ditpolairud::create($data);
 
         return to_route('ditreskrimsus.index')->with('message', 'Data Ditreskrimsus berhasil ditambahkan!');
     }
@@ -67,7 +67,7 @@ class DitreskrimsusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ditreskrimsus $ditreskrimsus)
+    public function show(Ditpolairud $ditreskrimsus)
     {
         return view('ditreskrimsus.show', compact('ditreskrimsus'));
     }
@@ -75,7 +75,7 @@ class DitreskrimsusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ditreskrimsus $ditreskrimsus)
+    public function edit(Ditpolairud $ditreskrimsus)
     {
         return view('ditreskrimsus.edit', compact('ditreskrimsus'));
     }
@@ -83,7 +83,7 @@ class DitreskrimsusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ditreskrimsus $ditreskrimsus)
+    public function update(Request $request, Ditpolairud $ditreskrimsus)
     {
         $data = $request->validate([
             'barang_temuan' => 'required|string',
@@ -105,10 +105,14 @@ class DitreskrimsusController extends Controller
             Storage::delete($ditreskrimsus->gambar1);
             $data['gambar1'] = $request->file('gambar1')->store('ditreskrimsus');
         } else if ($request->hasFile('gambar2')) {
-            Storage::delete($ditreskrimsus->gambar2);
+            if ($ditreskrimsus->gambar2) {
+                Storage::delete($ditreskrimsus->gambar2);
+            }
             $data['gambar2'] = $request->file('gambar2')->store('ditreskrimsus');
         } else if ($request->hasFile('gambar3')) {
-            Storage::delete($ditreskrimsus->gambar3);
+            if ($ditreskrimsus->gambar3) {
+                Storage::delete($ditreskrimsus->gambar3);
+            }
             $data['gambar3'] = $request->file('gambar3')->store('ditreskrimsus');
         }
 
@@ -120,7 +124,7 @@ class DitreskrimsusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ditreskrimsus $ditreskrimsus)
+    public function destroy(Ditpolairud $ditreskrimsus)
     {
         $ditreskrimsus->delete();
 
