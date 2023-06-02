@@ -58,21 +58,20 @@
                                     </td>
                                     <td class="px-6 py-4 flex flex-row">
                                         <a href="{{route('ditreskrimsus.edit', $ditreskrimsus->id)}}"
-                                           class="px-3 py-2 text-xs font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                           class="px-3 py-2 text-xs font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-500 dark:focus:ring-green-800">
                                             Edit
                                         </a>
                                         <a href="{{route('ditreskrimsus.show', $ditreskrimsus->id)}}"
-                                           class="px-3 py-2 mx-2 text-xs font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                           class="px-3 py-2 mx-2 text-xs font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800">
                                             Detail
                                         </a>
-                                        <form action="{{route('ditreskrimsus.destroy', $ditreskrimsus->id)}}"
-                                              id="delete-form"
+                                        <form action="{{route('ditreskrimsus.destroy', $ditreskrimsus->id)}}" id="delete-form"
                                               method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"
                                                     onclick="return confirm('Apakah Anda Yakin?')"
-                                                    class="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                    class="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800">
                                                 Delete
                                             </button>
                                         </form>
