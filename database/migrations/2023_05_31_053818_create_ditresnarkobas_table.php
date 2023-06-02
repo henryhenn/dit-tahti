@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ditresnarkobas', function (Blueprint $table) {
             $table->id();
-            $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang']);
+            $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang Bukti']);
             $table->string('nama_barang_bukti');
             $table->integer('jumlah');
             $table->string('no_laporan_polisi');
