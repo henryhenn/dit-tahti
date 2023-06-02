@@ -9,9 +9,12 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         {{ __('USER') }}
                     </x-nav-link>
+                    @endrole
+                    @role('Administrator')
                     <x-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.*')">
                         {{ __('BERITA') }}
                     </x-nav-link>
+                    @endrole
                     @role('Administrator|USER DITRESKRIMUM')
                     <x-nav-link :href="route('ditreskrimum.index')" :active="request()->routeIs('ditreskrimum.*')">
                         {{ __('DITRESKRIMUM') }}
@@ -37,6 +40,7 @@
                         {{ __('DITRESNARKOBA') }}
                     </x-nav-link>
                     @endrole
+                    @role('Administrator')
                     <x-nav-link :href="route('layanan.index')" :active="request()->routeIs('layanan.*')">
                         {{ __('LAYANAN') }}
                     </x-nav-link>

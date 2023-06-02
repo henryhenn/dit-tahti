@@ -27,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/login');
 
 Route::middleware('auth')->group(function () {
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -39,7 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('gambar-beranda', GambarBerandaController::class);
     });
 
-    Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITLANTAS']);
+    Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITRESKRIMUM']);
     Route::resource('ditlantas', DitlantasController::class)->parameters(['ditlantas' => 'ditlantas'])->middleware(['role:Administrator|USER DITLANTAS']);
     Route::resource('ditreskrimsus', DitreskrimsusController::class)->parameters(['ditreskrimsus' => 'ditreskrimsus'])->middleware(['role:Administrator|USER DITRESKRIMSUS']);
     Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role:Administrator|USER DITPOLAIRUD']);
