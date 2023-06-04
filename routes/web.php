@@ -11,6 +11,9 @@ use App\Http\Controllers\GambarBerandaController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Berita;
+use App\Models\Category;
+use App\Models\Layanan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +27,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/login');
+Route::get('/', function () {
+    $berita = Berita::query()
+        ->select('title', 'content', 'image')
+        ->get();
+//$barang =
+    return view('home.index', compact('berita'));
+});
+
+Route::get('berita', function () {
+    $beritas = Berita::query()
+        ->when(request('search') ?? false, function ($query) {
+            $query->where('title', 'like', '%' . request('search') . '%');
+        })
+        ->latest()
+        ->paginate(5)
+        ->withQueryString();
+
+    return view('berita.frontend', compact('beritas'));
+});
+
+Route::get('daftarbarang', function () {
+    $barangs = Category::with(['ditreskrimum', 'ditlantas', 'ditreskrimsus', 'ditpolairud', 'ditresnarkoba'])
+        ->get();
+    return view('daftarbarang.index', compact('barangs'));
+});
+
+Route::get('layanan', function () {
+    $layanan = Layanan::latest()->first();
+
+    return view('layanan.frontend', compact('layanan'));
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
@@ -35,7 +68,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::group(['middleware' => ['role:Administrator']], function () {
+    Route::group([
+        'middleware' => ['role:Administrator'],
+        'prefix' => 'admin'
+    ], function () {
         Route::resource('berita', BeritaController::class);
         Route::resource('users', UserController::class);
         Route::resource('layanan', LayananController::class);

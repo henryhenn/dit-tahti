@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,7 +12,7 @@ return new class extends Migration
     {
         Schema::create('ditlantas', function (Blueprint $table) {
             $table->id();
-            $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang Bukti']);
+            $table->foreignId('category_id')->constrained();
             $table->string('nama_kendaraan');
             $table->string('identitas_kendaraan');
             $table->string('no_surat_tilang');

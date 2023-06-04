@@ -33,7 +33,7 @@
                     </div>
 
                     <p class="mt-6 ">Daftar Barang Temuan: <span
-                            class="font-bold">{{$ditpolairud->barang_temuan}}</span></p>
+                            class="font-bold">{{$ditpolairud->category->kategori}}</span></p>
                     <p class="mt-6 ">Jumlah: <span class="font-bold">{{$ditpolairud->jumlah}}</span></p>
                     <p class="mt-6 ">No. Laporan Polisi: <span
                             class="font-bold">{{$ditpolairud->no_laporan_polisi}}</span></p>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Ditresnarkoba;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +32,9 @@ class DitresnarkobaController extends Controller
      */
     public function create()
     {
-        return view('ditresnarkoba.create');
+        $kategori = Category::all();
+
+        return view('ditresnarkoba.create', compact('kategori'));
     }
 
     /**
@@ -40,7 +43,7 @@ class DitresnarkobaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',
@@ -69,6 +72,8 @@ class DitresnarkobaController extends Controller
      */
     public function show(Ditresnarkoba $ditresnarkoba)
     {
+        $ditresnarkoba->load('category');
+
         return view('ditresnarkoba.show', compact('ditresnarkoba'));
     }
 
@@ -77,7 +82,9 @@ class DitresnarkobaController extends Controller
      */
     public function edit(Ditresnarkoba $ditresnarkoba)
     {
-        return view('ditresnarkoba.edit', compact('ditresnarkoba'));
+        $kategori = Category::all();
+
+        return view('ditresnarkoba.edit', compact('ditresnarkoba', 'kategori'));
     }
 
     /**
@@ -86,7 +93,7 @@ class DitresnarkobaController extends Controller
     public function update(Request $request, Ditresnarkoba $ditresnarkoba)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',

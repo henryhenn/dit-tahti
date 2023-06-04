@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Ditreskrimum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +32,9 @@ class DitreskrimumController extends Controller
      */
     public function create()
     {
-        return view('ditreskrimum.create');
+        $kategori = Category::all();
+
+        return view('ditreskrimum.create', compact('kategori'));
     }
 
     /**
@@ -40,7 +43,7 @@ class DitreskrimumController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',
@@ -69,6 +72,8 @@ class DitreskrimumController extends Controller
      */
     public function show(Ditreskrimum $ditreskrimum)
     {
+        $ditreskrimum->load('category');
+
         return view('ditreskrimum.show', compact('ditreskrimum'));
     }
 
@@ -77,7 +82,9 @@ class DitreskrimumController extends Controller
      */
     public function edit(Ditreskrimum $ditreskrimum)
     {
-        return view('ditreskrimum.edit', compact('ditreskrimum'));
+        $kategori = Category::all();
+
+        return view('ditreskrimum.edit', compact('ditreskrimum', 'kategori'));
     }
 
     /**
@@ -86,7 +93,7 @@ class DitreskrimumController extends Controller
     public function update(Request $request, Ditreskrimum $ditreskrimum)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',

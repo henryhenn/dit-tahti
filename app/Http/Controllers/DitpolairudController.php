@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Ditpolairud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +32,9 @@ class DitpolairudController extends Controller
      */
     public function create()
     {
-        return view('ditpolairud.create');
+        $kategori = Category::all();
+
+        return view('ditpolairud.create', compact('kategori'));
     }
 
     /**
@@ -40,7 +43,7 @@ class DitpolairudController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',
@@ -69,6 +72,8 @@ class DitpolairudController extends Controller
      */
     public function show(Ditpolairud $ditpolairud)
     {
+        $ditpolairud->load('category');
+
         return view('ditpolairud.show', compact('ditpolairud'));
     }
 
@@ -77,7 +82,9 @@ class DitpolairudController extends Controller
      */
     public function edit(Ditpolairud $ditpolairud)
     {
-        return view('ditpolairud.edit', compact('ditpolairud'));
+        $kategori = Category::all();
+
+        return view('ditpolairud.edit', compact('ditpolairud', 'kategori'));
     }
 
     /**
@@ -86,7 +93,7 @@ class DitpolairudController extends Controller
     public function update(Request $request, Ditpolairud $ditpolairud)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',

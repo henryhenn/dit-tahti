@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ditreskrimums', function (Blueprint $table) {
             $table->id();
-            $table->enum('barang_temuan', ['Daftar Barang Temuan', 'Barang Temuan Sebagai Barang Bukti']);
+            $table->foreignId('category_id')->constrained();
             $table->string('nama_barang_bukti');
             $table->string('jumlah');
             $table->string('no_laporan_polisi');

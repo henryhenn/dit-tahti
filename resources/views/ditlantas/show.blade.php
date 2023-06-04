@@ -33,7 +33,7 @@
                     </div>
 
                     <p class="mt-6 ">Daftar Barang Temuan: <span
-                            class="font-bold">{{$ditlantas->barang_temuan}}</span></p>
+                            class="font-bold">{{$ditlantas->category->kategori}}</span></p>
                     <p class="mt-6 ">Identitas Kendaraan: <span class="font-bold">{{$ditlantas->identitas_kendaraan}}</span></p>
                     <p class="mt-6 ">No. Surat Tilang: <span
                             class="font-bold">{{$ditlantas->no_surat_tilang}}</span></p>

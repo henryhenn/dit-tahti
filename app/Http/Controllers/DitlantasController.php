@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Ditlantas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +32,9 @@ class DitlantasController extends Controller
      */
     public function create()
     {
-        return view('ditlantas.create');
+        $kategori = Category::all();
+
+        return view('ditlantas.create', compact('kategori'));
     }
 
     /**
@@ -40,7 +43,7 @@ class DitlantasController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_kendaraan' => 'required|string',
             'identitas_kendaraan' => 'required|string',
             'no_surat_tilang' => 'required|string',
@@ -67,6 +70,8 @@ class DitlantasController extends Controller
      */
     public function show(Ditlantas $ditlantas)
     {
+        $ditlantas->load('category');
+
         return view('ditlantas.show', compact('ditlantas'));
     }
 
@@ -75,7 +80,9 @@ class DitlantasController extends Controller
      */
     public function edit(Ditlantas $ditlantas)
     {
-        return view('ditlantas.edit', compact('ditlantas'));
+        $kategori = Category::all();
+
+        return view('ditlantas.edit', compact('ditlantas', 'kategori'));
     }
 
     /**
@@ -84,7 +91,7 @@ class DitlantasController extends Controller
     public function update(Request $request, Ditlantas $ditlantas)
     {
         $data = $request->validate([
-            'barang_temuan' => 'required|string',
+            'category_id' => 'required',
             'nama_kendaraan' => 'required|string',
             'identitas_kendaraan' => 'required|string',
             'no_surat_tilang' => 'required|string',
