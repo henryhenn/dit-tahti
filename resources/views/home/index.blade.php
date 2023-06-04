@@ -84,7 +84,7 @@
 
     <div class="pl-20 pr-20">
         <main>
-            <x-barang/>
+            <x-barang :barang="$barang" />
         </main>
     </div>
 @endsection

@@ -31,8 +31,9 @@ Route::get('/', function () {
     $berita = Berita::query()
         ->select('title', 'content', 'image')
         ->get();
-//$barang =
-    return view('home.index', compact('berita'));
+    $barang = DaftarBarang::with('category')->latest()->take(4)->get();
+
+    return view('home.index', compact('berita', 'barang'));
 });
 
 Route::get('berita', function () {
