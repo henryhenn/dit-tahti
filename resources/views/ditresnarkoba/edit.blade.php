@@ -12,6 +12,7 @@
                     <form method="post" action="{{route('ditresnarkoba.update', $ditresnarkoba)}}" enctype="multipart/form-data" class="w-1/2">
                         @csrf
                         @method('put')
+                        <input type="hidden" name="unit" value="DITRESNARKOBA">
                         <div class="relative z-0 w-full mb-8 group">
                             <label for="underline_select" class="sr-only">Underline select</label>
                             <select id="underline_select" name="category_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 @error('content') border-red-500 @enderror appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -70,7 +71,7 @@
                                    placeholder=" "/>
                             <label for="title"
                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                Penetapan Pengadilan
+                                Penetapan Kejaksaan
                             </label>
                             @error('penetapan_kejaksaan')
                             <small class="text-red-500">{{$message}}</small>

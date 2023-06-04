@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Ditresnarkoba;
+use App\Models\DaftarBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +19,9 @@ class DitresnarkobaController extends Controller
      */
     public function index()
     {
-        $ditresnarkoba = Ditresnarkoba::query()
+        $ditresnarkoba = DaftarBarang::query()
             ->select('id', 'nama_barang_bukti', 'jumlah', 'no_laporan_polisi')
+            ->where('unit', '=', 'DITRESNARKOBA')
             ->orderBy('nama_barang_bukti', 'asc')
             ->get();
 
@@ -44,6 +45,7 @@ class DitresnarkobaController extends Controller
     {
         $data = $request->validate([
             'category_id' => 'required',
+            'unit' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',
@@ -62,7 +64,7 @@ class DitresnarkobaController extends Controller
         $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditresnarkoba') : null;
         $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditresnarkoba') : null;
 
-        Ditresnarkoba::create($data);
+        DaftarBarang::create($data);
 
         return to_route('ditresnarkoba.index')->with('message', 'Data Ditresnarkoba berhasil ditambahkan!');
     }
@@ -70,7 +72,7 @@ class DitresnarkobaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ditresnarkoba $ditresnarkoba)
+    public function show(DaftarBarang $ditresnarkoba)
     {
         $ditresnarkoba->load('category');
 
@@ -80,7 +82,7 @@ class DitresnarkobaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ditresnarkoba $ditresnarkoba)
+    public function edit(DaftarBarang $ditresnarkoba)
     {
         $kategori = Category::all();
 
@@ -90,10 +92,11 @@ class DitresnarkobaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ditresnarkoba $ditresnarkoba)
+    public function update(Request $request, DaftarBarang $ditresnarkoba)
     {
         $data = $request->validate([
             'category_id' => 'required',
+            'unit' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',
@@ -131,7 +134,7 @@ class DitresnarkobaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ditresnarkoba $ditresnarkoba)
+    public function destroy(DaftarBarang $ditresnarkoba)
     {
         $ditresnarkoba->delete();
 
@@ -139,6 +142,6 @@ class DitresnarkobaController extends Controller
         $ditresnarkoba->gambar2 ? Storage::delete($ditresnarkoba->gambar2) : null;
         $ditresnarkoba->gambar3 ? Storage::delete($ditresnarkoba->gambar3) : null;
 
-        return back()->with('message', 'Data Ditresnarkoba berhasil dihapus!');
+        return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
     }
 }

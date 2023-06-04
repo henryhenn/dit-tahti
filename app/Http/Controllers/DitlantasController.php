@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Ditlantas;
+use App\Models\DaftarBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +19,9 @@ class DitlantasController extends Controller
      */
     public function index()
     {
-        $ditlantas = Ditlantas::query()
+        $ditlantas = DaftarBarang::query()
             ->select('id', 'nama_kendaraan', 'identitas_kendaraan', 'no_surat_tilang')
+            ->where('unit', '=', 'DITLANTAS')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -44,6 +45,7 @@ class DitlantasController extends Controller
     {
         $data = $request->validate([
             'category_id' => 'required',
+            'unit' => 'required',
             'nama_kendaraan' => 'required|string',
             'identitas_kendaraan' => 'required|string',
             'no_surat_tilang' => 'required|string',
@@ -60,7 +62,7 @@ class DitlantasController extends Controller
         $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditlantas') : null;
         $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditlantas') : null;
 
-        Ditlantas::create($data);
+        DaftarBarang::create($data);
 
         return to_route('ditlantas.index')->with('message', 'Data Ditlantas berhasil ditambahkan!');
     }
@@ -68,7 +70,7 @@ class DitlantasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ditlantas $ditlantas)
+    public function show(DaftarBarang $ditlantas)
     {
         $ditlantas->load('category');
 
@@ -78,7 +80,7 @@ class DitlantasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ditlantas $ditlantas)
+    public function edit(DaftarBarang $ditlantas)
     {
         $kategori = Category::all();
 
@@ -88,10 +90,11 @@ class DitlantasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ditlantas $ditlantas)
+    public function update(Request $request, DaftarBarang $ditlantas)
     {
         $data = $request->validate([
             'category_id' => 'required',
+            'unit' => 'required',
             'nama_kendaraan' => 'required|string',
             'identitas_kendaraan' => 'required|string',
             'no_surat_tilang' => 'required|string',
@@ -127,7 +130,7 @@ class DitlantasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ditlantas $ditlantas)
+    public function destroy(DaftarBarang $ditlantas)
     {
         $ditlantas->delete();
 
@@ -135,6 +138,6 @@ class DitlantasController extends Controller
         $ditlantas->gambar2 ? Storage::delete($ditlantas->gambar2) : null;
         $ditlantas->gambar3 ? Storage::delete($ditlantas->gambar3) : null;
 
-        return back()->with('message', 'Data Ditlantas berhasil dihapus!');
+        return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
     }
 }

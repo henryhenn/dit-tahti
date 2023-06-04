@@ -38,7 +38,7 @@
                     <p class="mt-6 ">No. Laporan Polisi: <span
                             class="font-bold">{{$ditresnarkoba->no_laporan_polisi}}</span></p>
                     <p class="mt-6 ">Penetapan Pengadilan: <span
-                            class="font-bold">{{$ditresnarkoba->penetapan_pengadilan}}</span></p>
+                            class="font-bold">{{$ditresnarkoba->penetapan_kejaksaan}}</span></p>
                     <p class="mt-6 ">Tempat Penyimpanan: <span
                             class="font-bold">{{$ditresnarkoba->tempat_penyimpanan}}</span></p>
                     <p class="mt-6 ">Penyidik: <span class="font-bold">{{$ditresnarkoba->penyidik}}</span></p>

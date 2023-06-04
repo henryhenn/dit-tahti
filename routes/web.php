@@ -12,7 +12,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Berita;
-use App\Models\Category;
+use App\Models\DaftarBarang;
 use App\Models\Layanan;
 use Illuminate\Support\Facades\Route;
 
@@ -48,9 +48,44 @@ Route::get('berita', function () {
 });
 
 Route::get('daftarbarang', function () {
-    $barangs = Category::with(['ditreskrimum', 'ditlantas', 'ditreskrimsus', 'ditpolairud', 'ditresnarkoba'])
-        ->get();
+    $barangs = DaftarBarang::query()
+        ->latest()
+        ->paginate(8);
     return view('daftarbarang.index', compact('barangs'));
+});
+
+Route::get('dbt', function () {
+    $barangs = DaftarBarang::query()
+        ->whereHas('category', function ($query) {
+            $query->where('kategori', '=', 'Barang Temuan');
+        })
+        ->when(request('search') ?? false, function ($query) {
+            $query->where('nama_barang_bukti', 'like', '%' . request('search') . '%')
+                ->orWhere('nama_kendaraan', 'like', '%' . request('search') . '%');
+        })
+        ->latest()
+        ->get();
+
+    return view('daftarbarang.dbt', compact('barangs'));
+});
+
+Route::get('bts', function () {
+    $barangs = DaftarBarang::query()
+        ->whereHas('category', function ($query) {
+            $query->where('kategori', '=', 'Barang Temuan Sebagai Barang Bukti');
+        })
+        ->when(request('search') ?? false, function ($query) {
+            $query->where('nama_barang_bukti', 'like', '%' . request('search') . '%')
+                ->orWhere('nama_kendaraan', 'like', '%' . request('search') . '%');
+        })
+        ->latest()
+        ->get();
+
+    return view('daftarbarang.bts', compact('barangs'));
+});
+
+Route::get('aturan', function () {
+    return view('aturan.frontend');
 });
 
 Route::get('layanan', function () {

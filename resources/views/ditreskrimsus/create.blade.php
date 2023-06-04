@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-center">
                     <form method="post" action="{{route('ditreskrimsus.store')}}" enctype="multipart/form-data" class="w-1/2">
                         @csrf
+                        <input type="hidden" name="unit" value="DITRESKRIMSUS">
                         <div class="relative z-0 w-full mb-8 group">
                             <label for="underline_select" class="sr-only">Underline select</label>
                             <select id="underline_select" name="category_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 @error('content') border-red-500 @enderror appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">

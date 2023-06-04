@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Ditreskrimsus;
+use App\Models\DaftarBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +19,9 @@ class DitreskrimsusController extends Controller
      */
     public function index()
     {
-        $ditreskrimsus = Ditreskrimsus::query()
+        $ditreskrimsus = DaftarBarang::query()
             ->select('id', 'nama_barang_bukti', 'jumlah', 'no_laporan_polisi')
+            ->where('unit', '=', 'DITRESKRIMSUS')
             ->orderBy('nama_barang_bukti', 'asc')
             ->get();
 
@@ -44,6 +45,7 @@ class DitreskrimsusController extends Controller
     {
         $data = $request->validate([
             'category_id' => 'required',
+            'unit' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',
@@ -62,7 +64,7 @@ class DitreskrimsusController extends Controller
         $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditreskrimsus') : null;
         $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditreskrimsus') : null;
 
-        Ditreskrimsus::create($data);
+        DaftarBarang::create($data);
 
         return to_route('ditreskrimsus.index')->with('message', 'Data Ditreskrimsus berhasil ditambahkan!');
     }
@@ -70,7 +72,7 @@ class DitreskrimsusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ditreskrimsus $ditreskrimsus)
+    public function show(DaftarBarang $ditreskrimsus)
     {
         $ditreskrimsus->load('category');
 
@@ -80,7 +82,7 @@ class DitreskrimsusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ditreskrimsus $ditreskrimsus)
+    public function edit(DaftarBarang $ditreskrimsus)
     {
         $kategori = Category::all();
 
@@ -90,10 +92,11 @@ class DitreskrimsusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ditreskrimsus $ditreskrimsus)
+    public function update(Request $request, DaftarBarang $ditreskrimsus)
     {
         $data = $request->validate([
             'category_id' => 'required',
+            'unit' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',
             'no_laporan_polisi' => 'required|string',
@@ -131,7 +134,7 @@ class DitreskrimsusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ditreskrimsus $ditreskrimsus)
+    public function destroy(DaftarBarang $ditreskrimsus)
     {
         $ditreskrimsus->delete();
 
@@ -139,6 +142,6 @@ class DitreskrimsusController extends Controller
         $ditreskrimsus->gambar2 ? Storage::delete($ditreskrimsus->gambar2) : null;
         $ditreskrimsus->gambar3 ? Storage::delete($ditreskrimsus->gambar3) : null;
 
-        return back()->with('message', 'Data Ditreskrimsus berhasil dihapus!');
+        return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
     }
 }
