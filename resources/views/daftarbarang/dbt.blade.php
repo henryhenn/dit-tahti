@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="container mx-auto">
-        <div class="flex mt-2 bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 rounded-md h-14">
-            <h1 class="pl-2 w-full text-white text-2xl font-bold pt-2">BARANG TEMUAN</h1>
-            <div class="w-full p-2 grid place-items-end">
-
+        <div class="flex mt-2 rounded-md bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 h-14">
+            <h1 class="w-full pt-2 pl-2 text-2xl font-bold text-white">BARANG TEMUAN</h1>
+            <div class="grid w-full p-2 place-items-end">
                 <form class="flex items-end">
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-full">
@@ -17,7 +16,7 @@
                                       clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <input type="text" id="simple-search" name="search"
+                        <input type="text" name="search" id="simple-search"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                placeholder="Search" required>
                     </div>
@@ -35,68 +34,52 @@
         </div>
 
         <div class="flex gap-1">
-            <div class="h-56 mt-4">
-                <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-cyan-400 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center pl-3">
-                            <input id="vue-checkbox" type="checkbox" value=""
-                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="vue-checkbox"
-                                   class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">DITRESKRIMUM</label>
-                        </div>
-                    </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center pl-3">
-                            <input id="react-checkbox" type="checkbox" value=""
-                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="react-checkbox"
-                                   class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">DITLANTAS</label>
-                        </div>
-                    </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center pl-3">
-                            <input id="angular-checkbox" type="checkbox" value=""
-                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="angular-checkbox"
-                                   class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">DITRESKRIMSUS</label>
-                        </div>
-                    </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center pl-3">
-                            <input id="laravel-checkbox" type="checkbox" value=""
-                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="laravel-checkbox"
-                                   class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">DITRESNARKOBA</label>
-                        </div>
-                    </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center pl-3">
-                            <input id="laravel-checkbox" type="checkbox" value=""
-                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="laravel-checkbox"
-                                   class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">DITPOLAIRUD</label>
-                        </div>
-                    </li>
-                </ul>
+            <div class="mt-4 h-60">
+                <div
+                    class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <a href="?unit=ditreskrimum"
+                       class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer {{request('unit') == 'ditreskrimum' ? 'bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 text-white' : ''}} hover:bg-gray-100 focus:outline-none focus:ring-2 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                        DITRESKRIMUM
+                    </a>
+                    <a href="?unit=ditlantas"
+                       class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer {{request('unit') == 'ditlantas' ? 'bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 text-white' : ''}} hover:bg-gray-100 focus:outline-none focus:ring-2 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                        DITLANTAS
+                    </a>
+                    <a href="?unit=ditreskrimsus"
+                       class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer {{request('unit') == 'ditreskrimsus' ? 'bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 text-white' : ''}} hover:bg-gray-100 focus:outline-none focus:ring-2 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                        DITRESKRIMSUS
+                    </a>
+                    <a href="?unit=ditresnarkoba"
+                       class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer {{request('unit') == 'ditresnarkoba' ? 'bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 text-white' : ''}} hover:bg-gray-100 focus:outline-none focus:ring-2 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                        DITRESNARKOBA
+                    </a>
+                    <a href="?unit=ditpolairud"
+                       class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer {{request('unit') == 'ditpolairud' ? 'bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 text-white' : ''}} hover:bg-gray-100 focus:outline-none focus:ring-2 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                        DITPOLAIRUD
+                    </a>
+                </div>
             </div>
             <div class="w-full">
                 <div class="grid grid-cols-4 gap-4 p-4">
-                    @forelse($barangs as $barang)
-                        <div class="border border-blue-400 rounded-md h-64 p-1 mb-2">
-                            <img class="w-full h-44 object-cover rounded-md"
+                    @foreach($barangs as $barang)
+                        <div class="h-64 p-1 mb-2 border border-blue-400 rounded-md">
+                            <img class="object-cover w-full rounded-md h-44"
                                  src="{{asset('storage/' . $barang->gambar1)}}"
                                  alt="">
                             <div class="w-full">
-                                <label class="font-bold text-gray-600" for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
+                                <label class="font-bold text-gray-600"
+                                       for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
                             </div>
                             <div class="w-full">
                                 <p class="text-xs text-gray-400" for="">{{$barang->category->kategori}}</p>
                             </div>
-                            <button data-modal-target="defaultModal{{$barang->id}}" data-modal-toggle="defaultModal{{$barang->id}}" type="button"
+                            <button data-modal-target="defaultModal{{$barang->id}}"
+                                    data-modal-toggle="defaultModal{{$barang->id}}" type="button"
                                     class="text-white w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2">
                                 Detail Barang
                             </button>
                         </div>
+
                         <div id="defaultModal{{$barang->id}}" tabindex="-1" aria-hidden="true"
                              class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative w-full max-w-2xl max-h-full">
@@ -161,10 +144,7 @@
                                 </div>
                             </div>
                         </div>
-
-                    @empty
-                        <h3 class="text2xl text-center font-bold">Tidak ada daftar barang terbaru</h3>
-                    @endforelse
+                    @endforeach
                 </div>
             </div>
         </div>

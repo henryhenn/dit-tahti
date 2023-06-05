@@ -20,4 +20,33 @@ class DaftarBarang extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function scopeFilterByBarangTemuanCategory($query)
+    {
+        $query->whereHas('category', function ($query) {
+            $query->where('kategori', '=', 'Barang Temuan');
+        });
+    }
+
+    public function scopeFilterByBarangTemuanSebagaiBarangBuktiCategory($query)
+    {
+        $query->whereHas('category', function ($query) {
+            $query->where('kategori', '=', 'Barang Temuan Sebagai Barang Bukti');
+        });
+    }
+
+    public function scopeSearchByNama($query, $search)
+    {
+        $query->when($search ?? false, function ($query, $search) {
+            $query->where('nama_barang_bukti', 'like', '%' . $search . '%')
+                ->orWhere('nama_kendaraan', 'like', '%' . $search . '%');
+        });
+    }
+
+    public function scopeGroupByUnit($query, $unit)
+    {
+        $query->when($unit ?? false, function ($query, $unit) {
+            $query->where('unit', '=', $unit);
+        });
+    }
 }

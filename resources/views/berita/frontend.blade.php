@@ -1,10 +1,11 @@
+@php use Illuminate\Support\Str; @endphp
 @extends('layouts.frontend')
 
 @section('content')
     <div class="container mx-auto mt-2">
-        <div class="flex bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 rounded-md h-14">
-            <h1 class="pl-2 w-full text-white text-2xl font-bold pt-2">BERITA</h1>
-            <div class="w-full p-2 grid place-items-end">
+        <div class="flex rounded-md bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 h-14">
+            <h1 class="w-full pt-2 pl-2 text-2xl font-bold text-white">BERITA</h1>
+            <div class="grid w-full p-2 place-items-end">
 
                 <form class="flex items-end">
                     <label for="simple-search" class="sr-only">Search</label>
@@ -36,7 +37,7 @@
         </div>
     </div>
 
-    <div class="container bg-slate-200 p-2 rounded-md mx-auto mt-2">
+    <div class="container p-2 mx-auto mt-2 rounded-md bg-slate-200">
         <div class="flex">
             @foreach($beritas->take(1) as $berita)
                 <div class="w-full">
@@ -45,14 +46,16 @@
                          alt="">
                 </div>
                 <div class="w-full pl-4">
-                    <h1 class="font-bold text-2xl">{{$berita->title}}</h1>
-                    <p class="mt-2">{!! $berita->content !!}<br><br></p>
+                    <h1 class="text-2xl font-bold">{{$berita->title}}</h1>
+                    <p class="mt-2">{!! Str::limit($berita->content, 300, '...') !!}
+                    </p>
                     <div class="flex mt-16">
-                        <div class="w-full"><h1 class="text-gray-400">{{$berita->created_at->format('D, d/M/Y')}}</h1>
+                        <div class="w-full">
+                            <h1 class="text-gray-400">{{$berita->created_at->format('D, d/M/Y')}}</h1>
                         </div>
-                        <div
-                            class="w-full rounded-md h-8 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800">
-                            <p class="text-center text-white">Selengkapnya</p></div>
+                        <a href="{{route('berita.detail', $berita)}}"
+                           class="w-full h-8 rounded-md bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800">
+                            <p class="text-center text-white">Selengkapnya</p></a>
                     </div>
                 </div>
             @endforeach
@@ -63,31 +66,31 @@
         <div class="bg-gray-200 rounded-md w-full h-[400px]">
             <div class="flex gap-4 p-4">
                 @foreach($beritas->skip(1)->take(2) as $berita)
-                    <div class="w-full bg-slate-400 rounded-md h-44">
+                    <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-44">
                         <div class="flex gap-4 p-2">
-                            <img class="w-44 h-40 rounded-md"
+                            <img class="h-40 rounded-md w-44"
                                  src="{{asset('storage/' . $berita->image)}}" alt="">
-                            <div>
-                                <h1 class="font-bold text-lg">{{$berita->title}}</h1>
-                                <p class="text-sm">{!! $berita->content !!}</p>
+                            <div class="w-auto">
+                                <h1 class="text-lg font-bold">{{$berita->title}}</h1>
+                                <p class="text-sm">{!! Str::limit($berita->content, 100, '....') !!}</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
 
-            <div class="flex gap-4 p-4">
+            <div class="flex gap-4 p-4 pt-0">
                 @foreach($beritas->skip(3)->take(2) as $berita)
-                    <div class="w-full bg-slate-400 rounded-md h-44">
+                    <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-44">
                         <div class="flex gap-4 p-2">
-                            <img class="w-44 h-40 rounded-md"
+                            <img class="h-40 rounded-md w-44"
                                  src="{{asset('storage/' . $berita->image)}}" alt="">
                             <div>
-                                <h1 class="font-bold text-lg">{{$berita->title}}</h1>
+                                <h1 class="text-lg font-bold">{{$berita->title}}</h1>
                                 <p class="text-sm">{!! $berita->content !!}</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -101,5 +104,4 @@
             </div>
         </div>
     </div>
-
 @endsection

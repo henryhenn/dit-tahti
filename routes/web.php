@@ -7,14 +7,17 @@ use App\Http\Controllers\DitlantasController;
 use App\Http\Controllers\DitpolairudController;
 use App\Http\Controllers\DitreskrimumController;
 use App\Http\Controllers\DitresnarkobaController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GambarBerandaController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Berita;
 use App\Models\DaftarBarang;
+use App\Models\GambarBeranda;
 use App\Models\Layanan;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,72 +30,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $berita = Berita::query()
-        ->select('title', 'content', 'image')
-        ->get();
-    $barang = DaftarBarang::with('category')->latest()->take(4)->get();
-
-    return view('home.index', compact('berita', 'barang'));
-});
-
-Route::get('berita', function () {
-    $beritas = Berita::query()
-        ->when(request('search') ?? false, function ($query) {
-            $query->where('title', 'like', '%' . request('search') . '%');
-        })
-        ->latest()
-        ->paginate(5)
-        ->withQueryString();
-
-    return view('berita.frontend', compact('beritas'));
-});
-
-Route::get('daftarbarang', function () {
-    $barangs = DaftarBarang::query()
-        ->latest()
-        ->paginate(8);
-    return view('daftarbarang.index', compact('barangs'));
-});
-
-Route::get('dbt', function () {
-    $barangs = DaftarBarang::query()
-        ->whereHas('category', function ($query) {
-            $query->where('kategori', '=', 'Barang Temuan');
-        })
-        ->when(request('search') ?? false, function ($query) {
-            $query->where('nama_barang_bukti', 'like', '%' . request('search') . '%')
-                ->orWhere('nama_kendaraan', 'like', '%' . request('search') . '%');
-        })
-        ->latest()
-        ->get();
-
-    return view('daftarbarang.dbt', compact('barangs'));
-});
-
-Route::get('bts', function () {
-    $barangs = DaftarBarang::query()
-        ->whereHas('category', function ($query) {
-            $query->where('kategori', '=', 'Barang Temuan Sebagai Barang Bukti');
-        })
-        ->when(request('search') ?? false, function ($query) {
-            $query->where('nama_barang_bukti', 'like', '%' . request('search') . '%')
-                ->orWhere('nama_kendaraan', 'like', '%' . request('search') . '%');
-        })
-        ->latest()
-        ->get();
-
-    return view('daftarbarang.bts', compact('barangs'));
-});
-
-Route::get('aturan', function () {
-    return view('aturan.frontend');
-});
-
-Route::get('layanan', function () {
-    $layanan = Layanan::latest()->first();
-
-    return view('layanan.frontend', compact('layanan'));
+Route::controller(FrontendController::class)->group(function () {
+    Route::get('/', 'home');
+    Route::get('berita', 'berita');
+    Route::get('berita/{berita:id}', 'detailBerita')->name('berita.detail');
+    Route::get('daftarbarang', 'daftarBarang');
+    Route::get('dbt', 'dbt');
+    Route::get('bts', 'bts');
+    Route::get('aturan', 'aturan');
+    Route::get('layanan', 'layanan');
 });
 
 Route::middleware('auth')->group(function () {

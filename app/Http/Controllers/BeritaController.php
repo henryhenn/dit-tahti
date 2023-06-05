@@ -77,7 +77,7 @@ class BeritaController extends Controller
         }
 
         $beritum->update($data);
-        return to_route('berita.index')->with('message', 'Berita berhasil ditambahkan!');
+        return to_route('berita.index')->with('message', 'Berita berhasil diupdate!');
     }
 
     /**
