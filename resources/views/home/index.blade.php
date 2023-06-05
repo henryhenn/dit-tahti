@@ -8,7 +8,7 @@
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                     <!-- Item 1 -->
-                    @foreach($gambar as $gambar)
+                    @foreach($gambar_beranda as $gambar)
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
                             <img src="{{asset('storage/' . $gambar->gambar)}}"
                                  class="absolute block object-fill w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
@@ -18,12 +18,10 @@
                 </div>
                 <!-- Slider indicators -->
                 <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                    @foreach($gambar_beranda as $key=>$gambar)
                     <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-                            data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                            data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                            data-carousel-slide-to="2"></button>
+                            data-carousel-slide-to="{{$key}}"></button>
+                    @endforeach
                 </div>
                 <!-- Slider controls -->
                 <button type="button"
@@ -55,7 +53,7 @@
     <div class="container grid mx-auto place-items-center">
         <div class="flex gap-4 p-4">
             @foreach($berita as $berita)
-                <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md shadow-lg bg-slate-200 h-44">
+                <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md shadow-lg bg-slate-200 h-auto">
                     <div class="flex gap-4 p-2">
                         <img class="h-40 rounded-md w-44"
                              src="{{asset('storage/' . $berita->image)}}" alt="">

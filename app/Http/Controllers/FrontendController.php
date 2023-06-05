@@ -20,11 +20,11 @@ class FrontendController extends Controller
             ->take(2)
             ->get();
         $barang = DaftarBarang::with('category')->latest()->take(4)->get();
-        $gambar = GambarBeranda::latest()->get();
+        $gambar_beranda = GambarBeranda::latest()->get();
 
         (new StripBeritaDivTagService())->collection_strip_tag($berita);
 
-        return view('home.index', compact('berita', 'barang', 'gambar'));
+        return view('home.index', compact('berita', 'barang', 'gambar_beranda'));
     }
 
     public function berita()

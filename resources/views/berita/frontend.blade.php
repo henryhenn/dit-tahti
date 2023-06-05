@@ -63,16 +63,16 @@
     </div>
 
     <div class="container mx-auto mt-4">
-        <div class="bg-gray-200 rounded-md w-full h-[400px]">
+        <div class="bg-gray-200 rounded-md w-full h-auto">
             <div class="flex gap-4 p-4">
                 @foreach($beritas->skip(1)->take(2) as $berita)
-                    <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-44">
+                    <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-auto">
                         <div class="flex gap-4 p-2">
                             <img class="h-40 rounded-md w-44"
                                  src="{{asset('storage/' . $berita->image)}}" alt="">
                             <div class="w-auto">
                                 <h1 class="text-lg font-bold">{{$berita->title}}</h1>
-                                <p class="text-sm">{!! Str::limit($berita->content, 100, '....') !!}</p>
+                                <p class="text-sm">{!! $berita->content !!}</p>
                             </div>
                         </div>
                     </a>
@@ -81,7 +81,7 @@
 
             <div class="flex gap-4 p-4 pt-0">
                 @foreach($beritas->skip(3)->take(2) as $berita)
-                    <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-44">
+                    <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-auto">
                         <div class="flex gap-4 p-2">
                             <img class="h-40 rounded-md w-44"
                                  src="{{asset('storage/' . $berita->image)}}" alt="">

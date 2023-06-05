@@ -9,7 +9,7 @@ class StripBeritaDivTagService
     public function collection_strip_tag($berita)
     {
         $berita->map(function ($berita) {
-            $berita->content = Str::limit(str_replace(array("<div>", "</div>"), "", $berita->content), 300, '....');
+            $berita->content = Str::limit(str_replace(array("<div>", "</div>"), "",$berita->content), 300, '....');
 
             return $berita;
         });
