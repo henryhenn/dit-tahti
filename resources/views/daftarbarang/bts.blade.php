@@ -139,6 +139,7 @@
                                             <p>TEMPAT PENYIMPANAN : {{$barang->tempat_penyimpanan}}</p>
                                         @else
                                         @endif
+                                        <p>IDENTITAS BARANG BUKTI: {{$barang->identitas_barang_bukti ?? "-"}}</p>
                                         <p>PENYIDIK : {{$barang->penyidik}}</p>
                                         <p>KONDISI : {{$barang->kondisi}}</p>
                                     </div>

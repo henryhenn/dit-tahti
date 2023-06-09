@@ -58,6 +58,7 @@ class DitreskrimsusController extends Controller
             'gambar1' => 'required|file|mimes:jpg,jpeg,png|max:2048',
             'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
             'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            'identitas_barang_bukti' => 'nullable|string'
         ]);
 
         $data['gambar1'] = $request->file('gambar1')->store('ditreskrimsus');
@@ -109,6 +110,7 @@ class DitreskrimsusController extends Controller
             'gambar1' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
             'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
             'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            'identitas_barang_bukti' => 'nullable|string'
         ]);
 
         if ($request->hasFile('gambar1')) {

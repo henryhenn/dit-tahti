@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('ditreskrimsuses', function (Blueprint $table) {
+        Schema::table('daftar_barangs', function (Blueprint $table) {
             $table->string('identitas_barang_bukti')->nullable();
         });
     }
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('ditreskrimsuses', function (Blueprint $table) {
+        Schema::table('daftar_barangs', function (Blueprint $table) {
 //            $table->string('identitas_barang_bukti');
         });
     }

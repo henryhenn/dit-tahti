@@ -35,6 +35,7 @@
                     <p class="mt-6 ">Daftar Barang Temuan: <span
                             class="font-bold">{{$ditreskrimum->category->kategori}}</span></p>
                     <p class="mt-6 ">Jumlah: <span class="font-bold">{{$ditreskrimum->jumlah}}</span></p>
+                    <p class="mt-6 ">Identitas barang bukti: <span class="font-bold">{{$ditreskrimum->identitas_barang_bukti ?? "-"}}</span></p>
                     <p class="mt-6 ">No. Laporan Polisi: <span
                             class="font-bold">{{$ditreskrimum->no_laporan_polisi}}</span></p>
                     <p class="mt-6 ">Penetapan Pengadilan: <span
