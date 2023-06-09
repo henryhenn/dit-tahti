@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container mx-auto">
-        <div class="flex gap-1">
-            <div class="bg-gray-100 h-32 w-1/3 rounded-md p-2 mt-4">
+        <div class="gap-1 lg:flex">
+            <div class="w-full p-2 mt-4 bg-gray-100 rounded-md lg:h-32 h-28 lg:w-1/3">
                 <a href="/dbt" type="button"
                    class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-full">BARANG
                     TEMUAN</a>
@@ -12,10 +12,10 @@
                     TEMUAN SEBAGAI BARANG BUKTI</a>
             </div>
             <div class="w-full">
-                <div class="grid grid-cols-4 gap-4 p-4">
+                <div class="grid grid-cols-2 gap-4 p-2 lg:grid-cols-4 lg:gap-4 lg:p-4">
                     @forelse($barangs as $barang)
-                        <div class="border border-blue-400 rounded-md h-64 p-1 mb-2">
-                            <img class="w-full h-44 object-cover rounded-md"
+                        <div class="h-64 p-1 mb-2 border border-blue-400 rounded-md lg:mb-2">
+                            <img class="object-cover w-full rounded-md h-44"
                                  src="{{asset('storage/' . $barang->gambar1)}}"
                                  alt="">
                             <div class="w-full">
@@ -23,7 +23,7 @@
                                        for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
                             </div>
                             <div class="w-full">
-                                <p class="text-xs text-gray-400" for="">{{$barang->category->kategori}}</p>
+                                <p class="text-xs text-gray-400">{{$barang->category->kategori}}</p>
                             </div>
                             <button data-modal-target="defaultModal{{$barang->id}}"
                                     data-modal-toggle="defaultModal{{$barang->id}}" type="button"

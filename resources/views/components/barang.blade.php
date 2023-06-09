@@ -1,9 +1,9 @@
 <div class="container mx-auto">
     <div class="w-full">
-        <div class="grid grid-cols-4 gap-4 p-4">
+        <div class="grid grid-cols-2 p-2 gap-y-6 gap-x-2 lg:p-4 lg:gap-4 lg:grid lg:grid-cols-4">
             @foreach($barang as $barang)
-                <div class="border border-blue-400 rounded-md h-64 p-1">
-                    <img class="w-full h-44 object-cover rounded-md"
+                <div class="p-1 border border-blue-400 rounded-md h-52 lg:h-64">
+                    <img class="object-cover w-full h-32 rounded-md lg:h-44"
                          src="{{asset('storage/' . $barang->gambar1)}}"
                          alt="">
                     <div class="w-full">

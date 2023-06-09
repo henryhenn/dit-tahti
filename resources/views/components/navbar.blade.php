@@ -1,10 +1,9 @@
 <div class="lg:container lg:mx-auto lg:mt-2">
-
     <nav
         class="border-gray-200 bg-gradient-to-tr from-cyan-400 via-cyan-500 to-cyan-600 dark:bg-gray-900 dark:border-gray-700 lg:rounded-md">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
             <a href="/" class="flex items-center">
-                <img src="https://i.postimg.cc/9MnG4Fzp/My-project-1-removebg-preview.png" class="h-12 mr-3 lg:h-12"
+                <img src="https://i.postimg.cc/9MnG4Fzp/My-project-1-removebg-preview.png" class="h-8 mr-3 lg:h-12"
                      alt="Flowbite Logo"/>
                 <span
                     class="self-center font-semibold text-white lg:text-2xl text-md whitespace-nowrap dark:text-white">STARBUKS DITTAHTI POLDA NTB

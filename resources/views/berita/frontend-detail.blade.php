@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container p-2 mx-auto mt-2 rounded-md bg-slate-200">
-        <div class="flex">
+        <div class="lg:flex">
             <div class="w-full">
                 <img class="w-full rounded-md" src="{{ asset('storage/'.$berita->image)}}" alt="">
             </div>
-            <div class="w-full pl-4">
+            <div class="w-full lg:pl-4">
                 <h1 class="text-2xl font-bold">{{$berita->title}}</h1>
                 <p class="mt-2">{!! $berita->content !!}<br><br>
                 </p>

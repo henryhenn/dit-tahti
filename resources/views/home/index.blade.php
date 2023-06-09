@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container mx-auto mt-2">
-        <div class=" lg:h-[420px] rounded-md p-4">
+        <div class="lg:h-[420px] rounded-md p-4">
             <div id="default-carousel" class="relative w-full h-22" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -51,11 +51,11 @@
     </div>
 
     <div class="container grid mx-auto place-items-center">
-        <div class="flex gap-4 p-4">
+        <div class="p-2 lg:p-4 lg:flex lg:gap-4">
             @foreach($berita as $berita)
-                <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md shadow-lg bg-slate-200 h-auto">
-                    <div class="flex gap-4 p-2">
-                        <img class="h-40 rounded-md w-44"
+                <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md shadow-lg bg-slate-200 h-44">
+                    <div class="gap-4 p-2 lg:flex">
+                        <img class="w-full h-56 rounded-md lg:h-40 lg:w-44"
                              src="{{asset('storage/' . $berita->image)}}" alt="">
                         <div>
                             <h1 class="text-lg font-bold">{{$berita->title}}</h1>
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <div class="pl-20 pr-20">
+    <div class="lg:pl-20 lg:pr-20">
         <main>
             <x-barang :barang="$barang"/>
         </main>

@@ -3,9 +3,9 @@
 @section('content')
     <div class="container mx-auto">
         <div class="flex mt-2 rounded-md bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 h-14">
-            <h1 class="w-full pt-2 pl-2 text-2xl font-bold text-white">BARANG TEMUAN SEBAGAI BARANG BUKTI</h1>
+            <h1 class="w-full pt-2 pl-2 text-xs font-bold text-white lg:pt-3 lg:text-2xl">BARANG TEMUAN SEBAGAI BARANG
+                BUKTI</h1>
             <div class="grid w-full p-2 place-items-end">
-
                 <form class="flex items-end">
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-full">
@@ -34,10 +34,10 @@
             </div>
         </div>
 
-        <div class="flex gap-1">
-            <div class="h-56 mt-4">
+        <div class="gap-1 lg:flex">
+            <div class="h-48 p-2 mt-4 lg:h-60">
                 <div
-                    class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg lg:w-48 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <a href="?unit=ditreskrimum"
                        class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer {{request('unit') == 'ditreskrimum' ? 'bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 text-white' : ''}} hover:bg-gray-100 focus:outline-none focus:ring-2 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
                         DITRESKRIMUM
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="grid grid-cols-4 gap-4 p-4">
+                <div class="grid grid-cols-2 gap-4 p-4 lg:grid-cols-4">
                     @foreach($barangs as $barang)
                         <div class="h-64 p-1 mb-2 border border-blue-400 rounded-md">
                             <img class="object-cover w-full rounded-md h-44"

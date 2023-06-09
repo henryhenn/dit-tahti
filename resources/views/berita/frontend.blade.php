@@ -1,4 +1,5 @@
 @php use Illuminate\Support\Str; @endphp
+
 @extends('layouts.frontend')
 
 @section('content')
@@ -38,7 +39,7 @@
     </div>
 
     <div class="container p-2 mx-auto mt-2 rounded-md bg-slate-200">
-        <div class="flex">
+        <div class="lg:flex">
             @foreach($beritas->take(1) as $berita)
                 <div class="w-full">
                     <img class="w-full rounded-md"
@@ -63,12 +64,12 @@
     </div>
 
     <div class="container mx-auto mt-4">
-        <div class="bg-gray-200 rounded-md w-full h-auto">
-            <div class="flex gap-4 p-4">
+        <div class="bg-gray-200 rounded-md w-full lg:h-[400px]">
+            <div class="lg:flex lg:gap-4 lg:p-4">
                 @foreach($beritas->skip(1)->take(2) as $berita)
                     <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-auto">
-                        <div class="flex gap-4 p-2">
-                            <img class="h-40 rounded-md w-44"
+                        <div class="p-2 lg:flex lg:gap-4">
+                            <img class="w-full h-56 rounded-md lg:h-40 lg:w-44"
                                  src="{{asset('storage/' . $berita->image)}}" alt="">
                             <div class="w-auto">
                                 <h1 class="text-lg font-bold">{{$berita->title}}</h1>
@@ -79,11 +80,11 @@
                 @endforeach
             </div>
 
-            <div class="flex gap-4 p-4 pt-0">
+            <div class="pt-0 lg:p-4 lg:gap-4 lg:flex">
                 @foreach($beritas->skip(3)->take(2) as $berita)
                     <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md bg-slate-400 h-auto">
-                        <div class="flex gap-4 p-2">
-                            <img class="h-40 rounded-md w-44"
+                        <div class="p-2 lg:flex lg:gap-4">
+                            <img class="w-full h-56 rounded-md lg:h-40 lg:w-44"
                                  src="{{asset('storage/' . $berita->image)}}" alt="">
                             <div>
                                 <h1 class="text-lg font-bold">{{$berita->title}}</h1>
