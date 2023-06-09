@@ -23,7 +23,7 @@
                                        for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
                             </div>
                             <div class="w-full">
-                                <p class="text-xs text-gray-400">{{$barang->category->kategori}}</p>
+                                <p class="text-xs truncate text-gray-400">{{$barang->category->kategori}}</p>
                             </div>
                             <button data-modal-target="defaultModal{{$barang->id}}"
                                     data-modal-toggle="defaultModal{{$barang->id}}" type="button"
@@ -31,6 +31,7 @@
                                 Detail Barang
                             </button>
                         </div>
+
                         <div id="defaultModal{{$barang->id}}" tabindex="-1" aria-hidden="true"
                              class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative w-full max-w-2xl max-h-full">
@@ -57,7 +58,7 @@
                                     </div>
                                     <!-- Modal body -->
                                     <div class="p-2">
-                                        <div class="flex gap-2">
+                                        <div class="grid grid-cols-2 gap-2 lg:flex">
                                             <img class="h-44 w-40 object-cover rounded-md"
                                                  src="{{asset('storage/' . $barang->gambar1)}}"
                                                  alt="">
@@ -68,30 +69,60 @@
                                                  src="{{asset('storage/' . $barang->gambar3)}}"
                                                  alt="">
                                         </div>
-                                        <p>BARANG BUKTI : {{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</p>
-                                        <p>SATUAN : {{$barang->unit}}</p>
-                                        @if($barang->jumlah)
-                                            <p>JUMLAH : {{$barang->jumlah}}</p>
-                                        @else
-                                            <p>IDENTITAS KENDARAAN : {{$barang->identitas_kendaraan}}</p>
-                                        @endif
-                                        @if($barang->no_laporan_polisi)
-                                            <p>NO LAPORAN : {{$barang->no_laporan_polisi}}</p>
-                                        @elseif($barang->no_surat_tilang)
-                                            <p> NO SURAT TILANG: {{$barang->no_surat_tilang}}</p>
-                                        @endif
-                                        @if($barang->penetapan_pengadilan)
-                                            <p>PENETAPAN PENGADILAN : {{$barang->penetapan_pengadilan}}</p>
-                                        @elseif($barang->penetapan_kejaksaan)
-                                            <p>PENETAPAN KEJAKSAAN : {{$barang->penetapan_kejaksaan}}</p>
-                                        @endif
-                                        @if($barang->tempat_penyimpanan)
-                                            <p>TEMPAT PENYIMPANAN : {{$barang->tempat_penyimpanan}}</p>
-                                        @else
-                                        @endif
-                                        <p>IDENTITAS BARANG BUKTI: {{$barang->identitas_barang_bukti ?? "-"}}</p>
-                                        <p>PENYIDIK : {{$barang->penyidik}}</p>
-                                        <p>KONDISI : {{$barang->kondisi}}</p>
+                                        <div class="flex gap-2 p-1 mt-2 text-xs bg-gray-200 rounded-md">
+                                            <div>
+                                                <p>BARANG BUKTI</p>
+                                                <p>SATUAN</p>
+                                                @if($barang->jumlah)
+                                                    <p>JUMLAH</p>
+                                                @else
+                                                    <p>IDENTITAS KENDARAAN</p>
+                                                @endif
+                                                @if($barang->no_laporan_polisi)
+                                                    <p>NO LAPORAN</p>
+                                                @elseif($barang->no_surat_tilang)
+                                                    <p> NO SURAT TILANG:</p>
+                                                @endif
+                                                @if($barang->penetapan_pengadilan)
+                                                    <p>PENETAPAN PENGADILAN</p>
+                                                @elseif($barang->penetapan_kejaksaan)
+                                                    <p>PENETAPAN KEJAKSAAN</p>
+                                                @endif
+                                                @if($barang->tempat_penyimpanan)
+                                                    <p>TEMPAT PENYIMPANAN</p>
+                                                @else
+                                                @endif
+                                                <p>IDENTITAS BARANG BUKTI</p>
+                                                <p>PENYIDIK</p>
+                                                <p>KONDISI</p>
+                                            </div>
+                                            <div>
+                                                <p>: {{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</p>
+                                                <p>: {{$barang->unit}}</p>
+                                                @if($barang->jumlah)
+                                                    <p>: {{$barang->jumlah}}</p>
+                                                @else
+                                                    <p>: {{$barang->identitas_kendaraan}}</p>
+                                                @endif
+                                                @if($barang->no_laporan_polisi)
+                                                    <p>: {{$barang->no_laporan_polisi}}</p>
+                                                @elseif($barang->no_surat_tilang)
+                                                    <p>: {{$barang->no_surat_tilang}}</p>
+                                                @endif
+                                                @if($barang->penetapan_pengadilan)
+                                                    <p>: {{$barang->penetapan_pengadilan}}</p>
+                                                @elseif($barang->penetapan_kejaksaan)
+                                                    <p>: {{$barang->penetapan_kejaksaan}}</p>
+                                                @endif
+                                                @if($barang->tempat_penyimpanan)
+                                                    <p>: {{$barang->tempat_penyimpanan}}</p>
+                                                @else
+                                                @endif
+                                                <p>: {{$barang->identitas_barang_bukti ?? "-"}}</p>
+                                                <p>: {{$barang->penyidik}}</p>
+                                                <p>: {{$barang->kondisi}}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

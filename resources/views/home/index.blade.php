@@ -53,7 +53,7 @@
     <div class="container grid mx-auto place-items-center">
         <div class="p-2 lg:p-4 lg:flex lg:gap-4">
             @foreach($berita as $berita)
-                <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md shadow-lg bg-slate-200 h-44">
+                <a href="{{route('berita.detail', $berita)}}" class="w-full rounded-md shadow-lg bg-slate-200 h-auto">
                     <div class="gap-4 p-2 lg:flex">
                         <img class="w-full h-56 rounded-md lg:h-40 lg:w-44"
                              src="{{asset('storage/' . $berita->image)}}" alt="">
