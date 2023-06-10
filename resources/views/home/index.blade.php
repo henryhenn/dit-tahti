@@ -11,8 +11,7 @@
                     @foreach($gambar_beranda as $gambar)
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
                             <img src="{{asset('storage/' . $gambar->gambar)}}"
-                                 class="absolute block object-fill w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                 alt="...">
+                                 class="absolute block object-fill w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                         </div>
                     @endforeach
                 </div>
