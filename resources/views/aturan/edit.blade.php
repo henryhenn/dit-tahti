@@ -24,22 +24,13 @@
                             @error('judul')
                             <small class="text-red-500">{{$message}}</small>
                             @enderror
-                        </div>
-                        <div class="relative z-0 w-full mb-8 group">
-                            <label for="deskripsi" class="block mb-2">Deskripsi: </label>
-                            <input id="deskripsi" type="hidden" value="{{old('deskripsi', $aturan->deskripsi)}}" name="deskripsi">
-                            <trix-editor input="deskripsi" class="@error('deskripsi') border-red-500 @enderror"></trix-editor>
-                            @error('deskripsi')
-                            <small class="text-red-500">{{$message}}</small>
-                            @enderror
-                        </div>
                         <div class="relative z-0 w-full mb-8 group">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                   for="gambar">Gambar:</label>
+                                   for="file">File:</label>
                             <input
-                                class="block w-full text-sm text-gray-900 border border-gray-300 @error('gambar') border-red-500 @enderror rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                id="gambar" name="gambar" type="file">
-                            @error('gambar')
+                                class="block w-full text-sm text-gray-900 border border-gray-300 @error('file') border-red-500 @enderror rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                id="file" name="file" type="file">
+                            @error('file')
                             <small class="text-red-500">{{$message}}</small>
                             @enderror
                         </div>
