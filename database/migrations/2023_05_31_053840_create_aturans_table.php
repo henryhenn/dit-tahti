@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('aturans', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->text('deskripsi');
-            $table->string('gambar');
+            $table->string('file');
             $table->timestamps();
         });
     }

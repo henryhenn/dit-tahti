@@ -31,9 +31,6 @@
                                     Judul Aturan
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Deskripsi
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Aksi
                                 </th>
                             </tr>
@@ -48,17 +45,14 @@
                                     <td class="px-6 py-4">
                                         {{$aturan->judul}}
                                     </td>
-                                    <td class="px-6 py-4">
-                                        {!! $aturan->deskripsi !!}
-                                    </td>
                                     <td class="px-6 py-4 flex flex-row">
                                         <a href="{{route('aturan.edit', $aturan->id)}}"
                                            class="px-3 py-2 text-xs font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-500 dark:focus:ring-green-800">
                                             Edit
                                         </a>
-                                        <a href="{{route('aturan.show', $aturan->id)}}"
+                                        <a href="{{route('aturan.download', $aturan->id)}}"
                                            class="px-3 py-2 mx-2 text-xs font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800">
-                                            Detail
+                                            Download
                                         </a>
                                         <form action="{{route('aturan.destroy', $aturan->id)}}" id="delete-form"
                                               method="post">
@@ -75,7 +69,7 @@
 
                             @empty
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td colspan="4"
+                                    <td colspan="3"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <h3 class="text-xl font-bold text-center">Tidak ada aturan. Silakan tambahkan
                                             aturan baru!</h3>

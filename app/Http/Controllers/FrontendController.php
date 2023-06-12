@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aturan;
 use App\Models\Berita;
 use App\Models\DaftarBarang;
 use App\Models\GambarBeranda;
@@ -82,7 +83,12 @@ class FrontendController extends Controller
 
     public function aturan()
     {
-        return view('aturan.frontend');
+        $aturan = Aturan::query()
+            ->latest()
+            ->select('id', 'judul', 'file')
+            ->get();
+
+        return view('aturan.frontend', compact('aturan'));
     }
 
     public function layanan()

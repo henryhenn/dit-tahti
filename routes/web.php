@@ -57,9 +57,11 @@ Route::middleware('auth')->group(function () {
         Route::resource('berita', BeritaController::class);
         Route::resource('users', UserController::class);
         Route::resource('layanan', LayananController::class);
-        Route::resource('aturan', AturanController::class);
+        Route::resource('aturan', AturanController::class)->except('show');
         Route::resource('gambar-beranda', GambarBerandaController::class);
     });
+
+    Route::get('aturan/download/{aturan:id}', [AturanController::class, 'download'])->name('aturan.download');
 
     Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITRESKRIMUM']);
     Route::resource('ditlantas', DitlantasController::class)->parameters(['ditlantas' => 'ditlantas'])->middleware(['role:Administrator|USER DITLANTAS']);

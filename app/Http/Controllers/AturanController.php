@@ -19,7 +19,7 @@ class AturanController extends Controller
     public function index()
     {
         $aturan = Aturan::query()
-            ->select('id', 'judul', 'deskripsi')
+            ->select('id', 'judul')
             ->orderBy('judul', 'asc')
             ->get();
 
@@ -41,23 +41,14 @@ class AturanController extends Controller
     {
         $data = $request->validate([
             'judul' => 'required|string',
-            'deskripsi' => 'required|string',
-            'gambar' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,txt|max:20000',
         ]);
 
-        $data['gambar'] = $request->file('gambar')->store('aturan');
+        $data['file'] = $request->file('file')->store('aturan');
 
         Aturan::create($data);
 
         return to_route('aturan.index')->with('message', 'Data Aturan berhasil ditambahkan!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Aturan $aturan)
-    {
-        return view('aturan.show', compact('aturan'));
     }
 
     /**
@@ -75,13 +66,12 @@ class AturanController extends Controller
     {
         $data = $request->validate([
             'judul' => 'required|string',
-            'deskripsi' => 'required|string',
-            'gambar' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,txt|max:20000',
         ]);
 
-        if ($request->hasFile('gambar')) {
-            Storage::delete($aturan->gambar);
-            $data['gambar'] = $request->file('gambar')->store('aturan');
+        if ($request->hasFile('file')) {
+            Storage::delete($aturan->file);
+            $data['file'] = $request->file('file')->store('aturan');
         }
 
         $aturan->update($data);
@@ -94,9 +84,14 @@ class AturanController extends Controller
      */
     public function destroy(Aturan $aturan)
     {
-        Storage::delete($aturan->gambar);
+        Storage::delete($aturan->file);
         $aturan->delete();
 
         return back()->with('message', 'Data Aturan berhasil dihapus!');
+    }
+
+    public function download(Aturan $aturan)
+    {
+        return response()->download(storage_path('/app/public/' . $aturan->file));
     }
 }
