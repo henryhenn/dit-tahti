@@ -8,8 +8,6 @@ use App\Models\DaftarBarang;
 use App\Models\GambarBeranda;
 use App\Models\Layanan;
 use App\Services\StripBeritaDivTagService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
