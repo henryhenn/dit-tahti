@@ -75,9 +75,14 @@
 
 
     <div class="container p-2 mx-auto mt-4 lg:p-0">
+        @if($youtube)
+
         <iframe class="w-full h-96" src="{{$youtube->link}}" title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
+        @else
+            <h3 class="text-center text-2xl font-bold">Tidak ada tayangan terbaru.</h3>
+        @endif
     </div>
 @endsection
