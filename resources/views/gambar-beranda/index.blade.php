@@ -28,6 +28,9 @@
                                     #
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Judul
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Gambar
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -42,6 +45,9 @@
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{$key+1}}
                                     </th>
+                                    <td class="px-6 py-4">
+                                        {{$gambar->judul}}
+                                    </td>
                                     <td class="px-6 py-4">
                                         <img src="{{asset('storage/' . $gambar->gambar)}}" alt="Gambar beranda">
                                     </td>

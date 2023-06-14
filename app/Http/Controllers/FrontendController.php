@@ -7,6 +7,9 @@ use App\Models\Berita;
 use App\Models\DaftarBarang;
 use App\Models\GambarBeranda;
 use App\Models\Layanan;
+use App\Models\StrukturOrganisasi;
+use App\Models\TugasFungsi;
+use App\Models\VisiMisi;
 use App\Models\YoutubeBeranda;
 use App\Services\StripBeritaDivTagService;
 
@@ -96,5 +99,26 @@ class FrontendController extends Controller
         $layanan = Layanan::latest()->get();
 
         return view('layanan.frontend', compact('layanan'));
+    }
+
+    public function strukturOrganisasi()
+    {
+        $organisasi = StrukturOrganisasi::latest()->get();
+
+        return view('organisasi.frontend', compact('organisasi'));
+    }
+
+    public function visiMisi()
+    {
+        $visimisi = VisiMisi::latest()->get();
+
+        return view('visi-misi.frontend', compact('visimisi'));
+    }
+
+    public function tugasFungsi()
+    {
+        $tugasfungsi = TugasFungsi::latest()->get();
+
+        return view('tugas-fungsi.frontend', compact('tugasfungsi'));
     }
 }

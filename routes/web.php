@@ -17,10 +17,6 @@ use App\Http\Controllers\TugasFungsiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\YoutubeBerandaController;
-use App\Models\Berita;
-use App\Models\DaftarBarang;
-use App\Models\GambarBeranda;
-use App\Models\Layanan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
@@ -42,10 +38,14 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('daftarbarang', 'daftarBarang');
     Route::get('dbt', 'dbt');
     Route::get('bts', 'bts');
-    Route::get('aturan', 'aturan');
+    Route::get('aturan', 'aturan')->name('aturan.frontend');
     Route::get('layanan', 'layanan');
-    Route::get('sto', 'sto');
+    Route::get('tugas-fungsi', 'tugasFungsi')->name('tugasFungsi');
+    Route::get('struktur-organisasi', 'strukturOrganisasi')->name('strukturOrganisasi');
+    Route::get('visi-misi', 'visiMisi')->name('visiMisi');
 });
+
+Route::get('aturan/{aturan:id}', [AturanController::class, 'download'])->name('aturan.download');
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {

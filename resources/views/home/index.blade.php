@@ -2,7 +2,6 @@
 @extends('layouts.frontend')
 
 @section('content')
-
     <div class="container mx-auto mt-2">
         <div class="lg:h-[420px] rounded-md p-4">
             <div id="default-carousel" class="relative w-full h-22" data-carousel="slide">
@@ -13,6 +12,7 @@
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
                             <img src="{{asset('storage/' . $gambar->gambar)}}"
                                  class="absolute block object-fill w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                            <h2 class="text-3xl px-2 py-3 rounded  bg-gray-200 font-bold text-cyan-400 absolute z-[99] bottom-1/4 left-1/2 -translate-x-28">{{$gambar->judul}}</h2>
                         </div>
                     @endforeach
                 </div>

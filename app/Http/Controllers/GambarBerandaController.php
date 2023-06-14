@@ -19,7 +19,7 @@ class GambarBerandaController extends Controller
     public function index()
     {
         $gambar = GambarBeranda::query()
-            ->select('id', 'gambar')
+            ->select('id', 'gambar', 'judul')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -41,6 +41,7 @@ class GambarBerandaController extends Controller
     {
         $data = $request->validate([
             'gambar' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'judul' => 'required|string'
         ]);
 
         $data['gambar'] = $request->file('gambar')->store('gambar-beranda');
@@ -72,11 +73,14 @@ class GambarBerandaController extends Controller
     public function update(Request $request, GambarBeranda $gambar_beranda)
     {
         $data = $request->validate([
-            'gambar' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'gambar' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            'judul' => 'required|string'
         ]);
 
-        Storage::delete($gambar_beranda->gambar);
-        $data['gambar'] = $request->file('gambar')->store('gambar-beranda');
+        if ($request->hasFile('gambar')) {
+            Storage::delete($gambar_beranda->gambar);
+            $data['gambar'] = $request->file('gambar')->store('gambar-beranda');
+        }
 
         $gambar_beranda->update($data);
 
