@@ -93,7 +93,7 @@ class FrontendController extends Controller
 
     public function layanan()
     {
-        $layanan = Layanan::latest()->first();
+        $layanan = Layanan::latest()->get();
 
         return view('layanan.frontend', compact('layanan'));
     }

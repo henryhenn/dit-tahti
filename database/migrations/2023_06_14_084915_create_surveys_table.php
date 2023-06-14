@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
+            $table->text('link');
             $table->timestamps();
         });
     }

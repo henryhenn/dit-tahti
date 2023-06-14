@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class YoutubeBeranda extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['link'];
 }

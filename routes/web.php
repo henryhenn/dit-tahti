@@ -11,7 +11,10 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GambarBerandaController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StrukturOrganisasiController;
+use App\Http\Controllers\TugasFungsiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisiMisiController;
 use App\Models\Berita;
 use App\Models\DaftarBarang;
 use App\Models\GambarBeranda;
@@ -60,13 +63,18 @@ Route::middleware('auth')->group(function () {
         Route::resource('layanan', LayananController::class);
         Route::resource('aturan', AturanController::class);
         Route::resource('gambar-beranda', GambarBerandaController::class);
+
+        Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITRESKRIMUM']);
+        Route::resource('ditlantas', DitlantasController::class)->parameters(['ditlantas' => 'ditlantas'])->middleware(['role:Administrator|USER DITLANTAS']);
+        Route::resource('ditreskrimsus', DitreskrimsusController::class)->parameters(['ditreskrimsus' => 'ditreskrimsus'])->middleware(['role:Administrator|USER DITRESKRIMSUS']);
+        Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role:Administrator|USER DITPOLAIRUD']);
+        Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware(['role:Administrator|USER DITRESNARKOBA']);
+
+        Route::resource('struktur-organisasi', StrukturOrganisasiController::class);
+        Route::resource('visi-misi', VisiMisiController::class);
+        Route::resource('tugas-fungsi', TugasFungsiController::class);
     });
 
-    Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITRESKRIMUM']);
-    Route::resource('ditlantas', DitlantasController::class)->parameters(['ditlantas' => 'ditlantas'])->middleware(['role:Administrator|USER DITLANTAS']);
-    Route::resource('ditreskrimsus', DitreskrimsusController::class)->parameters(['ditreskrimsus' => 'ditreskrimsus'])->middleware(['role:Administrator|USER DITRESKRIMSUS']);
-    Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role:Administrator|USER DITPOLAIRUD']);
-    Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware(['role:Administrator|USER DITRESNARKOBA']);
 });
 
 require __DIR__ . '/auth.php';

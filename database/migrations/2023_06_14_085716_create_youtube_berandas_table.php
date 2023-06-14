@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('youtube_berandas', function (Blueprint $table) {
             $table->id();
+            $table->text('link');
             $table->timestamps();
         });
     }
