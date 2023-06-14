@@ -12,6 +12,7 @@ use App\Http\Controllers\GambarBerandaController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StrukturOrganisasiController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TugasFungsiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
@@ -74,7 +75,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('struktur-organisasi', StrukturOrganisasiController::class)->except('show');
         Route::resource('visi-misi', VisiMisiController::class);
         Route::resource('tugas-fungsi', TugasFungsiController::class);
-        Route::resource('youtube-beranda', YoutubeBerandaController::class);
+        Route::resource('youtube-beranda', YoutubeBerandaController::class)->except('show');
+        Route::resource('survey', SurveyController::class)->except('show');
     });
 
 });

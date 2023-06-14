@@ -105,6 +105,12 @@
                     <x-nav-link :href="route('gambar-beranda.index')" :active="request()->routeIs('gambar-beranda.*')">
                         {{ __('GAMBAR BERANDA') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('youtube-beranda.index')" :active="request()->routeIs('youtube-beranda.*')">
+                        {{ __('YOUTUBE BERANDA') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('survey.index')" :active="request()->routeIs('survey.*')">
+                        {{ __('SURVEY') }}
+                    </x-nav-link>
                     @endrole
                 </div>
             </div>
@@ -221,6 +227,12 @@
             <x-responsive-nav-link :href="route('gambar-beranda.index')"
                                    :active="request()->routeIs('gambar-beranda.*')">
                 {{ __('GAMBAR BERANDA') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('youtube-beranda.index')" :active="request()->routeIs('youtube-beranda.*')">
+                {{ __('YOUTUBE BERANDA') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('survey.index')" :active="request()->routeIs('survey.*')">
+                {{ __('SURVEY') }}
             </x-responsive-nav-link>
             @endrole
         </div>

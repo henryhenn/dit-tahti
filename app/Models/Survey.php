@@ -9,5 +9,5 @@ class Survey extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['judul', 'link'];
+    protected $fillable = ['judul', 'link'];
 }

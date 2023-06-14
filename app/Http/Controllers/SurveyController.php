@@ -12,7 +12,12 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        //
+        $survey = Survey::query()
+            ->select('id', 'judul', 'link')
+            ->latest()
+            ->get();
+
+        return view('survey.index', compact('survey'));
     }
 
     /**
@@ -20,7 +25,7 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        //
+        return view('survey.create');
     }
 
     /**
@@ -28,15 +33,14 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->validate([
+            'judul' => 'required|string|max:255',
+            'link' => 'required|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Survey $survey)
-    {
-        //
+        Survey::create($data);
+
+        return to_route('survey.index')->with('message', 'Survey berhasil ditambahkan!');
     }
 
     /**
@@ -44,7 +48,7 @@ class SurveyController extends Controller
      */
     public function edit(Survey $survey)
     {
-        //
+        return view('survey.edit', compact('survey'));
     }
 
     /**
@@ -52,7 +56,14 @@ class SurveyController extends Controller
      */
     public function update(Request $request, Survey $survey)
     {
-        //
+        $data = $request->validate([
+            'judul' => 'required|string|max:255',
+            'link' => 'required|string',
+        ]);
+
+        $survey->update($data);
+
+        return to_route('survey.index')->with('message', 'Survey berhasil diupdate!');
     }
 
     /**
@@ -60,6 +71,8 @@ class SurveyController extends Controller
      */
     public function destroy(Survey $survey)
     {
-        //
+        $survey->delete();
+
+        return back()->with('message', 'Survey berhasil dihapus!');
     }
 }

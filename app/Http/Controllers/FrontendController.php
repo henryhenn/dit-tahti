@@ -7,9 +7,8 @@ use App\Models\Berita;
 use App\Models\DaftarBarang;
 use App\Models\GambarBeranda;
 use App\Models\Layanan;
+use App\Models\YoutubeBeranda;
 use App\Services\StripBeritaDivTagService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
@@ -22,10 +21,11 @@ class FrontendController extends Controller
             ->get();
         $barang = DaftarBarang::with('category')->latest()->take(4)->get();
         $gambar_beranda = GambarBeranda::latest()->get();
+        $youtube = YoutubeBeranda::latest()->first();
 
         (new StripBeritaDivTagService())->collection_strip_tag($berita);
 
-        return view('home.index', compact('berita', 'barang', 'gambar_beranda'));
+        return view('home.index', compact('berita', 'barang', 'gambar_beranda', 'youtube'));
     }
 
     public function berita()

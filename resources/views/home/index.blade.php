@@ -19,8 +19,8 @@
                 <!-- Slider indicators -->
                 <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
                     @foreach($gambar_beranda as $key=>$gambar)
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-                            data-carousel-slide-to="{{$key}}"></button>
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                                data-carousel-slide-to="{{$key}}"></button>
                     @endforeach
                 </div>
                 <!-- Slider controls -->
@@ -75,6 +75,9 @@
 
 
     <div class="container p-2 mx-auto mt-4 lg:p-0">
-    <iframe class="w-full h-96" src="https://www.youtube.com/embed/B2Mh9OLKOrQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="w-full h-96" src="{{$youtube->link}}" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
     </div>
 @endsection
