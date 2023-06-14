@@ -1,0 +1,47 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Tambah Data Struktur Organisasi Baru') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-center">
+                    <form method="post" action="{{route('struktur-organisasi.update', $struktur_organisasi)}}" enctype="multipart/form-data" class="w-1/2">
+                        @csrf
+                        @method('put')
+                        <div class="relative z-0 w-full mb-8 group">
+                            <input type="text" name="judul" id="judul"
+                                   value="{{old('judul', $struktur_organisasi->judul)}}"
+                                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('judul') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                   placeholder=" "/>
+                            <label for="judul"
+                                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Judul
+                            </label>
+                            @error('judul')
+                            <small class="text-red-500">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="relative z-0 w-full mb-8 group">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                   for="foto">Foto:</label>
+                            <input
+                                class="block w-full text-sm text-gray-900 border border-gray-300 @error('foto') border-red-500 @enderror rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                id="foto" name="foto" type="file">
+                            @error('foto')
+                            <small class="text-red-500">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <x-primary-button>
+                            {{__('Submit')}}
+                        </x-primary-button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

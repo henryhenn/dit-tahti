@@ -15,6 +15,7 @@ use App\Http\Controllers\StrukturOrganisasiController;
 use App\Http\Controllers\TugasFungsiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
+use App\Http\Controllers\YoutubeBerandaController;
 use App\Models\Berita;
 use App\Models\DaftarBarang;
 use App\Models\GambarBeranda;
@@ -70,9 +71,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role:Administrator|USER DITPOLAIRUD']);
         Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware(['role:Administrator|USER DITRESNARKOBA']);
 
-        Route::resource('struktur-organisasi', StrukturOrganisasiController::class);
+        Route::resource('struktur-organisasi', StrukturOrganisasiController::class)->except('show');
         Route::resource('visi-misi', VisiMisiController::class);
         Route::resource('tugas-fungsi', TugasFungsiController::class);
+        Route::resource('youtube-beranda', YoutubeBerandaController::class);
     });
 
 });
