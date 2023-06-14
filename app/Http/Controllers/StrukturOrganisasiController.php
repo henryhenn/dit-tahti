@@ -82,7 +82,7 @@ class StrukturOrganisasiController extends Controller
         Storage::delete($struktur_organisasi->foto);
         $struktur_organisasi->delete();
 
-        return to_route('struktur-organisasi.index')->with('message', 'Data Struktur Organisasi berhasil dihapus!');
+        return back()->with('message', 'Data Struktur Organisasi berhasil dihapus!');
 
     }
 }

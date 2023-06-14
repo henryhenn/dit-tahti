@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit Data Struktur Organisasi: ' . $struktur_organisasi->judul) }}
+            {{ __('Tambah Visi & Misi Baru') }}
         </h2>
     </x-slot>
 
@@ -9,12 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-center">
-                    <form method="post" action="{{route('struktur-organisasi.update', $struktur_organisasi)}}" enctype="multipart/form-data" class="w-1/2">
+                    <form method="post" action="{{route('visi-misi.update', $visi_misi)}}" enctype="multipart/form-data" class="w-1/2">
                         @csrf
                         @method('put')
                         <div class="relative z-0 w-full mb-8 group">
                             <input type="text" name="judul" id="judul"
-                                   value="{{old('judul', $struktur_organisasi->judul)}}"
+                                   value="{{old('judul', $visi_misi->judul)}}"
                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('judul') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                    placeholder=" "/>
                             <label for="judul"
@@ -26,12 +26,10 @@
                             @enderror
                         </div>
                         <div class="relative z-0 w-full mb-8 group">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                   for="foto">Foto:</label>
-                            <input
-                                class="block w-full text-sm text-gray-900 border border-gray-300 @error('foto') border-red-500 @enderror rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                id="foto" name="foto" type="file">
-                            @error('foto')
+                            <label for="deskripsi" class="block mb-2">Deskripsi: </label>
+                            <input id="deskripsi" type="hidden" value="{{old('deskripsi', $visi_misi->deskripsi)}}" name="deskripsi">
+                            <trix-editor input="deskripsi" class="@error('deskripsi') border-red-500 @enderror"></trix-editor>
+                            @error('deskripsi')
                             <small class="text-red-500">{{$message}}</small>
                             @enderror
                         </div>
