@@ -12,7 +12,8 @@
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
                             <img src="{{asset('storage/' . $gambar->gambar)}}"
                                  class="absolute block object-fill w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                            <h2 class="text-3xl px-2 py-3 rounded  bg-gray-200 font-bold text-cyan-400 absolute z-[99] bottom-1/4 left-1/2 -translate-x-28">{{$gambar->judul}}</h2>
+                            <<h2
+                                class="lg:text-3xl w-full text-md py-0 lg:translate-y-14 translate-y-4 font-bold  rounded text-amber-500 absolute z-[99] bottom-1/4 text-center">{{$gambar->judul}}</h2>
                         </div>
                     @endforeach
                 </div>
@@ -75,14 +76,13 @@
 
 
     <div class="container p-2 mx-auto mt-4 lg:p-0">
-        @if($youtube)
-
-        <iframe class="w-full h-96" src="{{$youtube->link}}" title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        @else
+        @forelse($youtube as $youtube)
+            <iframe class="w-full h-96 mb-4" src="{{$youtube->link}}" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+        @empty
             <h3 class="text-center text-2xl font-bold">Tidak ada tayangan terbaru.</h3>
-        @endif
+        @endforelse
     </div>
 @endsection

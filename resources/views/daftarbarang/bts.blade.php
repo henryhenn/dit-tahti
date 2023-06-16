@@ -1,8 +1,32 @@
 @extends('layouts.frontend')
 
 @section('content')
+    <div class="container mx-auto mt-2">
+        <div class="flex justify-between">
+            <div>
+                <img class="h-32" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Lambang_Polri.png" alt="">
+            </div>
+            <div>
+                <div class="mt-2 text-center">
+                    <h1 class="font-serif text-2xl font-bold">MOTO</h1>
+                    <div class="text-xs font-bold">
+                        <p>DALAM RANGKA TRANSFORMASI PENGELOLAAN BARANG BUKTI</p>
+                        <p>DITTAHTI POLDA NTB MENGEDEPANKAN PRINSIP - PRINSIP DASAR</p>
+                        <p>LEGALITAS, TRANSPARAN, PROPORSIONAL, AKUNTABEL, EFEKTIF DAN EFISIEN</p>
+                        <p>KAMI SIAP MELAYANI DENGAN TULUS DAN IKHLAS BERBASIS TEKNOLOGI</p>
+                        <p>SEKIAN DAN TERIMA KASIH</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img class="h-32" src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Lambang_Polda_NTB.png"
+                     alt="">
+            </div>
+        </div>
+    </div>
+
     <div class="container mx-auto">
-        <div class="flex mt-2 rounded-md bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 h-14">
+        <div class="flex mt-2 rounded-md bg-gradient-to-br from-orange-500 via-red-700 to-red-700 h-14">
             <h1 class="w-full pt-2 pl-2 text-xs font-bold text-white lg:pt-3 lg:text-2xl">BARANG TEMUAN SEBAGAI BARANG
                 BUKTI</h1>
             <div class="grid w-full p-2 place-items-end">
@@ -22,7 +46,7 @@
                                placeholder="Search" required>
                     </div>
                     <button type="submit"
-                            class="p-2.5 ml-2 text-sm font-medium text-white bg-cyan-800 rounded-lg border border-white hover:bg-cyan-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            class="p-2.5 ml-2 text-sm font-medium text-white bg-orange-800 rounded-lg border border-white hover:bg-orange-300 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                              xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -63,7 +87,7 @@
             <div class="w-full">
                 <div class="grid grid-cols-2 gap-4 p-4 lg:grid-cols-4">
                     @foreach($barangs as $barang)
-                        <div class="h-64 p-1 mb-2 border border-blue-400 rounded-md">
+                        <div class="h-64 p-1 mb-2 border border-orange-400 rounded-md">
                             <img class="object-cover w-full rounded-md h-44"
                                  src="{{asset('storage/' . $barang->gambar1)}}"
                                  alt="">
@@ -76,7 +100,7 @@
                             </div>
                             <button data-modal-target="defaultModal{{$barang->id}}"
                                     data-modal-toggle="defaultModal{{$barang->id}}" type="button"
-                                    class="text-white w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2">
+                                    class="text-white w-full bg-gradient-to-r from-orange-500 via-red-700 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-400 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2">
                                 Detail Barang
                             </button>
                         </div>

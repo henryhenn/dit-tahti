@@ -2,7 +2,7 @@
     <div class="w-full">
         <div class="grid grid-cols-2 p-2 gap-y-6 gap-x-2 lg:p-4 lg:gap-4 lg:grid lg:grid-cols-4">
             @foreach($barang as $barang)
-                <div class="p-1 border border-blue-400 rounded-md h-52 lg:h-64">
+                <div class="p-1 border border-orange-400 rounded-md h-52 lg:h-64">
                     <img class="object-cover w-full h-32 rounded-md lg:h-44"
                          src="{{asset('storage/' . $barang->gambar1)}}"
                          alt="">
@@ -14,7 +14,7 @@
                     </div>
                     <button data-modal-target="defaultModal{{$barang->id}}"
                             data-modal-toggle="defaultModal{{$barang->id}}" type="button"
-                            class="text-white w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2">
+                            class="text-white w-full bg-gradient-to-r from-orange-500 via-red-700 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-400 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2">
                         Detail Barang
                     </button>
                 </div>

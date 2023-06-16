@@ -77,6 +77,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('tugas-fungsi', TugasFungsiController::class);
         Route::resource('youtube-beranda', YoutubeBerandaController::class)->except('show');
         Route::resource('survey', SurveyController::class)->except('show');
+
+        Route::get('ditreskrimum-print', [DitreskrimumController::class, 'print'])->name('ditreskrimum.print');
+        Route::get('ditlantas-print', [DitreskrimumController::class, 'print'])->name('ditreskrimum.print');
     });
 
 });

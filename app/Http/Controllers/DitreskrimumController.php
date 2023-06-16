@@ -146,4 +146,14 @@ class DitreskrimumController extends Controller
 
         return back()->with('message', 'Data Ditreskrimum berhasil dihapus!');
     }
+
+    public function print()
+    {
+        $ditreskrimum = DaftarBarang::query()
+            ->where('unit', '=', 'DITRESKRIMUM')
+            ->orderBy('nama_barang_bukti', 'asc')
+            ->get();
+
+        return view('print.ditreskrimum', compact('ditreskrimum'));
+    }
 }

@@ -24,7 +24,7 @@ class FrontendController extends Controller
             ->get();
         $barang = DaftarBarang::with('category')->latest()->take(4)->get();
         $gambar_beranda = GambarBeranda::latest()->get();
-        $youtube = YoutubeBeranda::latest()->first();
+        $youtube = YoutubeBeranda::latest()->take(2)->get();
 
         (new StripBeritaDivTagService())->collection_strip_tag($berita);
 
