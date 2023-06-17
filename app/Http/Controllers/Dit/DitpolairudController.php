@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dit;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DitpolairudRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use Illuminate\Http\Request;
@@ -41,25 +43,9 @@ class DitpolairudController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DitpolairudRequest $request)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'unit' => 'required',
-            'nama_barang_bukti' => 'required|string',
-            'jumlah' => 'required|string',
-            'no_laporan_polisi' => 'required|string',
-            'penetapan_pengadilan' => 'required|string',
-            'tempat_penyimpanan' => 'required|string',
-            'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
-            'nama_pemilik' => 'required|string',
-            'keterangan' => 'required|string',
-            'gambar1' => 'required|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'identitas_barang_bukti' => 'nullable|string'
-        ]);
+        $data = $request->validated();
 
         $data['gambar1'] = $request->file('gambar1')->store('ditpolairud');
         $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditpolairud') : null;
@@ -93,38 +79,21 @@ class DitpolairudController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DaftarBarang $ditpolairud)
+    public function update(DitpolairudRequest $request, DaftarBarang $ditpolairud)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'unit' => 'required',
-            'nama_barang_bukti' => 'required|string',
-            'jumlah' => 'required|string',
-            'no_laporan_polisi' => 'required|string',
-            'penetapan_pengadilan' => 'required|string',
-            'tempat_penyimpanan' => 'required|string',
-            'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
-            'nama_pemilik' => 'required|string',
-            'keterangan' => 'required|string',
-            'gambar1' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'identitas_barang_bukti' => 'nullable|string'
-        ]);
+        $data = $request->validated();
 
         if ($request->hasFile('gambar1')) {
             Storage::delete($ditpolairud->gambar1);
+
             $data['gambar1'] = $request->file('gambar1')->store('ditpolairud');
         } else if ($request->hasFile('gambar2')) {
-            if ($ditpolairud->gambar2) {
-                Storage::delete($ditpolairud->gambar2);
-            }
+            Storage::delete($ditpolairud->gambar2);
+
             $data['gambar2'] = $request->file('gambar2')->store('ditpolairud');
         } else if ($request->hasFile('gambar3')) {
-            if ($ditpolairud->gambar3) {
-                Storage::delete($ditpolairud->gambar3);
-            }
+            Storage::delete($ditpolairud->gambar3);
+
             $data['gambar3'] = $request->file('gambar3')->store('ditpolairud');
         }
 
@@ -141,9 +110,9 @@ class DitpolairudController extends Controller
         $ditpolairud->delete();
 
         Storage::delete($ditpolairud->gambar1);
-        $ditpolairud->gambar2 ? Storage::delete($ditpolairud->gambar2) : null;
-        $ditpolairud->gambar3 ? Storage::delete($ditpolairud->gambar3) : null;
+        Storage::delete($ditpolairud->gambar2);
+        Storage::delete($ditpolairud->gambar3);
 
-        return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
+        return back()->with('message', 'Data Ditpolairud berhasil dihapus!');
     }
 }

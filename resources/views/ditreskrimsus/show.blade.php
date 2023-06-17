@@ -38,6 +38,8 @@
                     <p class="mt-6 ">Identitas barang bukti: <span class="font-bold">{{$ditreskrimsus->identitas_barang_bukti ?? "-"}}</span></p>
                     <p class="mt-6 ">No. Laporan Polisi: <span
                             class="font-bold">{{$ditreskrimsus->no_laporan_polisi}}</span></p>
+                    <p class="mt-6 ">No. SP SITA: <span
+                            class="font-bold">{{$ditreskrimsus->no_sp_sita}}</span></p>
                     <p class="mt-6 ">Penetapan Pengadilan: <span
                             class="font-bold">{{$ditreskrimsus->penetapan_pengadilan}}</span></p>
                     <p class="mt-6 ">Tempat Penyimpanan: <span

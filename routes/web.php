@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\AturanController;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\DitreskrimsusController;
-use App\Http\Controllers\DitlantasController;
-use App\Http\Controllers\DitpolairudController;
-use App\Http\Controllers\DitreskrimumController;
-use App\Http\Controllers\DitresnarkobaController;
+use App\Http\Controllers\Dit\DitlantasController;
+use App\Http\Controllers\Dit\DitpolairudController;
+use App\Http\Controllers\Dit\DitreskrimsusController;
+use App\Http\Controllers\Dit\DitreskrimumController;
+use App\Http\Controllers\Dit\DitresnarkobaController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GambarBerandaController;
 use App\Http\Controllers\LayananController;
@@ -18,7 +18,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\YoutubeBerandaController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +78,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('survey', SurveyController::class)->except('show');
 
         Route::get('ditreskrimum-print', [DitreskrimumController::class, 'print'])->name('ditreskrimum.print');
-        Route::get('ditlantas-print', [DitreskrimumController::class, 'print'])->name('ditreskrimum.print');
+        Route::get('ditlantas-print', [DitreskrimumController::class, 'print'])->name('ditlantas.print');
     });
 
 });

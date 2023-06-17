@@ -37,6 +37,10 @@
                     <p class="mt-6 ">Identitas Kendaraan: <span class="font-bold">{{$ditlantas->identitas_kendaraan}}</span></p>
                     <p class="mt-6 ">No. Surat Tilang: <span
                             class="font-bold">{{$ditlantas->no_surat_tilang}}</span></p>
+                    <p class="mt-6 ">NOKA/NOSIN: <span
+                            class="font-bold">{{$ditlantas->noka_nosin}}</span></p>
+                    <p class="mt-6 ">BLANGKO TILANG: <span
+                            class="font-bold">{{$ditlantas->blangko_tilang}}</span></p>
                     <p class="mt-6 ">Penyidik: <span
                             class="font-bold">{{$ditlantas->penyidik}}</span></p>
                     <p class="mt-6 ">Kondisi: <span

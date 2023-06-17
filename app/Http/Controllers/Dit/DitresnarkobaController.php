@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dit;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DitresnarkobaRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use Illuminate\Http\Request;
@@ -41,29 +43,13 @@ class DitresnarkobaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DitresnarkobaRequest $request)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'unit' => 'required',
-            'nama_barang_bukti' => 'required|string',
-            'jumlah' => 'required|string',
-            'no_laporan_polisi' => 'required|string',
-            'penetapan_kejaksaan' => 'required|string',
-            'tempat_penyimpanan' => 'required|string',
-            'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
-            'nama_pemilik' => 'required|string',
-            'keterangan' => 'required|string',
-            'gambar1' => 'required|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'identitas_barang_bukti' => 'nullable|string'
-        ]);
+        $data = $request->validated();
 
         $data['gambar1'] = $request->file('gambar1')->store('ditresnarkoba');
-        $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditresnarkoba') : null;
-        $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditresnarkoba') : null;
+        $data['gambar2'] = $request->file('gambar2')->store('ditresnarkoba');
+        $data['gambar3'] = $request->file('gambar3')->store('ditresnarkoba');
 
         DaftarBarang::create($data);
 
@@ -93,7 +79,7 @@ class DitresnarkobaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DaftarBarang $ditresnarkoba)
+    public function update(DitresnarkobaRequest $request, DaftarBarang $ditresnarkoba)
     {
         $data = $request->validate([
             'category_id' => 'required',
@@ -107,24 +93,24 @@ class DitresnarkobaController extends Controller
             'kondisi' => 'required|string',
             'nama_pemilik' => 'required|string',
             'keterangan' => 'required|string',
-            'gambar1' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'identitas_barang_bukti' => 'nullable|string'
+            'gambar1' => [request()->routeIs('ditresnarkoba.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar2' => [request()->routeIs('ditresnarkoba.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar3' => [request()->routeIs('ditresnarkoba.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'identitas_barang_bukti' => 'nullable|string',
+            'no_sp_sita' => 'required|string'
         ]);
 
         if ($request->hasFile('gambar1')) {
             Storage::delete($ditresnarkoba->gambar1);
+
             $data['gambar1'] = $request->file('gambar1')->store('ditresnarkoba');
         } else if ($request->hasFile('gambar2')) {
-            if ($ditresnarkoba->gambar2) {
-                Storage::delete($ditresnarkoba->gambar2);
-            }
+            Storage::delete($ditresnarkoba->gambar2);
+
             $data['gambar2'] = $request->file('gambar2')->store('ditresnarkoba');
         } else if ($request->hasFile('gambar3')) {
-            if ($ditresnarkoba->gambar3) {
-                Storage::delete($ditresnarkoba->gambar3);
-            }
+            Storage::delete($ditresnarkoba->gambar3);
+
             $data['gambar3'] = $request->file('gambar3')->store('ditresnarkoba');
         }
 
@@ -141,9 +127,9 @@ class DitresnarkobaController extends Controller
         $ditresnarkoba->delete();
 
         Storage::delete($ditresnarkoba->gambar1);
-        $ditresnarkoba->gambar2 ? Storage::delete($ditresnarkoba->gambar2) : null;
-        $ditresnarkoba->gambar3 ? Storage::delete($ditresnarkoba->gambar3) : null;
+        Storage::delete($ditresnarkoba->gambar2);
+        Storage::delete($ditresnarkoba->gambar3);
 
-        return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
+        return back()->with('message', 'Data Ditresnarkoba berhasil dihapus!');
     }
 }

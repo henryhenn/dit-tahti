@@ -64,6 +64,32 @@
                             @enderror
                         </div>
                         <div class="relative z-0 w-full mb-8 group">
+                            <input type="text" name="noka_nosin" id="noka_nosin"
+                                   value="{{old('noka_nosin')}}"
+                                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('noka_nosin') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                   placeholder=" "/>
+                            <label for="noka_nosin"
+                                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                NOKA/NOSIN
+                            </label>
+                            @error('noka_nosin')
+                            <small class="text-red-500">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="relative z-0 w-full mb-8 group">
+                            <input type="text" name="blangko_tilang" id="blangko_tilang"
+                                   value="{{old('blangko_tilang')}}"
+                                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('blangko_tilang') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                   placeholder=" "/>
+                            <label for="blangko_tilang"
+                                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Blangko Tilang
+                            </label>
+                            @error('blangko_tilang')
+                            <small class="text-red-500">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="relative z-0 w-full mb-8 group">
                             <input type="text" name="penyidik" id="penyidik"
                                    value="{{old('penyidik')}}"
                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 @error('enyidik') border-red-500 @enderror appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"

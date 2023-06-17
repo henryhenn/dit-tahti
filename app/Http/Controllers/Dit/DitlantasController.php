@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dit;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DitlantasRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class DitlantasController extends Controller
@@ -41,26 +42,13 @@ class DitlantasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DitlantasRequest $request)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'unit' => 'required',
-            'nama_kendaraan' => 'required|string',
-            'identitas_kendaraan' => 'required|string',
-            'no_surat_tilang' => 'required|string',
-            'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
-            'nama_pemilik' => 'required|string',
-            'keterangan' => 'required|string',
-            'gambar1' => 'required|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-        ]);
+        $data = $request->validated();
 
         $data['gambar1'] = $request->file('gambar1')->store('ditlantas');
-        $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditlantas') : null;
-        $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditlantas') : null;
+        $data['gambar2'] = $request->file('gambar2')->store('ditlantas');
+        $data['gambar3'] = $request->file('gambar3')->store('ditlantas');
 
         DaftarBarang::create($data);
 
@@ -90,35 +78,21 @@ class DitlantasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DaftarBarang $ditlantas)
+    public function update(DitlantasRequest $request, DaftarBarang $ditlantas)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'unit' => 'required',
-            'nama_kendaraan' => 'required|string',
-            'identitas_kendaraan' => 'required|string',
-            'no_surat_tilang' => 'required|string',
-            'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
-            'nama_pemilik' => 'required|string',
-            'keterangan' => 'required|string',
-            'gambar1' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-        ]);
+        $data = $request->validated();
 
         if ($request->hasFile('gambar1')) {
             Storage::delete($ditlantas->gambar1);
+
             $data['gambar1'] = $request->file('gambar1')->store('ditlantas');
         } else if ($request->hasFile('gambar2')) {
-            if ($ditlantas->gambar2) {
-                Storage::delete($ditlantas->gambar2);
-            }
+            Storage::delete($ditlantas->gambar2);
+
             $data['gambar2'] = $request->file('gambar2')->store('ditlantas');
         } else if ($request->hasFile('gambar3')) {
-            if ($ditlantas->gambar3) {
-                Storage::delete($ditlantas->gambar3);
-            }
+            Storage::delete($ditlantas->gambar3);
+
             $data['gambar3'] = $request->file('gambar3')->store('ditlantas');
         }
 

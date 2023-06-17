@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dit;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DitreskrimumRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use Illuminate\Http\Request;
@@ -22,7 +24,7 @@ class DitreskrimumController extends Controller
         $ditreskrimum = DaftarBarang::query()
             ->select('id', 'nama_barang_bukti', 'jumlah', 'no_laporan_polisi')
             ->where('unit', '=', 'DITRESKRIMUM')
-            ->orderBy('nama_barang_bukti', 'asc')
+            ->orderBy('nama_barang_bukti')
             ->get();
 
         return view('ditreskrimum.index', compact('ditreskrimum'));
@@ -41,29 +43,13 @@ class DitreskrimumController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DitreskrimumRequest $request)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'unit' => 'required',
-            'nama_barang_bukti' => 'required|string',
-            'jumlah' => 'required|string',
-            'no_laporan_polisi' => 'required|string',
-            'penetapan_pengadilan' => 'required|string',
-            'tempat_penyimpanan' => 'required|string',
-            'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
-            'nama_pemilik' => 'required|string',
-            'keterangan' => 'required|string',
-            'gambar1' => 'required|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'identitas_barang_bukti' => 'nullable|string'
-        ]);
+        $data = $request->validated();
 
         $data['gambar1'] = $request->file('gambar1')->store('ditreskrimum');
-        $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditreskrimum') : null;
-        $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditreskrimum') : null;
+        $data['gambar2'] = $request->file('gambar2')->store('ditreskrimum');
+        $data['gambar3'] = $request->file('gambar3')->store('ditreskrimum');
 
         DaftarBarang::create($data);
 
@@ -93,38 +79,21 @@ class DitreskrimumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DaftarBarang $ditreskrimum)
+    public function update(DitreskrimumRequest $request, DaftarBarang $ditreskrimum)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'unit' => 'required',
-            'nama_barang_bukti' => 'required|string',
-            'jumlah' => 'required|string',
-            'no_laporan_polisi' => 'required|string',
-            'penetapan_pengadilan' => 'required|string',
-            'tempat_penyimpanan' => 'required|string',
-            'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
-            'nama_pemilik' => 'required|string',
-            'keterangan' => 'required|string',
-            'gambar1' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar2' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'gambar3' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'identitas_barang_bukti' => 'nullable|string'
-        ]);
+        $data = $request->validated();
 
         if ($request->hasFile('gambar1')) {
             Storage::delete($ditreskrimum->gambar1);
+
             $data['gambar1'] = $request->file('gambar1')->store('ditreskrimum');
         } else if ($request->hasFile('gambar2')) {
-            if ($ditreskrimum->gambar2) {
-                Storage::delete($ditreskrimum->gambar2);
-            }
+            Storage::delete($ditreskrimum->gambar2);
+
             $data['gambar2'] = $request->file('gambar2')->store('ditreskrimum');
         } else if ($request->hasFile('gambar3')) {
-            if ($ditreskrimum->gambar3) {
-                Storage::delete($ditreskrimum->gambar3);
-            }
+            Storage::delete($ditreskrimum->gambar3);
+
             $data['gambar3'] = $request->file('gambar3')->store('ditreskrimum');
         }
 
@@ -141,8 +110,8 @@ class DitreskrimumController extends Controller
         $ditreskrimum->delete();
 
         Storage::delete($ditreskrimum->gambar1);
-        $ditreskrimum->gambar2 ? Storage::delete($ditreskrimum->gambar2) : null;
-        $ditreskrimum->gambar3 ? Storage::delete($ditreskrimum->gambar3) : null;
+        Storage::delete($ditreskrimum->gambar2);
+        Storage::delete($ditreskrimum->gambar3);
 
         return back()->with('message', 'Data Ditreskrimum berhasil dihapus!');
     }

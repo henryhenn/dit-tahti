@@ -38,6 +38,8 @@
                     <p class="mt-6 ">Identitas barang bukti: <span class="font-bold">{{$ditresnarkoba->identitas_barang_bukti ?? "-"}}</span></p>
                     <p class="mt-6 ">No. Laporan Polisi: <span
                             class="font-bold">{{$ditresnarkoba->no_laporan_polisi}}</span></p>
+                    <p class="mt-6 ">No. SP SITA: <span
+                            class="font-bold">{{$ditresnarkoba->no_sp_sita}}</span></p>
                     <p class="mt-6 ">Penetapan Pengadilan: <span
                             class="font-bold">{{$ditresnarkoba->penetapan_kejaksaan}}</span></p>
                     <p class="mt-6 ">Tempat Penyimpanan: <span
