@@ -41,7 +41,7 @@ class GambarBerandaController extends Controller
     {
         $data = $request->validate([
             'gambar' => 'required|file|mimes:jpg,jpeg,png|max:2048',
-            'judul' => 'required|string'
+            'judul' => 'nullable|string'
         ]);
 
         $data['gambar'] = $request->file('gambar')->store('gambar-beranda');
@@ -74,7 +74,7 @@ class GambarBerandaController extends Controller
     {
         $data = $request->validate([
             'gambar' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'judul' => 'required|string'
+            'judul' => 'nullable|string'
         ]);
 
         if ($request->hasFile('gambar')) {
