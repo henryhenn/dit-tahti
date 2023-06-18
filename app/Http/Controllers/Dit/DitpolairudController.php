@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DitpolairudRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
-use App\Services\PrintDatabaseService;
+use App\Services\ExportDatabaseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -119,6 +119,11 @@ class DitpolairudController extends Controller
 
     public function print()
     {
-        return (new PrintDatabaseService())->print($unit = "DITPOLAIRUD");
+        return ExportDatabaseService::print("DITRESNARKOBA");
+    }
+
+    public function export()
+    {
+        return ExportDatabaseService::excel("dit", "DITPOLAIRUD", "Ditpolairud");
     }
 }

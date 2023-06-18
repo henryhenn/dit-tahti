@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Dit;
 
+use App\Exports\DitExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitlantasRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
-use App\Services\PrintDatabaseService;
+use App\Services\ExportDatabaseService;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DitlantasController extends Controller
 {
@@ -110,14 +112,19 @@ class DitlantasController extends Controller
         $ditlantas->delete();
 
         Storage::delete($ditlantas->gambar1);
-        $ditlantas->gambar2 ? Storage::delete($ditlantas->gambar2) : null;
-        $ditlantas->gambar3 ? Storage::delete($ditlantas->gambar3) : null;
+        Storage::delete($ditlantas->gambar2);
+        Storage::delete($ditlantas->gambar3);
 
-        return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
+        return back()->with('message', 'Data Ditlantas berhasil dihapus!');
     }
 
     public function print()
     {
-        return (new PrintDatabaseService())->print($unit = "DITLANTAS", $view = "ditlantas");
+        return ExportDatabaseService::print($unit = "DITLANTAS", $view = "ditlantas");
+    }
+
+    public function export()
+    {
+        return ExportDatabaseService::excel("ditlantas", "DITLANTAS", "Ditlantas");
     }
 }

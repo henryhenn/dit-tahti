@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
         Route::get('ditresnarkoba-print', [DitresnarkobaController::class, 'print'])->name('ditresnarkoba.print');
 
         Route::get('ditreskrimum-export', [DitreskrimumController::class, 'export'])->name('ditreskrimum.export');
-        Route::get('ditlantas-export', [DitreskrimumController::class, 'export'])->name('ditlantas.export');
+        Route::get('ditlantas-export', [DitlantasController::class, 'export'])->name('ditlantas.export');
         Route::get('ditpolairud-export', [DitpolairudController::class, 'export'])->name('ditpolairud.export');
         Route::get('ditreskrimsus-export', [DitreskrimsusController::class, 'export'])->name('ditreskrimsus.export');
         Route::get('ditresnarkoba-export', [DitresnarkobaController::class, 'export'])->name('ditresnarkoba.export');
