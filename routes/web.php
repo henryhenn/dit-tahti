@@ -17,6 +17,7 @@ use App\Http\Controllers\TugasFungsiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\YoutubeBerandaController;
+use App\Models\Ditlantas;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('berita/{berita:id}', 'detailBerita')->name('berita.detail');
     Route::get('daftarbarang', 'daftarBarang');
     Route::get('dbt', 'dbt');
+    Route::get('dbt/ditlantas', 'ditlantas');
     Route::get('bts', 'bts');
     Route::get('aturan', 'aturan')->name('aturan.frontend');
     Route::get('layanan', 'layanan');
@@ -78,7 +80,16 @@ Route::middleware('auth')->group(function () {
         Route::resource('survey', SurveyController::class)->except('show');
 
         Route::get('ditreskrimum-print', [DitreskrimumController::class, 'print'])->name('ditreskrimum.print');
-        Route::get('ditlantas-print', [DitreskrimumController::class, 'print'])->name('ditlantas.print');
+        Route::get('ditlantas-print', [DitlantasController::class, 'print'])->name('ditlantas.print');
+        Route::get('ditpolairud-print', [DitpolairudController::class, 'print'])->name('ditpolairud.print');
+        Route::get('ditreskrimsus-print', [DitreskrimsusController::class, 'print'])->name('ditreskrimsus.print');
+        Route::get('ditresnarkoba-print', [DitresnarkobaController::class, 'print'])->name('ditresnarkoba.print');
+
+        Route::get('ditreskrimum-export', [DitreskrimumController::class, 'export'])->name('ditreskrimum.export');
+        Route::get('ditlantas-export', [DitreskrimumController::class, 'export'])->name('ditlantas.export');
+        Route::get('ditpolairud-export', [DitpolairudController::class, 'export'])->name('ditpolairud.export');
+        Route::get('ditreskrimsus-export', [DitreskrimsusController::class, 'export'])->name('ditreskrimsus.export');
+        Route::get('ditresnarkoba-export', [DitresnarkobaController::class, 'export'])->name('ditresnarkoba.export');
     });
 
 });

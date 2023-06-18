@@ -59,7 +59,7 @@
 
         <div class="grid grid-cols-2 gap-1 p-2 lg:mt-3 lg:flex">
             <a
-                href="?unit=ditreskrimum"
+                href="/dbt/?unit=ditreskrimum"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
               class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -67,7 +67,7 @@
          </span>
             </a>
             <a
-                href="ditlantas"
+                href="dbt/ditlantas"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
               class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -75,7 +75,7 @@
          </span>
             </a>
             <a
-                href="?unit=ditreskrimsus"
+                href="/dbt/?unit=ditreskrimsus"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
               class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -83,7 +83,7 @@
          </span>
             </a>
             <a
-                href="?unit=ditresnarkoba"
+                href="/dbt/?unit=ditresnarkoba"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
               class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -91,7 +91,7 @@
          </span>
             </a>
             <a
-                href="?unit=ditpolairud"
+                href="/dbt/?unit=ditpolairud"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
               class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -101,8 +101,6 @@
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <div class="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-            </div>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
                     class="text-xs text-yellow-300 uppercase bg-gradient-to-r from-orange-500 via-red-700 to-red-700 dark:bg-gray-700 dark:text-gray-400">
@@ -114,19 +112,16 @@
                         DAFTAR BARANG BUKTI
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        NO.LAP.POL
+                        NOKA/NOSIN
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        NO.SP.SITA
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        PENETAPAN PENGADILAN
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        PENYIDIK
+                        BLANGKO TILANG
                     </th>
                     <th scope="col" class="px-6 py-3">
                         TEMPAT PENYIMPANAN
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        PETUGAS PENYIDIK
                     </th>
                     <th scope="col" class="px-6 py-3">
                         NAMA PEMILIK
@@ -146,29 +141,25 @@
                             {{$key+1}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}
+                            {{$barang->nama_kendaraan}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$barang->no_laporan_polisi}}
+                            {{$barang->noka_nosin}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$barang->no_sp_sita}}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{$barang->penetapan_pengadilan ?? $barang->penetapan_kejaksaan}}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{$barang->penyidik}}
+                            {{$barang->no_surat_tilang}}
                         </td>
                         <td class="px-6 py-4">
                             {{$barang->tempat_penyimpanan}}
                         </td>
                         <td class="px-6 py-4">
+                            {{$barang->penyidik}}
+                        </td>
+                        <td class="px-6 py-4">
                             {{$barang->nama_pemilik}}
                         </td>
                         <td class="px-6 py-4">
-                            <button data-modal-target="defaultModal{{$barang->id}}"
-                                    data-modal-toggle="defaultModal{{$barang->id}}"
+                            <button data-modal-target="defaultModal{{$barang->id}}" data-modal-toggle="defaultModal{{$barang->id}}"
                                     class=""
                                     type="button">
                                 Lihat Foto
@@ -202,13 +193,13 @@
                                         <div class="p-2 space-y-6">
                                             <div class="gap-1 lg:flex">
                                                 <img class="w-full mb-2 lg:h-36 h-44"
-                                                     src="{{asset('storage/'.$barang->gambar1)}}"
+                                                     src="{{asset('storage/' . $barang->gambar1)}}"
                                                      alt="">
                                                 <img class="w-full mb-2 lg:h-36 h-44"
-                                                     src="{{asset('storage/'.$barang->gambar2)}}"
+                                                     src="{{asset('storage/' . $barang->gambar2)}}"
                                                      alt="">
                                                 <img class="w-full lg:h-36 h-44"
-                                                     src="{{asset('storage/'.$barang->gambar3)}}"
+                                                     src="{{asset('storage/' . $barang->gambar3)}}"
                                                      alt="">
                                             </div>
                                         </div>
@@ -217,7 +208,7 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            -
+                            {!! $barang->keterangan !!}
                         </td>
                     </tr>
                 @empty

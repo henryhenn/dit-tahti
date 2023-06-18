@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DitreskrimsusRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
+use App\Services\PrintDatabaseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -115,5 +116,10 @@ class DitreskrimsusController extends Controller
         Storage::delete($ditreskrimsus->gambar3);
 
         return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
+    }
+
+    public function print()
+    {
+        return (new PrintDatabaseService())->print($unit = "DITRESKRIMSUS");
     }
 }

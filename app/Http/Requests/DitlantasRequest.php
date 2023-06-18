@@ -35,7 +35,7 @@ class DitlantasRequest extends FormRequest
             'gambar2' => [request()->routeIs('ditlantas.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
             'gambar3' => [request()->routeIs('ditlantas.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
             'noka_nosin' => 'required|string|max:255',
-            'blangko_tilang' => 'required|string|max:255',
+            'tempat_penyimpanan' => 'required|string|max:255',
         ];
     }
 }

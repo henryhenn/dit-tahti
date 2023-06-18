@@ -71,6 +71,19 @@ class FrontendController extends Controller
         return view('daftarbarang.dbt', compact('barangs'));
     }
 
+    public function ditlantas()
+    {
+        $barangs = DaftarBarang::query()
+            ->filterbybarangtemuancategory()
+            ->searchbynama(request('search'))
+            ->where('unit', 'DITLANTAS')
+            ->latest()
+            ->paginate(8)
+            ->withQueryString();
+
+        return view('daftarbarang.dbt-ditlantas', compact('barangs'));
+    }
+
     public function bts()
     {
         $barangs = DaftarBarang::query()

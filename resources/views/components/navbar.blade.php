@@ -12,7 +12,8 @@
                 <div class="lg:mb-2 mb-0.5">
                 <span
                     class="self-center text-xs font-semibold text-yellow-300 lg:text-2xl whitespace-nowrap dark:text-yellow-300">STARBUK DITTAHTI POLDA NTB</span>
-                    <p class="text-[6px] lg:text-xs text-yellow-300">SISTEM TATA ADMINISTRASI DAN REGISTRASI BARANG BUKTI DITTAHTI POLDA NTB</p>
+                    <p class="text-[6px] lg:text-xs text-yellow-300">SISTEM TATA ADMINISTRASI DAN REGISTRASI BARANG
+                        BUKTI DITTAHTI POLDA NTB</p>
                 </div>
             </a>
             <button data-collapse-toggle="navbar-multi-level" type="button"

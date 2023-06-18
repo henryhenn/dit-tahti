@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Dit;
 
+use App\Exports\DitreskrimumExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitreskrimumRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
+use App\Services\PrintDatabaseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DitreskrimumController extends Controller
 {
@@ -118,11 +121,11 @@ class DitreskrimumController extends Controller
 
     public function print()
     {
-        $ditreskrimum = DaftarBarang::query()
-            ->where('unit', '=', 'DITRESKRIMUM')
-            ->orderBy('nama_barang_bukti', 'asc')
-            ->get();
+        return (new PrintDatabaseService())->print($unit = "DITRESKRIMUM");
+    }
 
-        return view('print.ditreskrimum', compact('ditreskrimum'));
+    public function export()
+    {
+        return Excel::download(new DitreskrimumExport, 'Ditreskrimum.xlsx');
     }
 }

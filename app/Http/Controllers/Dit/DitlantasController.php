@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DitlantasRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
+use App\Services\PrintDatabaseService;
 use Illuminate\Support\Facades\Storage;
 
 class DitlantasController extends Controller
@@ -113,5 +114,10 @@ class DitlantasController extends Controller
         $ditlantas->gambar3 ? Storage::delete($ditlantas->gambar3) : null;
 
         return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
+    }
+
+    public function print()
+    {
+        return (new PrintDatabaseService())->print($unit = "DITLANTAS", $view = "ditlantas");
     }
 }

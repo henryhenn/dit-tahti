@@ -25,74 +25,67 @@
     <div class="relative mt-14">
         <table border="2" class="border-2 w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead
-                    class="text-s uppercase border-2">
+                class="text-s uppercase border-2">
             <tr>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     #
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     DAFTAR BARANG BUKTI
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     NO. LAP POL
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     NO. SP SITA
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     PENETAPAN PENGADILAN
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     PENYIDIK
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     TEMPAT PENYIMPANAN
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     NAMA PEMILIK
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    FOTO BB
-                </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-3 py-3">
                     KET
                 </th>
             </tr>
             </thead>
             <tbody class="border-2">
-            @foreach($ditreskrimum as $key => $ditreskrimum)
+            @foreach($data as $key => $data)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        class="px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{$key+1}}
                     </th>
-                    <td class="px-6 py-4">
-                        {{$ditreskrimum->nama_barang_bukti}}
+                    <td class="px-3 py-3">
+                        {{$data->nama_barang_bukti}}
                     </td>
-                    <td class="px-6 py-4">
-                        {{$ditreskrimum->no_laporan_polisi}}
+                    <td class="px-3 py-3">
+                        {{$data->no_laporan_polisi}}
                     </td>
-                    <td class="px-6 py-4">
-                        {{$ditreskrimum->no_sp_sita}}
+                    <td class="px-3 py-3">
+                        {{$data->no_sp_sita}}
                     </td>
-                    <td class="px-6 py-4">
-                        {{$ditreskrimum->penetapan_pengadilan}}
+                    <td class="px-3 py-3">
+                        {{$data->penetapan_pengadilan}}
                     </td>
-                    <td class="px-6 py-4">
-                        {{$ditreskrimum->penyidik}}
+                    <td class="px-3 py-3">
+                        {{$data->penyidik}}
                     </td>
-                    <td class="px-6 py-4">
-                        {{$ditreskrimum->tempat_penyimpanan}}
+                    <td class="px-3 py-3">
+                        {{$data->tempat_penyimpanan}}
                     </td>
-                    <td class="px-6 py-4">
-                        {{$ditreskrimum->nama_pemilik}}
+                    <td class="px-3 py-3">
+                        {{$data->nama_pemilik}}
                     </td>
-                    <td class="px-6 py-4">
-                        <div class="flex flex-col gap-2">
-                            <img src="{{asset('storage/' . $ditreskrimum->gambar1)}}" class="w-full" alt="">
-                            <img src="{{asset('storage/' . $ditreskrimum->gambar2)}}" class="w-full" alt="">
-                            <img src="{{asset('storage/' . $ditreskrimum->gambar3)}}" class="w-full" alt="">
-                        </div>
+                    <td class="px-3 py-3">
+                        {!! $data->keterangan !!}
                     </td>
                 </tr>
             @endforeach

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DitresnarkobaRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
+use App\Services\PrintDatabaseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -131,5 +132,10 @@ class DitresnarkobaController extends Controller
         Storage::delete($ditresnarkoba->gambar3);
 
         return back()->with('message', 'Data Ditresnarkoba berhasil dihapus!');
+    }
+
+    public function print()
+    {
+        return (new PrintDatabaseService())->print($unit = "DITRESNARKOBA");
     }
 }
