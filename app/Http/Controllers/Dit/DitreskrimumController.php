@@ -119,7 +119,7 @@ class DitreskrimumController extends Controller
 
     public function print()
     {
-        return ExportDatabaseService::print("DITRESNARKOBA");
+        return ExportDatabaseService::print("DITRESKRIMUM");
     }
 
     public function export()

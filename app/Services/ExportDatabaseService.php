@@ -11,8 +11,8 @@ class ExportDatabaseService
     public static function print(string $unit, string $view = "dit")
     {
         $data = DaftarBarang::query()
-            ->where('unit', '=', $unit)
-            ->orderBy('nama_barang_bukti', 'asc')
+            ->where('unit', '=', "$unit")
+            ->orderBy('nama_barang_bukti')
             ->get();
 
         return view('print.' . $view, compact('data'));

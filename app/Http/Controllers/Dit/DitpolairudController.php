@@ -119,7 +119,7 @@ class DitpolairudController extends Controller
 
     public function print()
     {
-        return ExportDatabaseService::print("DITRESNARKOBA");
+        return ExportDatabaseService::print("DITPOLAIRUD");
     }
 
     public function export()
