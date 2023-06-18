@@ -7,14 +7,14 @@ use App\Http\Requests\DitresnarkobaRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class DitresnarkobaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Administrator|USER DITRESNARKOBA']);
+        $this->middleware('role:Administrator|USER DITRESNARKOBA')->except('destroy');
+        $this->middleware('role:Administrator')->only('destroy');
     }
 
     /**

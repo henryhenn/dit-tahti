@@ -58,7 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::group([
-        'middleware' => ['role:Administrator'],
         'prefix' => 'admin'
     ], function () {
         Route::resource('berita', BeritaController::class);
@@ -67,11 +66,11 @@ Route::middleware('auth')->group(function () {
         Route::resource('aturan', AturanController::class);
         Route::resource('gambar-beranda', GambarBerandaController::class);
 
-        Route::resource('ditreskrimum', DitreskrimumController::class)->middleware(['role:Administrator|USER DITRESKRIMUM']);
-        Route::resource('ditlantas', DitlantasController::class)->parameters(['ditlantas' => 'ditlantas'])->middleware(['role:Administrator|USER DITLANTAS']);
-        Route::resource('ditreskrimsus', DitreskrimsusController::class)->parameters(['ditreskrimsus' => 'ditreskrimsus'])->middleware(['role:Administrator|USER DITRESKRIMSUS']);
-        Route::resource('ditpolairud', DitpolairudController::class)->middleware(['role:Administrator|USER DITPOLAIRUD']);
-        Route::resource('ditresnarkoba', DitresnarkobaController::class)->middleware(['role:Administrator|USER DITRESNARKOBA']);
+        Route::resource('ditreskrimum', DitreskrimumController::class);
+        Route::resource('ditlantas', DitlantasController::class)->parameters(['ditlantas' => 'ditlantas']);
+        Route::resource('ditreskrimsus', DitreskrimsusController::class)->parameters(['ditreskrimsus' => 'ditreskrimsus']);
+        Route::resource('ditpolairud', DitpolairudController::class);
+        Route::resource('ditresnarkoba', DitresnarkobaController::class);
 
         Route::resource('struktur-organisasi', StrukturOrganisasiController::class)->except('show');
         Route::resource('visi-misi', VisiMisiController::class);

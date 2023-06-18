@@ -76,6 +76,7 @@
                                            class="px-3 py-2 mx-2 text-xs font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800">
                                             Detail
                                         </a>
+                                        @role('Administrator')
                                         <form action="{{route('ditpolairud.destroy', $ditpolairud->id)}}" id="delete-form"
                                               method="post">
                                             @csrf
@@ -86,6 +87,7 @@
                                                 Delete
                                             </button>
                                         </form>
+                                        @endrole
                                     </td>
                                 </tr>
 

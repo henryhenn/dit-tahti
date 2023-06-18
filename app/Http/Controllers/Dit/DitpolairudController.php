@@ -7,14 +7,14 @@ use App\Http\Requests\DitpolairudRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class DitpolairudController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Administrator|USER DITPOLAIRUD']);
+        $this->middleware('role:Administrator|USER DITPOLAIRUD')->except('destroy');
+        $this->middleware('role:Administrator')->only('destroy');
     }
 
     /**

@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers\Dit;
 
-use App\Exports\DitreskrimumExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitreskrimumRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 
 class DitreskrimumController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Administrator|USER DITRESKRIMUM']);
+        $this->middleware('role:Administrator|USER DITRESKRIMUM')->except('destroy');
+        $this->middleware('role:Administrator')->only('destroy');
     }
 
     /**

@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Dit;
 
-use App\Exports\DitExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitlantasRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 
 class DitlantasController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:Administrator|USER DITLANTAS');
+        $this->middleware('role:Administrator|USER DITLANTAS')->except('destroy');
+        $this->middleware('role:Administrator')->only('destroy');
     }
 
     /**

@@ -62,6 +62,7 @@
                             </x-slot>
                         </x-dropdown>
                     </div>
+                    @role('Administrator')
                     <div class="flex items-center">
                         <x-dropdown align="left" width="48">
                             <x-slot name="trigger">
@@ -98,6 +99,7 @@
                             </x-slot>
                         </x-dropdown>
                     </div>
+                    @endrole
                     @role('Administrator')
                     <x-nav-link :href="route('layanan.index')" :active="request()->routeIs('layanan.*')">
                         {{ __('LAYANAN') }}
@@ -105,7 +107,8 @@
                     <x-nav-link :href="route('gambar-beranda.index')" :active="request()->routeIs('gambar-beranda.*')">
                         {{ __('GAMBAR BERANDA') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('youtube-beranda.index')" :active="request()->routeIs('youtube-beranda.*')">
+                    <x-nav-link :href="route('youtube-beranda.index')"
+                                :active="request()->routeIs('youtube-beranda.*')">
                         {{ __('YOUTUBE BERANDA') }}
                     </x-nav-link>
                     <x-nav-link :href="route('survey.index')" :active="request()->routeIs('survey.*')">
@@ -206,7 +209,8 @@
             </x-responsive-nav-link>
             @endrole
             @role('Administrator')
-            <x-responsive-nav-link :href="route('struktur-organisasi.index')" :active="request()->routeIs('struktur-organisasi.*')">
+            <x-responsive-nav-link :href="route('struktur-organisasi.index')"
+                                   :active="request()->routeIs('struktur-organisasi.*')">
                 {{ __('Struktur Organisasi') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('aturan.index')" :active="request()->routeIs('aturan.*')">
@@ -228,7 +232,8 @@
                                    :active="request()->routeIs('gambar-beranda.*')">
                 {{ __('GAMBAR BERANDA') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('youtube-beranda.index')" :active="request()->routeIs('youtube-beranda.*')">
+            <x-responsive-nav-link :href="route('youtube-beranda.index')"
+                                   :active="request()->routeIs('youtube-beranda.*')">
                 {{ __('YOUTUBE BERANDA') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('survey.index')" :active="request()->routeIs('survey.*')">
