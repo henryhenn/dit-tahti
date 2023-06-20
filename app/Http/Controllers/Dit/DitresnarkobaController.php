@@ -96,9 +96,13 @@ class DitresnarkobaController extends Controller
         return back()->with('message', 'Data Ditresnarkoba berhasil dihapus!');
     }
 
-    public function print()
+    public function print_temuan()
     {
-        return ExportDatabaseService::print("DITRESNARKOBA");
+        return ExportDatabaseService::print_temuan("DITRESNARKOBA");
+    }
+    public function print_bukti()
+    {
+        return ExportDatabaseService::print_bukti("DITRESNARKOBA");
     }
 
     public function export()

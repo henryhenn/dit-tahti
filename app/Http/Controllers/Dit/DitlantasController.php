@@ -96,9 +96,13 @@ class DitlantasController extends Controller
         return back()->with('message', 'Data Ditlantas berhasil dihapus!');
     }
 
-    public function print()
+    public function print_temuan()
     {
-        return ExportDatabaseService::print($unit = "DITLANTAS", $view = "ditlantas");
+        return ExportDatabaseService::print_temuan("DITLANTAS", "ditlantas");
+    }
+    public function print_bukti()
+    {
+        return ExportDatabaseService::print_bukti("DITLANTAS", "ditlantas");
     }
 
     public function export()

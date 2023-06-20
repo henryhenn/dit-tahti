@@ -59,10 +59,10 @@
 
         <div class="grid grid-cols-2 gap-1 p-2 lg:mt-3 lg:flex">
             <a
-                href="/dbt/?unit=ditreskrimum"
-                class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium  rounded-lg group {{request()->url() == '/dbt/?unit=ditreskrimum' ? 'bg-gradient-to-r from-orange-500 via-red-700 to-red-700 text-white' : 'text-gray-900'}} group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                href="/dbt?unit=ditreskrimum"
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
-              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 {{request()->url() == '/dbt/?unit=ditreskrimum' ? '' : ''}}">
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0 {{request('unit') == 'ditreskrimum' ? 'bg-opacity-0 text-white' : ''}}">
             DITRESKRIMUM
          </span>
             </a>
@@ -70,38 +70,38 @@
                 href="/dbt/ditlantas"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
-              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
             DITLANTAS
          </span>
             </a>
             <a
-                href="/dbt/?unit=ditreskrimsus"
+                href="/dbt?unit=ditreskrimsus"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
-              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0 {{request('unit') == 'ditreskrimsus' ? 'bg-opacity-0 text-white' : ''}}">
             DITRESKRIMSUS
          </span>
             </a>
             <a
-                href="/dbt/?unit=ditresnarkoba"
+                href="/dbt?unit=ditresnarkoba"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
-              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0 {{request('unit') == 'ditresnarkoba' ? 'bg-opacity-0 text-white' : ''}}">
             DITRESNARKOBA
          </span>
             </a>
             <a
-                href="/dbt/?unit=ditpolairud"
+                href="/dbt?unit=ditpolairud"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-orange-500 via-red-700 to-red-700 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span
-              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0 {{request('unit') == 'ditpolairud' ? 'bg-opacity-0 text-white' : ''}}">
             DITPOLAIRUD
          </span>
             </a>
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <div class="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
+            <div class="flex items-center justify-between pb-4 bg-white">
             </div>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead

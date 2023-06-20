@@ -1,4 +1,4 @@
-<div class="relative mt-14 overflow-x-auto">
+<div class="relative mt-14 overflow-x-auto {{$attributes['class']}}">
     <h2 class="text-2xl font-bold mb-4">{{$attributes['title']}}</h2>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead

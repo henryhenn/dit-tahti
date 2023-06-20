@@ -96,9 +96,13 @@ class DitpolairudController extends Controller
         return back()->with('message', 'Data Ditpolairud berhasil dihapus!');
     }
 
-    public function print()
+    public function print_temuan()
     {
-        return ExportDatabaseService::print("DITPOLAIRUD");
+        return ExportDatabaseService::print_temuan("DITPOLAIRUD");
+    }
+    public function print_bukti()
+    {
+        return ExportDatabaseService::print_bukti("DITPOLAIRUD");
     }
 
     public function export()

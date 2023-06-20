@@ -23,8 +23,8 @@ class DitreskrimumController extends Controller
      */
     public function index()
     {
-        $barang_bukti =GetDaftarBarangService::get("DITRESKRIMUM", "Barang Bukti");
-        $barang_temuan =GetDaftarBarangService::get("DITRESKRIMUM", "Barang Temuan");
+        $barang_bukti = GetDaftarBarangService::get("DITRESKRIMUM", "Barang Bukti");
+        $barang_temuan = GetDaftarBarangService::get("DITRESKRIMUM", "Barang Temuan");
 
         return view('ditreskrimum.index', compact('barang_bukti', 'barang_temuan'));
     }
@@ -95,9 +95,13 @@ class DitreskrimumController extends Controller
         return back()->with('message', 'Data Ditreskrimum berhasil dihapus!');
     }
 
-    public function print()
+    public function print_temuan()
     {
-        return ExportDatabaseService::print("DITRESKRIMUM");
+        return ExportDatabaseService::print_temuan("DITRESKRIMUM");
+    }
+    public function print_bukti()
+    {
+        return ExportDatabaseService::print_bukti("DITRESKRIMUM");
     }
 
     public function export()

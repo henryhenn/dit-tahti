@@ -96,9 +96,13 @@ class DitreskrimsusController extends Controller
         return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
     }
 
-    public function print()
+    public function print_temuan()
     {
-        return ExportDatabaseService::print("DITRESKRIMSUS");
+        return ExportDatabaseService::print_temuan("DITRESKRIMSUS");
+    }
+    public function print_bukti()
+    {
+        return ExportDatabaseService::print_bukti("DITRESKRIMSUS");
     }
 
     public function export()

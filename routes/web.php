@@ -78,11 +78,16 @@ Route::middleware('auth')->group(function () {
         Route::resource('youtube-beranda', YoutubeBerandaController::class)->except('show');
         Route::resource('survey', SurveyController::class)->except('show');
 
-        Route::get('ditreskrimum-print', [DitreskrimumController::class, 'print'])->name('ditreskrimum.print');
-        Route::get('ditlantas-print', [DitlantasController::class, 'print'])->name('ditlantas.print');
-        Route::get('ditpolairud-print', [DitpolairudController::class, 'print'])->name('ditpolairud.print');
-        Route::get('ditreskrimsus-print', [DitreskrimsusController::class, 'print'])->name('ditreskrimsus.print');
-        Route::get('ditresnarkoba-print', [DitresnarkobaController::class, 'print'])->name('ditresnarkoba.print');
+        Route::get('ditreskrimum-bukti-print', [DitreskrimumController::class, 'print_bukti'])->name('ditreskrimum.printbukti');
+        Route::get('ditreskrimum-temuan-print', [DitreskrimumController::class, 'print_temuan'])->name('ditreskrimum.printtemuan');
+        Route::get('ditlantas-bukti-print', [DitlantasController::class, 'print_bukti'])->name('ditlantas.printbukti');
+        Route::get('ditlantas-temuan-print', [DitlantasController::class, 'print_temuan'])->name('ditlantas.printtemuan');
+        Route::get('ditpolairud-bukti-print', [DitpolairudController::class, 'print_bukti'])->name('ditpolairud.printbukti');
+        Route::get('ditpolairud-temuan-print', [DitpolairudController::class, 'print_temuan'])->name('ditpolairud.printtemuan');
+        Route::get('ditreskrimsus-bukti-print', [DitreskrimsusController::class, 'print_bukti'])->name('ditreskrimsus.printbukti');
+        Route::get('ditreskrimsus-temuan-print', [DitreskrimsusController::class, 'print_temuan'])->name('ditreskrimsus.printtemuan');
+        Route::get('ditresnarkoba-bukti-print', [DitresnarkobaController::class, 'print_bukti'])->name('ditresnarkoba.printbukti');
+        Route::get('ditresnarkoba-temuan-print', [DitresnarkobaController::class, 'print_temuan'])->name('ditresnarkoba.printtemuan');
 
         Route::get('ditreskrimum-export', [DitreskrimumController::class, 'export'])->name('ditreskrimum.export');
         Route::get('ditlantas-export', [DitlantasController::class, 'export'])->name('ditlantas.export');
