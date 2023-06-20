@@ -159,7 +159,8 @@
                             {{$barang->nama_pemilik}}
                         </td>
                         <td class="px-6 py-4">
-                            <button data-modal-target="defaultModal{{$barang->id}}" data-modal-toggle="defaultModal{{$barang->id}}"
+                            <button data-modal-target="defaultModal{{$barang->id}}"
+                                    data-modal-toggle="defaultModal{{$barang->id}}"
                                     class=""
                                     type="button">
                                 Lihat Foto

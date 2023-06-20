@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DitreskrimsusRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
+use App\Services\CheckDataService;
 use App\Services\ExportDatabaseService;
+use App\Services\GetDaftarBarangService;
 use Illuminate\Support\Facades\Storage;
 
 class DitreskrimsusController extends Controller
@@ -22,13 +24,10 @@ class DitreskrimsusController extends Controller
      */
     public function index()
     {
-        $ditreskrimsus = DaftarBarang::query()
-            ->select('id', 'nama_barang_bukti', 'jumlah', 'no_laporan_polisi')
-            ->where('unit', '=', 'DITRESKRIMSUS')
-            ->orderBy('nama_barang_bukti', 'asc')
-            ->get();
+        $barang_bukti = GetDaftarBarangService::get("DITRESKRIMSUS", "Barang Bukti");
+        $barang_temuan = GetDaftarBarangService::get("DITRESKRIMSUS", "Barang Temuan");
 
-        return view('ditreskrimsus.index', compact('ditreskrimsus'));
+        return view('ditreskrimsus.index', compact('barang_bukti', 'barang_temuan'));
     }
 
     /**
@@ -46,11 +45,7 @@ class DitreskrimsusController extends Controller
      */
     public function store(DitreskrimsusRequest $request)
     {
-        $data = $request->validated();
-
-        $data['gambar1'] = $request->file('gambar1')->store('ditreskrimsus');
-        $data['gambar2'] = $request->file('gambar2')->store('ditreskrimsus');
-        $data['gambar3'] = $request->file('gambar3')->store('ditreskrimsus');
+        $data = CheckDataService::check_store($request->validated(), "ditreskrimsus");
 
         DaftarBarang::create($data);
 
@@ -82,22 +77,7 @@ class DitreskrimsusController extends Controller
      */
     public function update(DitreskrimsusRequest $request, DaftarBarang $ditreskrimsus)
     {
-        $data = $request->validated();
-
-        if ($request->hasFile('gambar1')) {
-            Storage::delete($ditreskrimsus->gambar1);
-
-            $data['gambar1'] = $request->file('gambar1')->store('ditreskrimsus');
-        } else if ($request->hasFile('gambar2')) {
-
-            Storage::delete($ditreskrimsus->gambar2);
-
-            $data['gambar2'] = $request->file('gambar2')->store('ditreskrimsus');
-        } else if ($request->hasFile('gambar3')) {
-            Storage::delete($ditreskrimsus->gambar3);
-
-            $data['gambar3'] = $request->file('gambar3')->store('ditreskrimsus');
-        }
+        $data = CheckDataService::check_edit($request->validated(), $ditreskrimsus, "ditreskrimsus");
 
         $ditreskrimsus->update($data);
 
@@ -111,9 +91,7 @@ class DitreskrimsusController extends Controller
     {
         $ditreskrimsus->delete();
 
-        Storage::delete($ditreskrimsus->gambar1);
-        Storage::delete($ditreskrimsus->gambar2);
-        Storage::delete($ditreskrimsus->gambar3);
+        CheckDataService::check_delete($ditreskrimsus);
 
         return back()->with('message', 'Data DaftarBarang berhasil dihapus!');
     }

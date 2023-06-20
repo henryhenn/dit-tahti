@@ -33,9 +33,9 @@ class DitreskrimumRequest extends FormRequest
             'kondisi' => 'required|string',
             'nama_pemilik' => 'required|string',
             'keterangan' => 'required|string',
-            'gambar1' => [request()->routeIs('ditreskrimum.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
-            'gambar2' => [request()->routeIs('ditreskrimum.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
-            'gambar3' => [request()->routeIs('ditreskrimum.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar1' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar2' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar3' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
             'identitas_barang_bukti' => 'nullable|string',
             'no_sp_sita' => 'required|string'
         ];

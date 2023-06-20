@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
         $user->assignRole('Administrator');
 
         Category::create([
-            'kategori' => 'Barang Temuan',
+            'kategori' => 'Barang Bukti',
         ]);
 
         Category::create([
-            'kategori' => 'Barang Temuan Sebagai Barang Bukti',
+            'kategori' => 'Barang Temuan',
         ]);
     }
 }

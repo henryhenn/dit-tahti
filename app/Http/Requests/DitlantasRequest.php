@@ -31,9 +31,9 @@ class DitlantasRequest extends FormRequest
             'kondisi' => 'required|string',
             'nama_pemilik' => 'required|string',
             'keterangan' => 'required|string',
-            'gambar1' => [request()->routeIs('ditlantas.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
-            'gambar2' => [request()->routeIs('ditlantas.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
-            'gambar3' => [request()->routeIs('ditlantas.store') ? 'required' : 'nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar1' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar2' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'gambar3' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
             'noka_nosin' => 'required|string|max:255',
             'tempat_penyimpanan' => 'required|string|max:255',
         ];

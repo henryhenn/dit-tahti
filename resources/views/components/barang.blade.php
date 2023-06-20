@@ -7,7 +7,8 @@
                          src="{{asset('storage/' . $barang->gambar1)}}"
                          alt="">
                     <div class="w-full">
-                        <label class="font-bold text-gray-600" for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
+                        <label class="font-bold text-gray-600"
+                               for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
                     </div>
                     <div class="w-full">
                         <p class="text-xs truncate text-gray-400">{{$barang->category->kategori}}</p>
@@ -66,9 +67,12 @@
                                             <p>IDENTITAS KENDARAAN</p>
                                         @endif
                                         @if($barang->no_laporan_polisi)
-                                            <p>NO LAPORAN</p>
+                                            <p>NO. LAPORAN</p>
                                         @elseif($barang->no_surat_tilang)
-                                            <p> NO SURAT TILANG:</p>
+                                            <p> NO. SURAT TILANG:</p>
+                                        @endif
+                                        @if($barang->noka_nosin)
+                                            <p> NOKA/NOSIN:</p>
                                         @endif
                                         @if($barang->penetapan_pengadilan)
                                             <p>PENETAPAN PENGADILAN</p>
@@ -96,6 +100,9 @@
                                         @elseif($barang->no_surat_tilang)
                                             <p>: {{$barang->no_surat_tilang}}</p>
                                         @endif
+                                        @if($barang->noka_nosin)
+                                            <p>: {{$barang->noka_nosin}}</p>
+                                        @endif
                                         @if($barang->penetapan_pengadilan)
                                             <p>: {{$barang->penetapan_pengadilan}}</p>
                                         @elseif($barang->penetapan_kejaksaan)
@@ -103,7 +110,6 @@
                                         @endif
                                         @if($barang->tempat_penyimpanan)
                                             <p>: {{$barang->tempat_penyimpanan}}</p>
-                                        @else
                                         @endif
                                         <p>: {{$barang->identitas_barang_bukti ?? "-"}}</p>
                                         <p>: {{$barang->penyidik}}</p>

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DitpolairudRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
+use App\Services\CheckDataService;
 use App\Services\ExportDatabaseService;
+use App\Services\GetDaftarBarangService;
 use Illuminate\Support\Facades\Storage;
 
 class DitpolairudController extends Controller
@@ -22,13 +24,10 @@ class DitpolairudController extends Controller
      */
     public function index()
     {
-        $ditpolairud = DaftarBarang::query()
-            ->select('id', 'nama_barang_bukti', 'jumlah', 'no_laporan_polisi')
-            ->where('unit', '=', 'DITPOLAIRUD')
-            ->orderBy('nama_barang_bukti', 'asc')
-            ->get();
+        $barang_bukti = GetDaftarBarangService::get("DITPOLAIRUD", "Barang Bukti");
+        $barang_temuan = GetDaftarBarangService::get("DITPOLAIRUD", "Barang Temuan");
 
-        return view('ditpolairud.index', compact('ditpolairud'));
+        return view('ditpolairud.index', compact('barang_bukti', 'barang_temuan'));
     }
 
     /**
@@ -46,11 +45,7 @@ class DitpolairudController extends Controller
      */
     public function store(DitpolairudRequest $request)
     {
-        $data = $request->validated();
-
-        $data['gambar1'] = $request->file('gambar1')->store('ditpolairud');
-        $data['gambar2'] = $request->file('gambar2') ? $request->file('gambar2')->store('ditpolairud') : null;
-        $data['gambar3'] = $request->file('gambar3') ? $request->file('gambar3')->store('ditpolairud') : null;
+        $data = CheckDataService::check_store($request->validated(), "ditpolairud");
 
         DaftarBarang::create($data);
 
@@ -82,21 +77,7 @@ class DitpolairudController extends Controller
      */
     public function update(DitpolairudRequest $request, DaftarBarang $ditpolairud)
     {
-        $data = $request->validated();
-
-        if ($request->hasFile('gambar1')) {
-            Storage::delete($ditpolairud->gambar1);
-
-            $data['gambar1'] = $request->file('gambar1')->store('ditpolairud');
-        } else if ($request->hasFile('gambar2')) {
-            Storage::delete($ditpolairud->gambar2);
-
-            $data['gambar2'] = $request->file('gambar2')->store('ditpolairud');
-        } else if ($request->hasFile('gambar3')) {
-            Storage::delete($ditpolairud->gambar3);
-
-            $data['gambar3'] = $request->file('gambar3')->store('ditpolairud');
-        }
+        $data = CheckDataService::check_edit($request->validated(), $ditpolairud, "ditpolairud");
 
         $ditpolairud->update($data);
 
@@ -110,9 +91,7 @@ class DitpolairudController extends Controller
     {
         $ditpolairud->delete();
 
-        Storage::delete($ditpolairud->gambar1);
-        Storage::delete($ditpolairud->gambar2);
-        Storage::delete($ditpolairud->gambar3);
+        CheckDataService::check_delete($ditpolairud);
 
         return back()->with('message', 'Data Ditpolairud berhasil dihapus!');
     }

@@ -156,6 +156,9 @@
                                                 @elseif($barang->no_surat_tilang)
                                                     <p> NO SURAT TILANG:</p>
                                                 @endif
+                                                @if($barang->noka_nosin)
+                                                    <p>NOKA/NOSIN</p>
+                                                @endif
                                                 @if($barang->penetapan_pengadilan)
                                                     <p>PENETAPAN PENGADILAN</p>
                                                 @elseif($barang->penetapan_kejaksaan)
@@ -181,6 +184,9 @@
                                                     <p>: {{$barang->no_laporan_polisi}}</p>
                                                 @elseif($barang->no_surat_tilang)
                                                     <p>: {{$barang->no_surat_tilang}}</p>
+                                                @endif
+                                                @if($barang->noka_nosin)
+                                                    <p>: {{$barang->noka_nosin}}</p>
                                                 @endif
                                                 @if($barang->penetapan_pengadilan)
                                                     <p>: {{$barang->penetapan_pengadilan}}</p>

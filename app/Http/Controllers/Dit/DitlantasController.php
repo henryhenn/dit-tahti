@@ -7,7 +7,8 @@ use App\Http\Requests\DitlantasRequest;
 use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
-use Illuminate\Support\Facades\Storage;
+use App\Services\CheckDataService;
+use App\Services\GetDaftarBarangService;
 
 class DitlantasController extends Controller
 {
@@ -22,13 +23,11 @@ class DitlantasController extends Controller
      */
     public function index()
     {
-        $ditlantas = DaftarBarang::query()
-            ->select('id', 'nama_kendaraan', 'identitas_kendaraan', 'no_surat_tilang')
-            ->where('unit', '=', 'DITLANTAS')
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $barang_bukti = GetDaftarBarangService::get("DITLANTAS", "Barang Bukti");
 
-        return view('ditlantas.index', compact('ditlantas'));
+        $barang_temuan = GetDaftarBarangService::get("DITLANTAS", "Barang Temuan");
+
+        return view('ditlantas.index', compact('barang_bukti', 'barang_temuan'));
     }
 
     /**
@@ -46,11 +45,7 @@ class DitlantasController extends Controller
      */
     public function store(DitlantasRequest $request)
     {
-        $data = $request->validated();
-
-        $data['gambar1'] = $request->file('gambar1')->store('ditlantas');
-        $data['gambar2'] = $request->file('gambar2')->store('ditlantas');
-        $data['gambar3'] = $request->file('gambar3')->store('ditlantas');
+        $data = CheckDataService::check_store($request->validated(), "ditlantas");
 
         DaftarBarang::create($data);
 
@@ -82,21 +77,7 @@ class DitlantasController extends Controller
      */
     public function update(DitlantasRequest $request, DaftarBarang $ditlantas)
     {
-        $data = $request->validated();
-
-        if ($request->hasFile('gambar1')) {
-            Storage::delete($ditlantas->gambar1);
-
-            $data['gambar1'] = $request->file('gambar1')->store('ditlantas');
-        } else if ($request->hasFile('gambar2')) {
-            Storage::delete($ditlantas->gambar2);
-
-            $data['gambar2'] = $request->file('gambar2')->store('ditlantas');
-        } else if ($request->hasFile('gambar3')) {
-            Storage::delete($ditlantas->gambar3);
-
-            $data['gambar3'] = $request->file('gambar3')->store('ditlantas');
-        }
+        $data = CheckDataService::check_edit($request->validated(), $ditlantas, "ditlantas");
 
         $ditlantas->update($data);
 
@@ -110,9 +91,7 @@ class DitlantasController extends Controller
     {
         $ditlantas->delete();
 
-        Storage::delete($ditlantas->gambar1);
-        Storage::delete($ditlantas->gambar2);
-        Storage::delete($ditlantas->gambar3);
+        CheckDataService::check_delete($ditlantas);;
 
         return back()->with('message', 'Data Ditlantas berhasil dihapus!');
     }
