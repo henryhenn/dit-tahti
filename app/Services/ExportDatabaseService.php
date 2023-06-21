@@ -34,8 +34,19 @@ class ExportDatabaseService
         return view('print.' . $view, compact('data'));
     }
 
-    public static function excel(string $view, string $unit, string $namaFile)
+    public static function excel_bukti(
+        string $view,
+        string $unit,
+        string $namaFile)
     {
-        return Excel::download(new DitExport($view, $unit), $namaFile . '.xlsx');
+        return Excel::download(new DitExport($view, $unit, "Barang Bukti"), $namaFile . '.xlsx');
+    }
+
+    public static function excel_temuan(
+        string $view,
+        string $unit,
+        string $namaFile)
+    {
+        return Excel::download(new DitExport($view, $unit, "Barang Temuan"), $namaFile . '.xlsx');
     }
 }

@@ -105,8 +105,13 @@ class DitresnarkobaController extends Controller
         return ExportDatabaseService::print_bukti("DITRESNARKOBA");
     }
 
-    public function export()
+    public function export_bukti()
     {
-        return ExportDatabaseService::excel("dit", "DITPOLAIRUD", "Ditpolairud");
+        return ExportDatabaseService::excel_bukti("dit", "DITRESNARKOBA", "Ditresnarkoba Barang Bukti");
+    }
+
+    public function export_temuan()
+    {
+        return ExportDatabaseService::excel_temuan("dit", "DITRESNARKOBA", "Ditresnarkoba Barang Temuan");
     }
 }

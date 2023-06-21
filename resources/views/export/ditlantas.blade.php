@@ -25,13 +25,22 @@
             <td>{{$barang->penyidik}}</td>
             <td>{{$barang->nama_pemilik}}</td>
             <td>
-                <img src="{{public_path('storage/' . $barang->gambar1)}}">
+                @if($barang->gambar1)
+                    <img src="{{public_path('storage/' . $barang->gambar1)}}">
+                @else
+                @endif
             </td>
             <td>
-                <img src="{{public_path('storage/' . $barang->gambar2)}}">
+                @if($barang->gambar2)
+                    <img src="{{public_path('storage/' . $barang->gambar2)}}">
+                @else
+                @endif
             </td>
             <td>
-                <img src="{{public_path('storage/' . $barang->gambar3)}}">
+                @if($barang->gambar3)
+                    <img src="{{public_path('storage/' . $barang->gambar3)}}">
+                @else
+                @endif
             </td>
             <td>{!! $barang->keterangan !!}</td>
         </tr>

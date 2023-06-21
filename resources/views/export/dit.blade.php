@@ -27,13 +27,22 @@
             <td>{{$data->tempat_penyimpanan}}</td>
             <td>{{$data->nama_pemilik}}</td>
             <td>
-                <img src="{{public_path('storage/' . $data->gambar1)}}">
+                @if($data->gambar1)
+                    <img src="{{ public_path('storage/' . $data->gambar1)}}">
+                @else
+                @endif
             </td>
             <td>
-                <img src="{{public_path('storage/' . $data->gambar2)}}">
+                @if($data->gambar2)
+                    <img src="{{ public_path('storage/' . $data->gambar2)}}">
+                @else
+                @endif
             </td>
             <td>
-                <img src="{{public_path('storage/' . $data->gambar3)}}">
+                @if($data->gambar3)
+                    <img src="{{ public_path('storage/' . $data->gambar3)}}">
+                @else
+                @endif
             </td>
             <td>{!! $data->keterangan !!}</td>
         </tr>

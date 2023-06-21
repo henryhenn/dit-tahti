@@ -105,8 +105,13 @@ class DitlantasController extends Controller
         return ExportDatabaseService::print_bukti("DITLANTAS", "ditlantas");
     }
 
-    public function export()
+    public function export_bukti()
     {
-        return ExportDatabaseService::excel("ditlantas", "DITLANTAS", "Ditlantas");
+        return ExportDatabaseService::excel_bukti("ditlantas", "DITLANTAS", "Ditlantas Barang Bukti");
+    }
+
+    public function export_temuan()
+    {
+        return ExportDatabaseService::excel_temuan("ditlantas", "DITLANTAS", "Ditlantas Barang Temuan");
     }
 }

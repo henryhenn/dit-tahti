@@ -104,8 +104,13 @@ class DitreskrimumController extends Controller
         return ExportDatabaseService::print_bukti("DITRESKRIMUM");
     }
 
-    public function export()
+    public function export_bukti()
     {
-        return ExportDatabaseService::excel("dit", "DITLANTAS", "Ditreskrimum");
+        return ExportDatabaseService::excel_bukti("dit", "DITRESKRIMUM", "Ditreskrimum Barang Bukti");
+    }
+
+    public function export_temuan()
+    {
+        return ExportDatabaseService::excel_temuan("dit", "DITRESKRIMUM", "Ditreskrimum Barang Temuan");
     }
 }

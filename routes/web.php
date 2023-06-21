@@ -89,11 +89,16 @@ Route::middleware('auth')->group(function () {
         Route::get('ditresnarkoba-bukti-print', [DitresnarkobaController::class, 'print_bukti'])->name('ditresnarkoba.printbukti');
         Route::get('ditresnarkoba-temuan-print', [DitresnarkobaController::class, 'print_temuan'])->name('ditresnarkoba.printtemuan');
 
-        Route::get('ditreskrimum-export', [DitreskrimumController::class, 'export'])->name('ditreskrimum.export');
-        Route::get('ditlantas-export', [DitlantasController::class, 'export'])->name('ditlantas.export');
-        Route::get('ditpolairud-export', [DitpolairudController::class, 'export'])->name('ditpolairud.export');
-        Route::get('ditreskrimsus-export', [DitreskrimsusController::class, 'export'])->name('ditreskrimsus.export');
-        Route::get('ditresnarkoba-export', [DitresnarkobaController::class, 'export'])->name('ditresnarkoba.export');
+        Route::get('ditreskrimum-bukti-export', [DitreskrimumController::class, 'export_bukti'])->name('ditreskrimum.exportbukti');
+        Route::get('ditreskrimum-temuan-export', [DitreskrimumController::class, 'export_temuan'])->name('ditreskrimum.exporttemuan');
+        Route::get('ditlantas-bukti-export', [DitlantasController::class, 'export_bukti'])->name('ditlantas.exportbukti');
+        Route::get('ditlantas-temuan-export', [DitlantasController::class, 'export_temuan'])->name('ditlantas.exporttemuan');
+        Route::get('ditpolairud-bukti-export', [DitpolairudController::class, 'export_bukti'])->name('ditpolairud.exportbukti');
+        Route::get('ditpolairud-temuan-export', [DitpolairudController::class, 'export_temuan'])->name('ditpolairud.exporttemuan');
+        Route::get('ditreskrimsus-bukti-export', [DitreskrimsusController::class, 'export_bukti'])->name('ditreskrimsus.exportbukti');
+        Route::get('ditreskrimsus-temuan-export', [DitreskrimsusController::class, 'export_temuan'])->name('ditreskrimsus.exporttemuan');
+        Route::get('ditresnarkoba-bukti-export', [DitresnarkobaController::class, 'export_bukti'])->name('ditresnarkoba.exportbukti');
+        Route::get('ditresnarkoba-temuan-export', [DitresnarkobaController::class, 'export_temuan'])->name('ditresnarkoba.exporttemuan');
     });
 
 });
