@@ -25,13 +25,15 @@ class CheckDataService
             }
 
             $data['gambar1'] = request()->file('gambar1')->store("$directory");
-        } else if (request()->hasFile('gambar2')) {
+        }
+        if (request()->hasFile('gambar2')) {
             if ($model->gambar2) {
                 Storage::delete($model->gambar2);
             }
 
             $data['gambar2'] = request()->file('gambar2')->store("$directory");
-        } else if (request()->hasFile('gambar3')) {
+        }
+        if (request()->hasFile('gambar3')) {
             if ($model->gambar3) {
                 Storage::delete($model->gambar3);
             }
