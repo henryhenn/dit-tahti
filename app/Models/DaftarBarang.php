@@ -31,7 +31,7 @@ class DaftarBarang extends Model
     public function scopeFilterByBarangTemuanSebagaiBarangBuktiCategory($query)
     {
         $query->whereHas('category', function ($query) {
-            $query->where('kategori', '=', 'Barang Temuan Sebagai Barang Bukti');
+            $query->where('kategori', '=', 'Barang Bukti');
         });
     }
 
