@@ -78,7 +78,7 @@ class DitlantasController extends Controller
     public function update(DitlantasRequest $request, DaftarBarang $ditlantas)
     {
         $data = CheckDataService::check_edit($request->validated(), $ditlantas, "ditlantas");
-        dd($data);
+
         $ditlantas->update($data);
 
         return to_route('ditlantas.index')->with('message', 'Data Ditlantas berhasil diupdate!');

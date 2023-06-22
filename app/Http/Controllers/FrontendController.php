@@ -74,7 +74,7 @@ class FrontendController extends Controller
     public function ditlantas()
     {
         $barangs = DaftarBarang::query()
-            ->filterbybarangtemuancategory()
+            ->filterbybarangtemuansebagaibarangbukticategory()
             ->searchbynama(request('search'))
             ->where('unit', 'DITLANTAS')
             ->latest()
@@ -87,7 +87,7 @@ class FrontendController extends Controller
     public function bts()
     {
         $barangs = DaftarBarang::query()
-            ->filterbybarangtemuansebagaibarangbukticategory()
+            ->filterbybarangtemuancategory()
             ->searchbynama(request('search'))
             ->groupbyunit(\request('unit'))
             ->latest()
