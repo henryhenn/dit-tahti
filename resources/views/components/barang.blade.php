@@ -114,6 +114,7 @@
                                         <p>: {{$barang->identitas_barang_bukti ?? "-"}}</p>
                                         <p>: {{$barang->penyidik}}</p>
                                         <p>: {{$barang->kondisi}}</p>
+                                        <p>: {!! strip_tags($barang->keterangan) !!}</p>
                                     </div>
                                 </div>
                             </div>

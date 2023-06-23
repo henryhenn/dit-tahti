@@ -217,7 +217,7 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            -
+                            {!! $barang->keterangan !!}
                         </td>
                     </tr>
                 @empty

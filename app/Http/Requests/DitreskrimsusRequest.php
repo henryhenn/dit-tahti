@@ -30,7 +30,7 @@ class DitreskrimsusRequest extends FormRequest
             'penetapan_pengadilan' => 'required|string',
             'tempat_penyimpanan' => 'required|string',
             'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
+            'kondisi' => 'nullable|string',
             'nama_pemilik' => 'required|string',
             'keterangan' => 'required|string',
             'gambar1' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],

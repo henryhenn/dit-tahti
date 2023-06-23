@@ -28,7 +28,7 @@ class DitlantasRequest extends FormRequest
             'identitas_kendaraan' => 'required|string',
             'no_surat_tilang' => 'required|string',
             'penyidik' => 'required|string',
-            'kondisi' => 'required|string',
+            'kondisi' => 'nullable|string',
             'nama_pemilik' => 'required|string',
             'keterangan' => 'required|string',
             'gambar1' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],

@@ -6,12 +6,12 @@ use Illuminate\Support\Str;
 
 class StripBeritaDivTagService
 {
-    public function collection_strip_tag($berita)
+    public function collection_strip_tag($data)
     {
-        $berita->map(function ($berita) {
-            $berita->content = Str::limit(str_replace(array("<div>", "</div>"), "",$berita->content), 300, '....');
+        $data->map(function ($data) {
+            $data->content = Str::limit(str_replace(array("<div>", "</div>"), "",$data->content), 300, '....');
 
-            return $berita;
+            return $data;
         });
     }
 

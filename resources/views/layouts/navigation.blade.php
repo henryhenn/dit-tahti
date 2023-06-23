@@ -44,7 +44,7 @@
                                     {{ __('DITLANTAS') }}
                                 </x-dropdown-link>
                                 @endrole
-                                @role('Administrator|USER DITRESKRIMSUS')
+                                @role('Administrator|USER DISTRESKRIMSUS')
                                 <x-dropdown-link :href="route('ditreskrimsus.index')">
                                     {{ __('DITRESKRIMSUS') }}
                                 </x-dropdown-link>

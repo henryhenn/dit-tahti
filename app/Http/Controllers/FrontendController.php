@@ -23,6 +23,14 @@ class FrontendController extends Controller
             ->take(2)
             ->get();
         $barang = DaftarBarang::with('category')->latest()->take(4)->get();
+        $barang->map(function ($barang) {
+            str_replace(array("<div>", "</div>"), "", $barang->keterangan);
+
+            return $barang;
+        });
+
+//        dd($barang);
+
         $gambar_beranda = GambarBeranda::latest()->get();
         $youtube = YoutubeBeranda::latest()->take(2)->get();
 
