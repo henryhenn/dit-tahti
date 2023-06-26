@@ -35,11 +35,12 @@ class DaftarBarang extends Model
         });
     }
 
-    public function scopeSearchByNama($query, $search)
+    public function scopeSearch($query, $search)
     {
         $query->when($search ?? false, function ($query, $search) {
             $query->where('nama_barang_bukti', 'like', '%' . $search . '%')
-                ->orWhere('nama_kendaraan', 'like', '%' . $search . '%');
+                ->orWhere('nama_kendaraan', 'like', '%' . $search . '%')
+                ->orWhere('noka_nosin', 'like', '%' . $search . '%');
         });
     }
 

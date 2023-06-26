@@ -29,8 +29,6 @@ class FrontendController extends Controller
             return $barang;
         });
 
-//        dd($barang);
-
         $gambar_beranda = GambarBeranda::latest()->get();
         $youtube = YoutubeBeranda::latest()->take(2)->get();
 
@@ -70,7 +68,7 @@ class FrontendController extends Controller
     {
         $barangs = DaftarBarang::query()
             ->filterbybarangtemuancategory()
-            ->searchbynama(request('search'))
+            ->search(request('search'))
             ->groupbyunit(request('unit'))
             ->latest()
             ->paginate(8)
@@ -83,7 +81,7 @@ class FrontendController extends Controller
     {
         $barangs = DaftarBarang::query()
             ->filterbybarangtemuansebagaibarangbukticategory()
-            ->searchbynama(request('search'))
+            ->search(request('search'))
             ->where('unit', 'DITLANTAS')
             ->latest()
             ->paginate(8)
@@ -96,7 +94,7 @@ class FrontendController extends Controller
     {
         $barangs = DaftarBarang::query()
             ->filterbybarangtemuancategory()
-            ->searchbynama(request('search'))
+            ->search(request('search'))
             ->groupbyunit(\request('unit'))
             ->latest()
             ->paginate(8)
