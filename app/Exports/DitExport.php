@@ -25,7 +25,7 @@ class DitExport implements FromView
         return view('export.' . $this->view, [
             'data' => DaftarBarang::query()
                 ->where('unit', $this->unit)
-                ->where('klasifikasi    ', 'like', '%' . "$this->klasifikasi" . '%')
+                ->where('klasifikasi', 'like', '%' . "$this->klasifikasi" . '%')
                 ->get()
         ]);
     }
