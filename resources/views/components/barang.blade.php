@@ -11,7 +11,7 @@
                                for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
                     </div>
                     <div class="w-full">
-                        <p class="text-xs truncate text-gray-400">{{$barang->category->kategori}}</p>
+                        <p class="text-xs truncate text-gray-400">{{$barang->klasifikasi}}</p>
                     </div>
                     <button data-modal-target="defaultModal{{$barang->id}}"
                             data-modal-toggle="defaultModal{{$barang->id}}" type="button"
@@ -86,6 +86,7 @@
                                         <p>IDENTITAS BARANG BUKTI</p>
                                         <p>PENYIDIK</p>
                                         <p>KONDISI</p>
+                                        <p>KETERANGAN</p>
                                     </div>
                                     <div>
                                         <p>: {{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</p>

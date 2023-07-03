@@ -6,14 +6,12 @@ use App\Models\DaftarBarang;
 
 class GetDaftarBarangService
 {
-    public static function get(string $unit, string $category)
+    public static function get(string $unit, string $klasifikasi)
     {
         return DaftarBarang::query()
             ->latest()
             ->where('unit', '=', "$unit")
-            ->whereHas('category', function ($query) use ($category) {
-                return $query->where('kategori', "$category");
-            })
+            ->where('klasifikasi', $klasifikasi)
             ->get();
     }
 }

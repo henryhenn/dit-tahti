@@ -16,23 +16,14 @@ class DaftarBarang extends Model
         'updated_at',
     ];
 
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
-    }
-
     public function scopeFilterByBarangTemuanCategory($query)
     {
-        $query->whereHas('category', function ($query) {
-            $query->where('kategori', '=', 'Barang Temuan');
-        });
+        return $query->where('klasifikasi', 'like', '%' . 'Barang Temuan' . '%');
     }
 
     public function scopeFilterByBarangTemuanSebagaiBarangBuktiCategory($query)
     {
-        $query->whereHas('category', function ($query) {
-            $query->where('kategori', '=', 'Barang Bukti');
-        });
+        return $query->where('klasifikasi', 'like', '%' . 'Barang Bukti' . '%');
     }
 
     public function scopeSearch($query, $search)

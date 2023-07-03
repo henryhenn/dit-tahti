@@ -22,7 +22,7 @@ class DitlantasRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required',
+            'klasifikasi' => 'required',
             'unit' => 'required',
             'nama_kendaraan' => 'required|string',
             'identitas_kendaraan' => 'required|string',

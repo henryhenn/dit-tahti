@@ -22,7 +22,7 @@ class DitreskrimsusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required',
+            'klasifikasi' => 'required',
             'unit' => 'required',
             'nama_barang_bukti' => 'required|string',
             'jumlah' => 'required|string',

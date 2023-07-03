@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dit;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitlantasRequest;
-use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
 use App\Services\CheckDataService;
@@ -35,9 +34,7 @@ class DitlantasController extends Controller
      */
     public function create()
     {
-        $kategori = Category::all();
-
-        return view('ditlantas.create', compact('kategori'));
+        return view('ditlantas.create');
     }
 
     /**
@@ -57,8 +54,6 @@ class DitlantasController extends Controller
      */
     public function show(DaftarBarang $ditlantas)
     {
-        $ditlantas->load('category');
-
         return view('ditlantas.show', compact('ditlantas'));
     }
 
@@ -67,9 +62,7 @@ class DitlantasController extends Controller
      */
     public function edit(DaftarBarang $ditlantas)
     {
-        $kategori = Category::all();
-
-        return view('ditlantas.edit', compact('ditlantas', 'kategori'));
+        return view('ditlantas.edit', compact('ditlantas'));
     }
 
     /**

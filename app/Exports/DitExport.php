@@ -8,16 +8,16 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class DitExport implements FromView
 {
-    private $view, $unit, $category;
+    private $view, $unit, $klasifikasi;
 
     public function __construct(
         string $view,
         string $unit,
-        string $category)
+        string $klasifikasi)
     {
         $this->view = $view;
         $this->unit = $unit;
-        $this->category = $category;
+        $this->klasifikasi = $klasifikasi;
     }
 
     public function view(): View
@@ -25,9 +25,7 @@ class DitExport implements FromView
         return view('export.' . $this->view, [
             'data' => DaftarBarang::query()
                 ->where('unit', $this->unit)
-                ->whereHas('category', function ($query) {
-                    return $query->where('kategori', $this->category);
-                })
+                ->where('klasifikasi    ', 'like', '%' . "$this->klasifikasi" . '%')
                 ->get()
         ]);
     }
