@@ -13,7 +13,9 @@ class ExportDatabaseService
         $data = DaftarBarang::query()
             ->where('unit', '=', "$unit")
             ->orderBy('nama_barang_bukti')
-            ->where('klasifikasi', 'like', '%' . "Barang Temuan" . '%')
+            ->whereHas('category', function ($query) {
+                return $query->where('kategori', "Barang Temuan");
+            })
             ->get();
 
         return view('print.' . $view, compact('data'));
@@ -24,7 +26,9 @@ class ExportDatabaseService
         $data = DaftarBarang::query()
             ->where('unit', '=', "$unit")
             ->orderBy('nama_barang_bukti')
-            ->where('klasifikasi', 'like', '%' . "Barang Bukti" . '%')
+            ->whereHas('category', function ($query) {
+                return $query->where('kategori', "Barang Bukti");
+            })
             ->get();
 
         return view('print.' . $view, compact('data'));

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('daftar_barangs', function (Blueprint $table) {
             $table->id();
-            $table->string('klasifikasi');
+            $table->foreignId('category_id')->constrained();
             $table->string('unit');
             $table->string('nama_barang_bukti')->nullable();
             $table->string('nama_kendaraan')->nullable();

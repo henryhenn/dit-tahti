@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dit;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitreskrimumRequest;
+use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
 use App\Services\CheckDataService;
@@ -33,7 +34,9 @@ class DitreskrimumController extends Controller
      */
     public function create()
     {
-        return view('ditreskrimum.create');
+        $kategori = Category::all();
+
+        return view('ditreskrimum.create', compact('kategori'));
     }
 
     /**
@@ -53,6 +56,8 @@ class DitreskrimumController extends Controller
      */
     public function show(DaftarBarang $ditreskrimum)
     {
+        $ditreskrimum->load('category');
+
         return view('ditreskrimum.show', compact('ditreskrimum'));
     }
 
@@ -61,7 +66,9 @@ class DitreskrimumController extends Controller
      */
     public function edit(DaftarBarang $ditreskrimum)
     {
-        return view('ditreskrimum.edit', compact('ditreskrimum'));
+        $kategori = Category::all();
+
+        return view('ditreskrimum.edit', compact('ditreskrimum', 'kategori'));
     }
 
     /**

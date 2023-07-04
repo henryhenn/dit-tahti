@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Dit;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitpolairudRequest;
+use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\CheckDataService;
 use App\Services\ExportDatabaseService;
 use App\Services\GetDaftarBarangService;
+use Illuminate\Support\Facades\Storage;
 
 class DitpolairudController extends Controller
 {
@@ -33,7 +35,9 @@ class DitpolairudController extends Controller
      */
     public function create()
     {
-        return view('ditpolairud.create');
+        $kategori = Category::all();
+
+        return view('ditpolairud.create', compact('kategori'));
     }
 
     /**
@@ -53,6 +57,8 @@ class DitpolairudController extends Controller
      */
     public function show(DaftarBarang $ditpolairud)
     {
+        $ditpolairud->load('category');
+
         return view('ditpolairud.show', compact('ditpolairud'));
     }
 
@@ -61,7 +67,9 @@ class DitpolairudController extends Controller
      */
     public function edit(DaftarBarang $ditpolairud)
     {
-        return view('ditpolairud.edit', compact('ditpolairud'));
+        $kategori = Category::all();
+
+        return view('ditpolairud.edit', compact('ditpolairud', 'kategori'));
     }
 
     /**

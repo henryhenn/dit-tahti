@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Dit;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DitresnarkobaRequest;
+use App\Models\Category;
 use App\Models\DaftarBarang;
 use App\Services\CheckDataService;
 use App\Services\ExportDatabaseService;
 use App\Services\GetDaftarBarangService;
+use Illuminate\Support\Facades\Storage;
 
 class DitresnarkobaController extends Controller
 {
@@ -33,7 +35,9 @@ class DitresnarkobaController extends Controller
      */
     public function create()
     {
-        return view('ditresnarkoba.create');
+        $kategori = Category::all();
+
+        return view('ditresnarkoba.create', compact('kategori'));
     }
 
     /**
@@ -53,6 +57,8 @@ class DitresnarkobaController extends Controller
      */
     public function show(DaftarBarang $ditresnarkoba)
     {
+        $ditresnarkoba->load('category');
+
         return view('ditresnarkoba.show', compact('ditresnarkoba'));
     }
 
@@ -61,7 +67,9 @@ class DitresnarkobaController extends Controller
      */
     public function edit(DaftarBarang $ditresnarkoba)
     {
-        return view('ditresnarkoba.edit', compact('ditresnarkoba'));
+        $kategori = Category::all();
+
+        return view('ditresnarkoba.edit', compact('ditresnarkoba', 'kategori'));
     }
 
     /**

@@ -23,5 +23,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $user->assignRole('Administrator');
+
+        Category::create([
+            'kategori' => 'Barang Bukti',
+        ]);
+
+        Category::create([
+            'kategori' => 'Barang Temuan',
+        ]);
     }
 }

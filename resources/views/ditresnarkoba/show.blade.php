@@ -32,8 +32,8 @@
                         @endif
                     </div>
 
-                    <p class="mt-6 ">Klasifikasi: <span
-                            class="font-bold">{{$ditresnarkoba->klasifikasi}}</span></p>
+                    <p class="mt-6 ">Daftar Barang Temuan: <span
+                            class="font-bold">{{$ditresnarkoba->category->kategori}}</span></p>
                     <p class="mt-6 ">Jumlah: <span class="font-bold">{{$ditresnarkoba->jumlah}}</span></p>
                     <p class="mt-6 ">Identitas barang bukti: <span class="font-bold">{{$ditresnarkoba->identitas_barang_bukti ?? "-"}}</span></p>
                     <p class="mt-6 ">No. Laporan Polisi: <span
