@@ -7,7 +7,7 @@
                          src="{{asset('storage/' . $barang->gambar1)}}"
                          alt="">
                     <label
-                        class="font-bold block text-gray-600 truncate">{!! $barang->nama_barang_bukti ?? $barang->nama_kendaraan !!}</label>
+                        class="font-bold block text-gray-600 truncate">{!! $barang->nama_barang_bukti !!}</label>
                     <div class="w-full">
                         <p class="text-xs truncate text-gray-400">{{$barang->category->kategori}}</p>
                     </div>

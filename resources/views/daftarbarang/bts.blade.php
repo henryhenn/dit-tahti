@@ -91,10 +91,8 @@
                             <img class="object-cover w-full rounded-md h-44"
                                  src="{{asset('storage/' . $barang->gambar1)}}"
                                  alt="">
-                            <div class="w-full">
-                                <label class="font-bold text-gray-600"
-                                       for="">{!!$barang->nama_barang_bukti!!}</label>
-                            </div>
+                            <label class="font-bold text-gray-600 truncate block"
+                                   for="">{!!$barang->nama_barang_bukti!!}</label>
                             <div class="w-full">
                                 <p class="text-xs truncate text-gray-400" for="">{{$barang->category->kategori}}</p>
                             </div>
