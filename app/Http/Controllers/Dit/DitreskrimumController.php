@@ -9,6 +9,7 @@ use App\Models\DaftarBarang;
 use App\Services\ExportDatabaseService;
 use App\Services\CheckDataService;
 use App\Services\GetDaftarBarangService;
+use App\Services\StripDivTagService;
 
 class DitreskrimumController extends Controller
 {
@@ -25,6 +26,9 @@ class DitreskrimumController extends Controller
     {
         $barang_bukti = GetDaftarBarangService::get("DITRESKRIMUM", "Barang Bukti");
         $barang_temuan = GetDaftarBarangService::get("DITRESKRIMUM", "Barang Temuan");
+
+        (new StripDivTagService())->collection_strip_tag($barang_bukti);
+        (new StripDivTagService())->collection_strip_tag($barang_temuan);
 
         return view('ditreskrimum.index', compact('barang_bukti', 'barang_temuan'));
     }

@@ -11,7 +11,7 @@ use App\Models\StrukturOrganisasi;
 use App\Models\TugasFungsi;
 use App\Models\VisiMisi;
 use App\Models\YoutubeBeranda;
-use App\Services\StripBeritaDivTagService;
+use App\Services\StripDivTagService;
 
 class FrontendController extends Controller
 {
@@ -23,16 +23,11 @@ class FrontendController extends Controller
             ->take(2)
             ->get();
         $barang = DaftarBarang::with('category')->latest()->take(4)->get();
-        $barang->map(function ($barang) {
-            str_replace(array("<div>", "</div>"), "", $barang->keterangan);
-
-            return $barang;
-        });
-
         $gambar_beranda = GambarBeranda::latest()->get();
         $youtube = YoutubeBeranda::latest()->take(2)->get();
 
-        (new StripBeritaDivTagService())->collection_strip_tag($berita);
+        (new StripDivTagService())->collection_strip_tag($berita);
+        (new StripDivTagService())->nama_barang_strip_tag($barang);
 
         return view('home.index', compact('berita', 'barang', 'gambar_beranda', 'youtube'));
     }
@@ -45,7 +40,7 @@ class FrontendController extends Controller
             ->paginate(5)
             ->withQueryString();
 
-        (new StripBeritaDivTagService())->pagination_strip_tag($beritas);
+        (new StripDivTagService())->pagination_strip_tag($beritas);
 
         return view('berita.frontend', compact('beritas'));
     }
@@ -67,12 +62,14 @@ class FrontendController extends Controller
     public function dbt()
     {
         $barangs = DaftarBarang::query()
-            ->filterbybarangtemuancategory()
+            ->filterbybarangtemuansebagaibarangbukticategory()
             ->search(request('search'))
             ->groupbyunit(request('unit'))
             ->latest()
             ->paginate(8)
             ->withQueryString();
+
+        (new StripDivTagService())->nama_barang_strip_tag($barangs);
 
         return view('daftarbarang.dbt', compact('barangs'));
     }
@@ -80,7 +77,7 @@ class FrontendController extends Controller
     public function ditlantas()
     {
         $barangs = DaftarBarang::query()
-            ->filterbybarangtemuancategory()
+            ->filterbybarangtemuansebagaibarangbukticategory()
             ->search(request('search'))
             ->where('unit', 'DITLANTAS')
             ->latest()
@@ -93,12 +90,14 @@ class FrontendController extends Controller
     public function bts()
     {
         $barangs = DaftarBarang::query()
-            ->filterbybarangtemuansebagaibarangbukticategory()
+            ->filterbybarangtemuancategory()
             ->search(request('search'))
             ->groupbyunit(\request('unit'))
             ->latest()
             ->paginate(8)
             ->withQueryString();
+
+        (new StripDivTagService())->nama_barang_strip_tag($barangs);
 
         return view('daftarbarang.bts', compact('barangs'));
     }

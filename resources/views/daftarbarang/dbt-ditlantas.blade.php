@@ -141,7 +141,7 @@
                             {{$key+1}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$barang->nama_kendaraan}}
+                            {!!$barang->nama_barang_bukti!!}
                         </td>
                         <td class="px-6 py-4">
                             {{$barang->noka_nosin}}

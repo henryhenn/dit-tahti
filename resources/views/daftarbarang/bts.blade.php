@@ -93,7 +93,7 @@
                                  alt="">
                             <div class="w-full">
                                 <label class="font-bold text-gray-600"
-                                       for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
+                                       for="">{!!$barang->nama_barang_bukti!!}</label>
                             </div>
                             <div class="w-full">
                                 <p class="text-xs truncate text-gray-400" for="">{{$barang->category->kategori}}</p>

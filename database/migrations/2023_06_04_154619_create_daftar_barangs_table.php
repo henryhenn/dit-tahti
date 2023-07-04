@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->string('unit');
             $table->string('nama_barang_bukti')->nullable();
-            $table->string('nama_kendaraan')->nullable();
             $table->string('identitas_kendaraan')->nullable();
             $table->string('no_surat_tilang')->nullable();
             $table->string('jumlah')->nullable();

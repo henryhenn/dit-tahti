@@ -24,7 +24,7 @@ class DitlantasRequest extends FormRequest
         return [
             'category_id' => 'required',
             'unit' => 'required',
-            'nama_kendaraan' => 'required|string',
+            'nama_barang_bukti' => 'required|string',
             'identitas_kendaraan' => 'required|string',
             'no_surat_tilang' => 'required|string',
             'penyidik' => 'required|string',

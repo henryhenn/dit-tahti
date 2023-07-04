@@ -24,14 +24,14 @@ class DaftarBarang extends Model
     public function scopeFilterByBarangTemuanCategory($query)
     {
         $query->whereHas('category', function ($query) {
-            $query->where('kategori', '=', 'Barang Temuan');
+            return $query->where('kategori', 'Barang Temuan');
         });
     }
 
     public function scopeFilterByBarangTemuanSebagaiBarangBuktiCategory($query)
     {
         $query->whereHas('category', function ($query) {
-            $query->where('kategori', '=', 'Barang Bukti');
+            return $query->where('kategori', 'Barang Bukti');
         });
     }
 

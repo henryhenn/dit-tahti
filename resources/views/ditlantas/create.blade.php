@@ -26,10 +26,10 @@
                             @enderror
                         </div>
                         <div class="relative z-0 w-full mb-8 group">
-                            <label for="nama_kendaraan" class="block mb-2">Nama/Jenis Kendaraan: </label>
-                            <input id="nama_kendaraan" type="hidden" value="{{old('nama_kendaraan')}}" name="nama_kendaraan">
-                            <trix-editor input="nama_kendaraan" class="@error('nama_kendaraan') border-red-500 @enderror"></trix-editor>
-                            @error('nama_kendaraan')
+                            <label for="nama_barang_bukti" class="block mb-2">Nama/Jenis Kendaraan: </label>
+                            <input id="nama_barang_bukti" type="hidden" value="{{old('nama_barang_bukti')}}" name="nama_barang_bukti">
+                            <trix-editor input="nama_barang_bukti" class="@error('nama_barang_bukti') border-red-500 @enderror"></trix-editor>
+                            @error('nama_barang_bukti')
                             <small class="text-red-500">{{$message}}</small>
                             @enderror
                         </div>

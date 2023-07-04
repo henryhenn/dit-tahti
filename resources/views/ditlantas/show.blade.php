@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __($ditlantas->nama_kendaraan) }}
+            {!!  __($ditlantas->nama_kendaraan)  !!}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-row justify-between">
-                        <h2 class="text-2xl font-extrabold">{{$ditlantas->nama_kendaraan}}</h2>
+                        <h2 class="text-2xl font-extrabold">{!! $ditlantas->nama_barang_bukti !!}</h2>
                         <a href="{{route('ditlantas.index')}}" class="text-decoration-none text-blue-500">Kembali</a>
                     </div>
 
@@ -34,7 +34,8 @@
 
                     <p class="mt-6 ">Daftar Barang Temuan: <span
                             class="font-bold">{{$ditlantas->category->kategori}}</span></p>
-                    <p class="mt-6 ">Identitas Kendaraan: <span class="font-bold">{{$ditlantas->identitas_kendaraan}}</span></p>
+                    <p class="mt-6 ">Identitas Kendaraan: <span
+                            class="font-bold">{{$ditlantas->identitas_kendaraan}}</span></p>
                     <p class="mt-6 ">No. Surat Tilang: <span
                             class="font-bold">{{$ditlantas->no_surat_tilang}}</span></p>
                     <p class="mt-6 ">NOKA/NOSIN: <span

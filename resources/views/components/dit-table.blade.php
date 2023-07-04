@@ -46,7 +46,7 @@
                     {{$key+1}}
                 </td>
                 <td class="px-6 py-4">
-                    {{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}
+                    {!! $barang->nama_barang_bukti ?? $barang->nama_kendaraan !!}
                 </td>
                 <td class="px-6 py-4">
                     {{$barang->no_laporan_polisi}}

@@ -6,10 +6,8 @@
                     <img class="object-cover w-full h-32 rounded-md lg:h-44"
                          src="{{asset('storage/' . $barang->gambar1)}}"
                          alt="">
-                    <div class="w-full">
-                        <label class="font-bold text-gray-600"
-                               for="">{{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</label>
-                    </div>
+                    <label
+                        class="font-bold block text-gray-600 truncate">{!! $barang->nama_barang_bukti ?? $barang->nama_kendaraan !!}</label>
                     <div class="w-full">
                         <p class="text-xs truncate text-gray-400">{{$barang->category->kategori}}</p>
                     </div>
@@ -28,8 +26,8 @@
                             <!-- Modal header -->
                             <div
                                 class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                    {{$barang->nama_barang_bukti}}
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white truncate">
+                                    {!! $barang->nama_barang_bukti ?? $barang->nama_kendaraan !!}
                                 </h3>
                                 <button type="button"
                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -86,9 +84,10 @@
                                         <p>IDENTITAS BARANG BUKTI</p>
                                         <p>PENYIDIK</p>
                                         <p>KONDISI</p>
+                                        <p>KETERANGAN</p>
                                     </div>
                                     <div>
-                                        <p>: {{$barang->nama_barang_bukti ?? $barang->nama_kendaraan}}</p>
+                                        <p>: {!! $barang->nama_barang_bukti ?? $barang->nama_kendaraan !!}</p>
                                         <p>: {{$barang->unit}}</p>
                                         @if($barang->jumlah)
                                             <p>: {{$barang->jumlah}}</p>
